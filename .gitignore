@@ -32,14 +32,14 @@
 *.app
 
 # VS code
-.vscode/*
-!.vscode/settings.json
-!.vscode/tasks.json
-!.vscode/launch.json
-!.vscode/extensions.json
-!.vscode/*.code-snippets
-!.vscode/arduino.json
-Code/StoreData/.vscode/c_cpp_properties.json
+Code/*/.vscode/*
+!Code/*/.vscode/settings.json
+!Code/*/.vscode/tasks.json
+!Code/*/.vscode/launch.json
+!Code/*/.vscode/extensions.json
+!Code/*/.vscode/*.code-snippets
+!Code/*/.vscode/arduino.json
+#Code/StoreData/.vscode/c_cpp_properties.json
 
 # Local History for Visual Studio Code
 .history/

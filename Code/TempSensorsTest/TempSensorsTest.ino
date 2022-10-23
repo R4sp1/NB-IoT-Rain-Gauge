@@ -1,4 +1,4 @@
-//#define DEBUG 
+#define DEBUG 
 
 #include <WiFi.h>
 #include <PubSubClient.h>
@@ -17,7 +17,7 @@ const char* password = myPASSWORD;
 const char* mqtt_server = mqttSERVER;
 
 #define uS_TO_MIN_FACTOR 60000000 //Conversion factor from uSeconds to minutes
-#define TIME_TO_SLEEP  5         //Time ESP will go to sleep (in minutes)
+#define TIME_TO_SLEEP  2         //Time ESP will go to sleep (in minutes)
 RTC_DATA_ATTR int bootCount = 0;  //Count how many times ESP woke up without power interruption
 
 
@@ -28,7 +28,8 @@ char msg[50];
 int value = 0;
 
 //Sensors definitions
-Adafruit_BME280 bme; // I2C
+Adafruit_BME280 bme_1; // I2C
+Adafruit_BME280 bme_2; // I2C
 DHT dht(19, DHT22);
 OneWire oneWire(18); //OneWire
 DallasTemperature sensors(&oneWire);
@@ -45,7 +46,8 @@ uint8_t temprature_sens_read();
 
 
 String JSONmessage;
-    float temp_bme280;
+    float temp_bme280_1;
+    float temp_bme280_2;
     float temp_dht22;
     float temp_ds18b;
     float temp_esp32;
@@ -111,7 +113,9 @@ void reconnect() {
 
 void setupSensors(){
     Wire.begin (21, 22);
-    if (!bme.begin(0x76)) {
+
+    //BME280 on address 0x76
+    if (!bme_1.begin(0x76)) {
       #ifdef DEBUG
       Serial.println("Could not find a valid bme280 sensor, check wiring!");
       #endif
@@ -119,7 +123,23 @@ void setupSensors(){
     }
 
     //BME280 forced mode
-    bme.setSampling(Adafruit_BME280::MODE_FORCED,
+    bme_1.setSampling(Adafruit_BME280::MODE_FORCED,
+                    Adafruit_BME280::SAMPLING_X1, // temperature
+                    Adafruit_BME280::SAMPLING_X1, // pressure
+                    Adafruit_BME280::SAMPLING_X1, // humidity
+                    Adafruit_BME280::FILTER_OFF,
+                    Adafruit_BME280::STANDBY_MS_500);
+
+    //BME280 on adress 0x77
+    if (!bme_2.begin(0x77)) {
+      #ifdef DEBUG
+      Serial.println("Could not find a valid bme280 sensor, check wiring!");
+      #endif
+      while (1);
+    }
+
+    //BME280 forced mode
+    bme_2.setSampling(Adafruit_BME280::MODE_FORCED,
                     Adafruit_BME280::SAMPLING_X1, // temperature
                     Adafruit_BME280::SAMPLING_X1, // pressure
                     Adafruit_BME280::SAMPLING_X1, // humidity
@@ -132,13 +152,29 @@ void setupSensors(){
 }
 
 void readSensors() {
-  //BME280
-  if (bme.takeForcedMeasurement()) {
-    temp_bme280 = bme.readTemperature();
+  //BME280 on adress 0x76
+  if (bme_1.takeForcedMeasurement()) {
+    temp_bme280_1 = bme_1.readTemperature();
 
     #ifdef DEBUG
-    Serial.print(F("BME280 temp: "));
-    Serial.print(temp_bme280);
+    Serial.print(F("BME280 on adress 0x76 temp: "));
+    Serial.print(temp_bme280_1);
+    Serial.println(" °C");
+    Serial.println();
+    #endif
+  } else {
+    #ifdef DEBUG
+    Serial.println("Forced measurement failed!");
+    #endif
+  }
+
+  //BME280 on adress 0x77
+  if (bme_2.takeForcedMeasurement()) {
+    temp_bme280_2 = bme_2.readTemperature();
+
+    #ifdef DEBUG
+    Serial.print(F("BME280 on adress 0x77 temp: "));
+    Serial.print(temp_bme280_2);
     Serial.println(" °C");
     Serial.println();
     #endif
@@ -182,7 +218,8 @@ void transmitData() {
   char msg[200];
   StaticJsonDocument<200> doc;
 
-    doc["bme280"] = temp_bme280;
+    doc["bme280_1"] = temp_bme280_1;
+    doc["bme280_2"] = temp_bme280_2;
     doc["DHT22"] = temp_dht22;
     doc["DS18B"] = temp_ds18b;
     doc["ESP32"] = temp_esp32;

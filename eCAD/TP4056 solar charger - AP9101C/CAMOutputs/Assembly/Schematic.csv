@@ -1,0 +1,30 @@
+Qty;Value;Device;Package;Parts;Description;ARROW_PART_NUMBER;ARROW_PRICE-STOCK;DESCRIPTION;HEIGHT;MANUFACTURER_NAME;MANUFACTURER_PART_NUMBER;MF;MOUSER_PART_NUMBER;MOUSER_PRICE-STOCK;MOUSER_TESTING_PART_NUMBER;MOUSER_TESTING_PRICE-STOCK;MPN;OC_FARNELL;OC_NEWARK;POPULARITY;SPICEPREFIX
+1;!CHRG;PINHD-1X1;1X01;JP1;PIN HEADER;;;;;;;;;;;;;;;64;
+1;!STDBY;PINHD-1X1;1X01;JP2;PIN HEADER;;;;;;;;;;;;;;;64;
+1;100k;R-EU_R0805;R0805;R11;RESISTOR, European symbol;;;;;;;;;;;;;;;86;R
+1;100n;C-EUC0805;C0805;C2;CAPACITOR, European symbol;;;;;;;;;;;;;;;88;C
+1;10k;R-EU_R0805;R0805;R6;RESISTOR, European symbol;;;;;;;;;;;;;;;86;R
+2;10u;C-EUC0805;C0805;C1, C5;CAPACITOR, European symbol;;;;;;;;;;;;;;;88;C
+1;1M;R-EU_R0805;R0805;R9;RESISTOR, European symbol;;;;;;;;;;;;;;;86;R
+2;1k;R-EU_R0805;R0805;R1, R2;RESISTOR, European symbol;;;;;;;;;;;;;;;86;R
+1;27K;R-EU_R0805;R0805;R10;RESISTOR, European symbol;;;;;;;;;;;;;;;86;R
+1;2k7;R-EU_R0805;R0805;R5;RESISTOR, European symbol;;;;;;;;;;;;;;;86;R
+1;330R;R-EU_R0805;R0805;R4;RESISTOR, European symbol;;;;;;;;;;;;;;;86;R
+2;470n;C-EUC0805;C0805;C3, C4;CAPACITOR, European symbol;;;;;;;;;;;;;;;88;C
+2;5k1;R-EU_R0805;R0805;R7, R8;RESISTOR, European symbol;;;;;;;;;;;;;;;86;R
+1;AP9101CK6-ADTRG1;AP9101CK6-ADTRG1;SOT95P285X140-6N;IC2;Battery Management Protect w/ Pwr Down 1-Cell LI 3.0uA 3.5V;AP9101CK6-ADTRG1;https://www.arrow.com/en/products/ap9101ck6-adtrg1/diodes-incorporated?region=nac;Battery Management Protect w/ Pwr Down 1-Cell LI 3.0uA 3.5V;1.4mm;Diodes Inc.;AP9101CK6-ADTRG1;;621-AP9101CK6-ADTRG1;https://www.mouser.co.uk/ProductDetail/Diodes-Incorporated/AP9101CK6-ADTRG1?qs=W66WzN12R3ZRpT78WZD49g%3D%3D;;;;;;;
+1;BATTERY;AK300/2;AK300/2;X2;CONNECTOR;;;;;;;;;;;;;unknown;unknown;16;
+1;BAT_V;PINHD-1X1;1X01;JP5;PIN HEADER;;;;;;;;;;;;;;;64;
+1;BU33SD5WG-TR;BU33SD5WG-TR;SOT95P280X125-5N;PS1;LDO regulator,3.3V,0.5A,standby,SSOP5 ROHM BU33SD5WG-TR, LDO Voltage Regulator, 0.5A, 3.3 V +/-2%, 1.7  6 Vin, 5-Pin SSOP;;;LDO regulator,3.3V,0.5A,standby,SSOP5 ROHM BU33SD5WG-TR, LDO Voltage Regulator, 0.5A, 3.3 V +/-2%, 1.7  6 Vin, 5-Pin SSOP;1.25mm;ROHM Semiconductor;BU33SD5WG-TR;;755-BU33SD5WG-TR;https://www.mouser.co.uk/ProductDetail/ROHM-Semiconductor/BU33SD5WG-TR?qs=%2FKR40Cd6GUrQDzRkUEt69Q%3D%3D;;;;;;;
+1;FDS6898A;FDS6898A;SOIC127P600X175-8N;IC3;ON SEMICONDUCTOR - FDS6898A. - MOSFET, DUAL, N, SMD, SO-8;FDS6898A;https://www.arrow.com/en/products/fds6898a/on-semiconductor?region=nac;ON SEMICONDUCTOR - FDS6898A. - MOSFET, DUAL, N, SMD, SO-8;1.75mm;onsemi;FDS6898A;;512-FDS6898A;https://www.mouser.co.uk/ProductDetail/ON-Semiconductor-Fairchild/FDS6898A?qs=rFoKx6q3%2F911Dc6GES2NNA%3D%3D;;;;;;;
+1;GREEN;LEDCHIPLED_0805;CHIPLED_0805;I.01;LED;;;;;;;;;;;;;;;52;
+1;OUT+;PINHD-1X1;1X01;JP4;PIN HEADER;;;;;;;;;;;;;;;64;
+1;OUTPUT;AK300/2;AK300/2;X3;CONNECTOR;;;;;;;;;;;;;unknown;unknown;16;
+1;PV_PANEL;AK300/2;AK300/2;X1;CONNECTOR;;;;;;;;;;;;;unknown;unknown;16;
+1;RED;LEDCHIPLED_0805;CHIPLED_0805;I.02;LED;;;;;;;;;;;;;;;52;
+1;Rprog;R-EU_R0805;R0805;R3;RESISTOR, European symbol;;;;;;;;;;;;;;;86;R
+1;SI2347DS-T1-GE3;SI2347DS-T1-GE3;SOT95P237X112-3N;Q1;P-Ch MOSFET SOT-23 copper 30V 42mohm @ 1;SI2347DS-T1-GE3;https://www.arrow.com/en/products/si2347ds-t1-ge3/vishay?region=nac;P-Ch MOSFET SOT-23 copper 30V 42mohm @ 1;1.12mm;Vishay;Si2347DS-T1-GE3;;78-SI2347DS-T1-GE3;https://www.mouser.co.uk/ProductDetail/Vishay-Semiconductors/SI2347DS-T1-GE3?qs=wnm%2FPMJNddFQv4lfacOrcA%3D%3D;;;;;;;
+1;STPS2L30A;STPS2L30A;DIOM5126X265N;D1;STPS2L30A, Schottky Diode,  2A max, 30V, 2-Pin, SMA;STPS2L30A;https://www.arrow.com/en/products/stps2l30a/stmicroelectronics?region=nac;STPS2L30A, Schottky Diode,  2A max, 30V, 2-Pin, SMA;2.65mm;STMicroelectronics;STPS2L30A;;511-STPS2L30A;https://www.mouser.co.uk/ProductDetail/STMicroelectronics/STPS2L30A?qs=yAkVQ3mwCG0OEYUK4%252B3dww%3D%3D;;;;;;;
+1;TP4056X;TP4056X;SOIC127P600X175-9N;IC1;PMIC - Battery Management SOP-8_EP_150mil RoHS;;;PMIC - Battery Management SOP-8_EP_150mil RoHS;1.75mm;Nanjing Extension Microelectronics;TP4056X;;;;;;;;;;
+1;USBC-6P;USBC-6P;USCX-06FX-XXMX-01;U$1;AliExpress Special! Connect 5.1k 10% resistors to each CC pin, pulled up to 3.3v or 5.0v.;;;;;;;;;;;;;;;;
+1;VIN;PINHD-1X1;1X01;JP3;PIN HEADER;;;;;;;;;;;;;;;64;X

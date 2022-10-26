@@ -41,6 +41,9 @@ Code/*/.vscode/*
 !Code/*/.vscode/arduino.json
 #Code/StoreData/.vscode/c_cpp_properties.json
 
+# Build outupt
+Code/build
+
 # Local History for Visual Studio Code
 .history/
 

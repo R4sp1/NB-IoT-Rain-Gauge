@@ -10,6 +10,7 @@
 #include <OneWire.h> 
 #include <DallasTemperature.h>
 #include <credentials.h>
+#include <BH1750.h>
 
 
 const char* ssid = mySSID;
@@ -32,7 +33,8 @@ Adafruit_BME280 bme_1; // I2C
 Adafruit_BME280 bme_2; // I2C
 DHT dht(19, DHT22);
 OneWire oneWire(18); //OneWire
-DallasTemperature sensors(&oneWire);
+DallasTemperature oneWireTemp(&oneWire);
+BH1750 lightMeter(0x23);
 
 //Internal temp sensor
 #ifdef __cplusplus
@@ -49,8 +51,9 @@ String JSONmessage;
     float temp_bme280_1;
     float temp_bme280_2;
     float temp_dht22;
-    float temp_ds18b;
-    float temp_esp32;
+    float temp_ds18b_wire;
+    float temp_ds18b_ic;
+    float light;
 
 void print_wakeup_reason(){
   esp_sleep_wakeup_cause_t wakeup_reason;
@@ -119,7 +122,7 @@ void setupSensors(){
       #ifdef DEBUG
       Serial.println("Could not find a valid bme280 sensor, check wiring!");
       #endif
-      while (1);
+      //while (1);
     }
 
     //BME280 forced mode
@@ -135,7 +138,7 @@ void setupSensors(){
       #ifdef DEBUG
       Serial.println("Could not find a valid bme280 sensor, check wiring!");
       #endif
-      while (1);
+      temp_bme280_2 = NULL;
     }
 
     //BME280 forced mode
@@ -146,8 +149,35 @@ void setupSensors(){
                     Adafruit_BME280::FILTER_OFF,
                     Adafruit_BME280::STANDBY_MS_500);
 
+    //DHT 22 begin
     dht.begin();
-    sensors.begin(); 
+
+    //DS18B sensors begin
+    oneWireTemp.begin(); 
+
+    /*Begin light sensor in one time High resolution mode
+        - Low Resolution Mode - (4 lx precision, 16ms measurement time)
+        - High Resolution Mode - (1 lx precision, 120ms measurement time)
+        - High Resolution Mode 2 - (0.5 lx precision, 120ms measurement time)
+        Full mode list:
+
+          BH1750_CONTINUOUS_LOW_RES_MODE
+          BH1750_CONTINUOUS_HIGH_RES_MODE (default)
+          BH1750_CONTINUOUS_HIGH_RES_MODE_2
+
+          BH1750_ONE_TIME_LOW_RES_MODE
+          BH1750_ONE_TIME_HIGH_RES_MODE
+          BH1750_ONE_TIME_HIGH_RES_MODE_2
+    */
+    if (lightMeter.begin(BH1750::ONE_TIME_HIGH_RES_MODE_2)) {
+      #ifdef DEBUG
+      Serial.println(F("BH1750 Advanced begin"));
+      #endif
+    } else {
+      #ifdef DEBUG
+      Serial.println(F("Error initialising BH1750"));
+      #endif
+    }
 
 }
 
@@ -193,24 +223,35 @@ void readSensors() {
   Serial.println();
   #endif
 
-  //DS18B
-  sensors.requestTemperatures();
-  temp_ds18b = sensors.getTempCByIndex(0); //Index 0 => first sensor on wire
+  //DS18B on wire
+  oneWireTemp.requestTemperatures();
+  temp_ds18b_wire = oneWireTemp.getTempCByIndex(1); //Index 0 => first sensor on wire
   #ifdef DEBUG
-  Serial.print("DS18B temp: ");
-  Serial.print(temp_ds18b);
+  Serial.print("DS18B on wire temp: ");
+  Serial.print(temp_ds18b_wire);
   Serial.println(" °C");
   Serial.println();
   #endif
 
-  //ESP32 internal temp sensor
-  temp_esp32 = (temprature_sens_read() - 32) / 1.8; //Convert RAW temp in °F to °C
+  //DS18B ic
+  oneWireTemp.requestTemperatures();
+  temp_ds18b_ic = oneWireTemp.getTempCByIndex(0); //Index 0 => first sensor on wire
   #ifdef DEBUG
-  Serial.print("ESP32 temp: ");
-  Serial.print(temp_esp32);
+  Serial.print("DS18B ic temp: ");
+  Serial.print(temp_ds18b_ic);
   Serial.println(" °C");
   Serial.println();
   #endif
+
+  //Light meter
+  if (lightMeter.measurementReady()) {
+    light = lightMeter.readLightLevel();
+    #ifdef DEBUG
+    Serial.print("Light: ");
+    Serial.print(light);
+    Serial.println(" lx");
+    #endif
+  }
 
 }
 
@@ -221,8 +262,9 @@ void transmitData() {
     doc["bme280_1"] = temp_bme280_1;
     doc["bme280_2"] = temp_bme280_2;
     doc["DHT22"] = temp_dht22;
-    doc["DS18B"] = temp_ds18b;
-    doc["ESP32"] = temp_esp32;
+    doc["DS18B_1"] = temp_ds18b_wire;
+    doc["DS18B_2"] = temp_ds18b_ic;
+    doc["Light"] = light;
     doc["bootCount"] = bootCount;
 
 

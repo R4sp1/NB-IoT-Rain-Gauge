@@ -9,7 +9,7 @@
     "output_type": "zip",
     "outputs": [
         {
-            "filename_prefix": "CAMOutputs/GerberFiles",
+            "filename_prefix": "CAMOutputs/",
             "format_specifier": {
                 "decimal": 4,
                 "integer": 3
@@ -38,7 +38,6 @@
                         17,
                         18
                     ],
-                    "milling": false,
                     "name": "Top Copper",
                     "polarity": "positive",
                     "type": "gerber_layer"
@@ -83,10 +82,8 @@
                     },
                     "filename_format": "%PREFIX/profile.gbr",
                     "layers": [
-                        18,
-                        44,
-                        45,
-                        46
+                        17,
+                        18
                     ],
                     "milling": true,
                     "polarity": "positive",
@@ -262,7 +259,7 @@
                     "list_attribute": true,
                     "list_type": "values",
                     "name": "Bill of Material",
-                    "output_format": "csv",
+                    "output_format": "txt",
                     "type": "bom"
                 },
                 {

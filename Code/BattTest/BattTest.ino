@@ -18,7 +18,7 @@ int value = 0;
 unsigned long entry;
 
 #define uS_TO_MIN_FACTOR 60000000 //Conversion factor from uSeconds to minutes
-#define TIME_TO_SLEEP  20         //Time ESP will go to sleep (in minutes)
+#define TIME_TO_SLEEP  1         //Time ESP will go to sleep (in minutes)
 
 
 const int adc = A0;  // This creates a constant integer in memory that stores the analog pin

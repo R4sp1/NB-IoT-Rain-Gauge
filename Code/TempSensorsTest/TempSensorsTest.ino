@@ -13,9 +13,9 @@
 #include <BH1750.h>
 
 
-const char* ssid = mySSID;
-const char* password = myPASSWORD;
-const char* mqtt_server = mqttSERVER;
+  const char* ssid = mySSID;
+  const char* password = myPASSWORD;
+  const char* mqtt_server = mqttSERVER;
 
 #define uS_TO_MIN_FACTOR 60000000 //Conversion factor from uSeconds to minutes
 #define TIME_TO_SLEEP  2         //Time ESP will go to sleep (in minutes)

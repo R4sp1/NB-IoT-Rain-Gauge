@@ -10207,50 +10207,6 @@ Source: AVX .. aphvc.pdf</description>
 <wire x1="-0.05" y1="-1.46" x2="-0.05" y2="1.46" width="0.2" layer="21"/>
 <wire x1="-1.7" y1="1.5" x2="-0.4" y2="1.5" width="0.2" layer="21"/>
 </package>
-<package name="DIOM5126X265N">
-<description>&lt;b&gt;SMA&lt;/b&gt;&lt;br&gt;
-</description>
-<smd name="1" x="-2.05" y="0" dx="2.2" dy="1.55" layer="1"/>
-<smd name="2" x="2.05" y="0" dx="2.2" dy="1.55" layer="1"/>
-<text x="0" y="0" size="1.27" layer="25" align="center">&gt;NAME</text>
-<text x="0" y="0" size="1.27" layer="27" align="center">&gt;VALUE</text>
-<wire x1="-3.4" y1="1.7" x2="3.4" y2="1.7" width="0.05" layer="51"/>
-<wire x1="3.4" y1="1.7" x2="3.4" y2="-1.7" width="0.05" layer="51"/>
-<wire x1="3.4" y1="-1.7" x2="-3.4" y2="-1.7" width="0.05" layer="51"/>
-<wire x1="-3.4" y1="-1.7" x2="-3.4" y2="1.7" width="0.05" layer="51"/>
-<wire x1="-2.538" y1="1.288" x2="2.538" y2="1.288" width="0.1" layer="51"/>
-<wire x1="2.538" y1="1.288" x2="2.538" y2="-1.288" width="0.1" layer="51"/>
-<wire x1="2.538" y1="-1.288" x2="-2.538" y2="-1.288" width="0.1" layer="51"/>
-<wire x1="-2.538" y1="-1.288" x2="-2.538" y2="1.288" width="0.1" layer="51"/>
-<wire x1="-2.538" y1="0.512" x2="-1.762" y2="1.288" width="0.1" layer="51"/>
-<wire x1="2.538" y1="1.288" x2="-2.825" y2="1.288" width="0.2" layer="21"/>
-<wire x1="-2.538" y1="-1.288" x2="2.538" y2="-1.288" width="0.2" layer="21"/>
-</package>
-<package name="SOT95P280X125-5N">
-<description>&lt;b&gt;BD45232G-TR-SSOP5&lt;/b&gt;&lt;br&gt;
-</description>
-<smd name="1" x="-1.4" y="0.95" dx="0.9" dy="0.6" layer="1"/>
-<smd name="2" x="-1.4" y="0" dx="0.9" dy="0.6" layer="1"/>
-<smd name="3" x="-1.4" y="-0.95" dx="0.9" dy="0.6" layer="1"/>
-<smd name="4" x="1.4" y="-0.95" dx="0.9" dy="0.6" layer="1"/>
-<smd name="5" x="1.4" y="0.95" dx="0.9" dy="0.6" layer="1"/>
-<text x="0" y="0" size="1.27" layer="25" align="center">&gt;NAME</text>
-<text x="0" y="0" size="1.27" layer="27" align="center">&gt;VALUE</text>
-<wire x1="-2.1" y1="1.8" x2="2.1" y2="1.8" width="0.05" layer="51"/>
-<wire x1="2.1" y1="1.8" x2="2.1" y2="-1.8" width="0.05" layer="51"/>
-<wire x1="2.1" y1="-1.8" x2="-2.1" y2="-1.8" width="0.05" layer="51"/>
-<wire x1="-2.1" y1="-1.8" x2="-2.1" y2="1.8" width="0.05" layer="51"/>
-<wire x1="-0.825" y1="1.45" x2="0.825" y2="1.45" width="0.1" layer="51"/>
-<wire x1="0.825" y1="1.45" x2="0.825" y2="-1.45" width="0.1" layer="51"/>
-<wire x1="0.825" y1="-1.45" x2="-0.825" y2="-1.45" width="0.1" layer="51"/>
-<wire x1="-0.825" y1="-1.45" x2="-0.825" y2="1.45" width="0.1" layer="51"/>
-<wire x1="-0.825" y1="0.5" x2="0.125" y2="1.45" width="0.1" layer="51"/>
-<wire x1="-0.6" y1="1.45" x2="0.6" y2="1.45" width="0.2" layer="21"/>
-<wire x1="0.6" y1="1.45" x2="0.6" y2="-1.45" width="0.2" layer="21"/>
-<wire x1="0.6" y1="-1.45" x2="-0.6" y2="-1.45" width="0.2" layer="21"/>
-<wire x1="-0.6" y1="-1.45" x2="-0.6" y2="1.45" width="0.2" layer="21"/>
-<wire x1="-1.85" y1="1.5" x2="-0.95" y2="1.5" width="0.2" layer="21"/>
-</package>
 <package name="SOT95P280X135-6N">
 <description>&lt;b&gt;DW01A-G&lt;/b&gt;&lt;br&gt;
 </description>
@@ -10305,6 +10261,50 @@ Source: AVX .. aphvc.pdf</description>
 <wire x1="-1.85" y1="-1.465" x2="-1.85" y2="1.465" width="0.2" layer="21"/>
 <wire x1="-3.675" y1="1.55" x2="-2.2" y2="1.55" width="0.2" layer="21"/>
 </package>
+<package name="SOT95P270X145-5N">
+<description>&lt;b&gt;sot-23&lt;/b&gt;&lt;br&gt;
+</description>
+<smd name="1" x="-1.25" y="0.95" dx="1.4" dy="0.6" layer="1"/>
+<smd name="2" x="-1.25" y="0" dx="1.4" dy="0.6" layer="1"/>
+<smd name="3" x="-1.25" y="-0.95" dx="1.4" dy="0.6" layer="1"/>
+<smd name="4" x="1.25" y="-0.95" dx="1.4" dy="0.6" layer="1"/>
+<smd name="5" x="1.25" y="0.95" dx="1.4" dy="0.6" layer="1"/>
+<text x="0" y="0" size="1.27" layer="25" align="center">&gt;NAME</text>
+<text x="0" y="0" size="1.27" layer="27" align="center">&gt;VALUE</text>
+<wire x1="-2.2" y1="1.8" x2="2.2" y2="1.8" width="0.05" layer="51"/>
+<wire x1="2.2" y1="1.8" x2="2.2" y2="-1.8" width="0.05" layer="51"/>
+<wire x1="2.2" y1="-1.8" x2="-2.2" y2="-1.8" width="0.05" layer="51"/>
+<wire x1="-2.2" y1="-1.8" x2="-2.2" y2="1.8" width="0.05" layer="51"/>
+<wire x1="-0.775" y1="1.45" x2="0.775" y2="1.45" width="0.1" layer="51"/>
+<wire x1="0.775" y1="1.45" x2="0.775" y2="-1.45" width="0.1" layer="51"/>
+<wire x1="0.775" y1="-1.45" x2="-0.775" y2="-1.45" width="0.1" layer="51"/>
+<wire x1="-0.775" y1="-1.45" x2="-0.775" y2="1.45" width="0.1" layer="51"/>
+<wire x1="-0.775" y1="0.5" x2="0.175" y2="1.45" width="0.1" layer="51"/>
+<wire x1="-0.2" y1="1.45" x2="0.2" y2="1.45" width="0.2" layer="21"/>
+<wire x1="0.2" y1="1.45" x2="0.2" y2="-1.45" width="0.2" layer="21"/>
+<wire x1="0.2" y1="-1.45" x2="-0.2" y2="-1.45" width="0.2" layer="21"/>
+<wire x1="-0.2" y1="-1.45" x2="-0.2" y2="1.45" width="0.2" layer="21"/>
+<wire x1="-1.95" y1="1.5" x2="-0.55" y2="1.5" width="0.2" layer="21"/>
+</package>
+<package name="SOD2513X120N">
+<description>&lt;b&gt;SOD323&lt;/b&gt;&lt;br&gt;
+</description>
+<smd name="1" x="-1.162" y="0" dx="1.075" dy="0.5" layer="1"/>
+<smd name="2" x="1.162" y="0" dx="1.075" dy="0.5" layer="1"/>
+<text x="0" y="0" size="1.27" layer="25" align="center">&gt;NAME</text>
+<text x="0" y="0" size="1.27" layer="27" align="center">&gt;VALUE</text>
+<wire x1="-1.975" y1="1.15" x2="1.975" y2="1.15" width="0.05" layer="51"/>
+<wire x1="1.975" y1="1.15" x2="1.975" y2="-1.15" width="0.05" layer="51"/>
+<wire x1="1.975" y1="-1.15" x2="-1.975" y2="-1.15" width="0.05" layer="51"/>
+<wire x1="-1.975" y1="-1.15" x2="-1.975" y2="1.15" width="0.05" layer="51"/>
+<wire x1="-0.85" y1="0.65" x2="0.85" y2="0.65" width="0.1" layer="51"/>
+<wire x1="0.85" y1="0.65" x2="0.85" y2="-0.65" width="0.1" layer="51"/>
+<wire x1="0.85" y1="-0.65" x2="-0.85" y2="-0.65" width="0.1" layer="51"/>
+<wire x1="-0.85" y1="-0.65" x2="-0.85" y2="0.65" width="0.1" layer="51"/>
+<wire x1="-0.85" y1="0.112" x2="-0.312" y2="0.65" width="0.1" layer="51"/>
+<wire x1="-1.7" y1="0.65" x2="0.85" y2="0.65" width="0.2" layer="21"/>
+<wire x1="-0.85" y1="-0.65" x2="0.85" y2="-0.65" width="0.2" layer="21"/>
+</package>
 </packages>
 <symbols>
 <symbol name="SI2347DS-T1-GE3">
@@ -10329,37 +10329,6 @@ Source: AVX .. aphvc.pdf</description>
 <vertex x="6.604" y="3.048"/>
 <vertex x="6.604" y="2.032"/>
 </polygon>
-</symbol>
-<symbol name="STPS2L30A">
-<wire x1="7.62" y1="2.54" x2="7.62" y2="-2.54" width="0.254" layer="94"/>
-<wire x1="7.62" y1="2.54" x2="8.636" y2="2.54" width="0.254" layer="94"/>
-<wire x1="8.636" y1="1.524" x2="8.636" y2="2.54" width="0.254" layer="94"/>
-<wire x1="7.62" y1="-2.54" x2="6.604" y2="-2.54" width="0.254" layer="94"/>
-<wire x1="6.604" y1="-1.524" x2="6.604" y2="-2.54" width="0.254" layer="94"/>
-<wire x1="5.08" y1="0" x2="7.62" y2="0" width="0.254" layer="94"/>
-<wire x1="12.7" y1="0" x2="15.24" y2="0" width="0.254" layer="94"/>
-<text x="12.7" y="8.89" size="1.778" layer="95" align="center-left">&gt;NAME</text>
-<text x="12.7" y="6.35" size="1.778" layer="96" align="center-left">&gt;VALUE</text>
-<pin name="K" x="2.54" y="0" visible="pad" length="short"/>
-<pin name="A" x="17.78" y="0" visible="pad" length="short" rot="R180"/>
-<polygon width="0.254" layer="94">
-<vertex x="7.62" y="0"/>
-<vertex x="12.7" y="2.54"/>
-<vertex x="12.7" y="-2.54"/>
-</polygon>
-</symbol>
-<symbol name="BU33SD5WG-TR">
-<wire x1="5.08" y1="2.54" x2="22.86" y2="2.54" width="0.254" layer="94"/>
-<wire x1="22.86" y1="-7.62" x2="22.86" y2="2.54" width="0.254" layer="94"/>
-<wire x1="22.86" y1="-7.62" x2="5.08" y2="-7.62" width="0.254" layer="94"/>
-<wire x1="5.08" y1="2.54" x2="5.08" y2="-7.62" width="0.254" layer="94"/>
-<text x="24.13" y="7.62" size="1.778" layer="95" align="center-left">&gt;NAME</text>
-<text x="24.13" y="5.08" size="1.778" layer="96" align="center-left">&gt;VALUE</text>
-<pin name="VIN" x="0" y="0" length="middle"/>
-<pin name="GND" x="0" y="-2.54" length="middle"/>
-<pin name="STBY" x="0" y="-5.08" length="middle"/>
-<pin name="N.C." x="27.94" y="0" length="middle" direction="nc" rot="R180"/>
-<pin name="VOUT" x="27.94" y="-2.54" length="middle" rot="R180"/>
 </symbol>
 <symbol name="DW01A-G">
 <wire x1="5.08" y1="2.54" x2="20.32" y2="2.54" width="0.254" layer="94"/>
@@ -10391,6 +10360,33 @@ Source: AVX .. aphvc.pdf</description>
 <pin name="S2_1" x="30.48" y="-5.08" length="middle" rot="R180"/>
 <pin name="G2" x="30.48" y="-7.62" length="middle" rot="R180"/>
 </symbol>
+<symbol name="ME6211C33M5G-N">
+<wire x1="5.08" y1="2.54" x2="22.86" y2="2.54" width="0.254" layer="94"/>
+<wire x1="22.86" y1="-7.62" x2="22.86" y2="2.54" width="0.254" layer="94"/>
+<wire x1="22.86" y1="-7.62" x2="5.08" y2="-7.62" width="0.254" layer="94"/>
+<wire x1="5.08" y1="2.54" x2="5.08" y2="-7.62" width="0.254" layer="94"/>
+<text x="24.13" y="7.62" size="1.778" layer="95" align="center-left">&gt;NAME</text>
+<text x="24.13" y="5.08" size="1.778" layer="96" align="center-left">&gt;VALUE</text>
+<pin name="VIN" x="0" y="0" length="middle"/>
+<pin name="VSS" x="0" y="-2.54" length="middle"/>
+<pin name="CE" x="0" y="-5.08" length="middle"/>
+<pin name="NC" x="27.94" y="0" length="middle" direction="nc" rot="R180"/>
+<pin name="VOUT" x="27.94" y="-2.54" length="middle" rot="R180"/>
+</symbol>
+<symbol name="1N4148WS-7-F">
+<wire x1="5.08" y1="2.54" x2="5.08" y2="-2.54" width="0.254" layer="94"/>
+<wire x1="2.54" y1="0" x2="5.08" y2="0" width="0.254" layer="94"/>
+<wire x1="10.16" y1="0" x2="12.7" y2="0" width="0.254" layer="94"/>
+<text x="11.43" y="5.08" size="1.778" layer="95" align="center-left">&gt;NAME</text>
+<text x="11.43" y="2.54" size="1.778" layer="96" align="center-left">&gt;VALUE</text>
+<pin name="K" x="0" y="0" visible="pad" length="short"/>
+<pin name="A" x="15.24" y="0" visible="pad" length="short" rot="R180"/>
+<polygon width="0.254" layer="94">
+<vertex x="5.08" y="0"/>
+<vertex x="10.16" y="2.54"/>
+<vertex x="10.16" y="-2.54"/>
+</polygon>
+</symbol>
 </symbols>
 <devicesets>
 <deviceset name="SI2347DS-T1-GE3" prefix="Q">
@@ -10416,67 +10412,6 @@ Source: &lt;a href="https://www.vishay.com/docs/62827/si2347ds.pdf"&gt; Datashee
 <attribute name="MANUFACTURER_PART_NUMBER" value="Si2347DS-T1-GE3" constant="no"/>
 <attribute name="MOUSER_PART_NUMBER" value="78-SI2347DS-T1-GE3" constant="no"/>
 <attribute name="MOUSER_PRICE-STOCK" value="https://www.mouser.co.uk/ProductDetail/Vishay-Semiconductors/SI2347DS-T1-GE3?qs=wnm%2FPMJNddFQv4lfacOrcA%3D%3D" constant="no"/>
-<attribute name="MOUSER_TESTING_PART_NUMBER" value="" constant="no"/>
-<attribute name="MOUSER_TESTING_PRICE-STOCK" value="" constant="no"/>
-</technology>
-</technologies>
-</device>
-</devices>
-</deviceset>
-<deviceset name="STPS2L30A" prefix="D">
-<description>&lt;b&gt;STPS2L30A, Schottky Diode,  2A max, 30V, 2-Pin, SMA&lt;/b&gt;&lt;p&gt;
-Source: &lt;a href="http://www.st.com/web/en/resource/technical/document/datasheet/CD00001633.pdf"&gt; Datasheet &lt;/a&gt;</description>
-<gates>
-<gate name="G$1" symbol="STPS2L30A" x="0" y="0"/>
-</gates>
-<devices>
-<device name="" package="DIOM5126X265N">
-<connects>
-<connect gate="G$1" pin="A" pad="2"/>
-<connect gate="G$1" pin="K" pad="1"/>
-</connects>
-<technologies>
-<technology name="">
-<attribute name="ARROW_PART_NUMBER" value="STPS2L30A" constant="no"/>
-<attribute name="ARROW_PRICE-STOCK" value="https://www.arrow.com/en/products/stps2l30a/stmicroelectronics?region=nac" constant="no"/>
-<attribute name="DESCRIPTION" value="STPS2L30A, Schottky Diode,  2A max, 30V, 2-Pin, SMA" constant="no"/>
-<attribute name="HEIGHT" value="2.65mm" constant="no"/>
-<attribute name="MANUFACTURER_NAME" value="STMicroelectronics" constant="no"/>
-<attribute name="MANUFACTURER_PART_NUMBER" value="STPS2L30A" constant="no"/>
-<attribute name="MOUSER_PART_NUMBER" value="511-STPS2L30A" constant="no"/>
-<attribute name="MOUSER_PRICE-STOCK" value="https://www.mouser.co.uk/ProductDetail/STMicroelectronics/STPS2L30A?qs=yAkVQ3mwCG0OEYUK4%252B3dww%3D%3D" constant="no"/>
-<attribute name="MOUSER_TESTING_PART_NUMBER" value="" constant="no"/>
-<attribute name="MOUSER_TESTING_PRICE-STOCK" value="" constant="no"/>
-</technology>
-</technologies>
-</device>
-</devices>
-</deviceset>
-<deviceset name="BU33SD5WG-TR" prefix="PS">
-<description>&lt;b&gt;LDO regulator,3.3V,0.5A,standby,SSOP5 ROHM BU33SD5WG-TR, LDO Voltage Regulator, 0.5A, 3.3 V +/-2%, 1.7  6 Vin, 5-Pin SSOP&lt;/b&gt;&lt;p&gt;
-Source: &lt;a href="https://componentsearchengine.com/Datasheets/1/BU33SD5WG-TR.pdf"&gt; Datasheet &lt;/a&gt;</description>
-<gates>
-<gate name="G$1" symbol="BU33SD5WG-TR" x="0" y="0"/>
-</gates>
-<devices>
-<device name="" package="SOT95P280X125-5N">
-<connects>
-<connect gate="G$1" pin="GND" pad="2"/>
-<connect gate="G$1" pin="N.C." pad="4"/>
-<connect gate="G$1" pin="STBY" pad="3"/>
-<connect gate="G$1" pin="VIN" pad="1"/>
-<connect gate="G$1" pin="VOUT" pad="5"/>
-</connects>
-<technologies>
-<technology name="">
-<attribute name="ARROW_PART_NUMBER" value="" constant="no"/>
-<attribute name="ARROW_PRICE-STOCK" value="" constant="no"/>
-<attribute name="DESCRIPTION" value="LDO regulator,3.3V,0.5A,standby,SSOP5 ROHM BU33SD5WG-TR, LDO Voltage Regulator, 0.5A, 3.3 V +/-2%, 1.7  6 Vin, 5-Pin SSOP" constant="no"/>
-<attribute name="HEIGHT" value="1.25mm" constant="no"/>
-<attribute name="MANUFACTURER_NAME" value="ROHM Semiconductor" constant="no"/>
-<attribute name="MANUFACTURER_PART_NUMBER" value="BU33SD5WG-TR" constant="no"/>
-<attribute name="MOUSER_PART_NUMBER" value="755-BU33SD5WG-TR" constant="no"/>
-<attribute name="MOUSER_PRICE-STOCK" value="https://www.mouser.co.uk/ProductDetail/ROHM-Semiconductor/BU33SD5WG-TR?qs=%2FKR40Cd6GUrQDzRkUEt69Q%3D%3D" constant="no"/>
 <attribute name="MOUSER_TESTING_PART_NUMBER" value="" constant="no"/>
 <attribute name="MOUSER_TESTING_PRICE-STOCK" value="" constant="no"/>
 </technology>
@@ -10545,6 +10480,67 @@ Source: &lt;a href="http://www.ic-fortune.com/upload/Download/FS8205A-DS-12_EN.p
 <attribute name="MANUFACTURER_PART_NUMBER" value="FS8205A" constant="no"/>
 <attribute name="MOUSER_PART_NUMBER" value="" constant="no"/>
 <attribute name="MOUSER_PRICE-STOCK" value="" constant="no"/>
+<attribute name="MOUSER_TESTING_PART_NUMBER" value="" constant="no"/>
+<attribute name="MOUSER_TESTING_PRICE-STOCK" value="" constant="no"/>
+</technology>
+</technologies>
+</device>
+</devices>
+</deviceset>
+<deviceset name="ME6211C33M5G-N" prefix="IC">
+<description>&lt;b&gt;Fixed 6V 3.3V 500mA SOT-23-5 Low Dropout Regulators(LDO) RoHS&lt;/b&gt;&lt;p&gt;
+Source: &lt;a href="https://datasheet.lcsc.com/szlcsc/1811131510_MICRONE-Nanjing-Micro-One-Elec-ME6211C33M5G-N_C82942.pdf"&gt; Datasheet &lt;/a&gt;</description>
+<gates>
+<gate name="G$1" symbol="ME6211C33M5G-N" x="0" y="0"/>
+</gates>
+<devices>
+<device name="" package="SOT95P270X145-5N">
+<connects>
+<connect gate="G$1" pin="CE" pad="3"/>
+<connect gate="G$1" pin="NC" pad="4"/>
+<connect gate="G$1" pin="VIN" pad="1"/>
+<connect gate="G$1" pin="VOUT" pad="5"/>
+<connect gate="G$1" pin="VSS" pad="2"/>
+</connects>
+<technologies>
+<technology name="">
+<attribute name="ARROW_PART_NUMBER" value="" constant="no"/>
+<attribute name="ARROW_PRICE-STOCK" value="" constant="no"/>
+<attribute name="DESCRIPTION" value="Fixed 6V 3.3V 500mA SOT-23-5 Low Dropout Regulators(LDO) RoHS" constant="no"/>
+<attribute name="HEIGHT" value="1.45mm" constant="no"/>
+<attribute name="MANUFACTURER_NAME" value="Microne" constant="no"/>
+<attribute name="MANUFACTURER_PART_NUMBER" value="ME6211C33M5G-N" constant="no"/>
+<attribute name="MOUSER_PART_NUMBER" value="" constant="no"/>
+<attribute name="MOUSER_PRICE-STOCK" value="" constant="no"/>
+<attribute name="MOUSER_TESTING_PART_NUMBER" value="" constant="no"/>
+<attribute name="MOUSER_TESTING_PRICE-STOCK" value="" constant="no"/>
+</technology>
+</technologies>
+</device>
+</devices>
+</deviceset>
+<deviceset name="1N4148WS-7-F" prefix="D">
+<description>&lt;b&gt;Diode Switching 150mA 75V 200mW SOD323 Diodes Inc 1N4148WS-7-F Switching Diode, 150mA 75V, 2-Pin SOD-323&lt;/b&gt;&lt;p&gt;
+Source: &lt;a href="https://componentsearchengine.com/Datasheets/2/1N4148WS-7-F.pdf"&gt; Datasheet &lt;/a&gt;</description>
+<gates>
+<gate name="G$1" symbol="1N4148WS-7-F" x="0" y="0"/>
+</gates>
+<devices>
+<device name="" package="SOD2513X120N">
+<connects>
+<connect gate="G$1" pin="A" pad="2"/>
+<connect gate="G$1" pin="K" pad="1"/>
+</connects>
+<technologies>
+<technology name="">
+<attribute name="ARROW_PART_NUMBER" value="1N4148WS-7-F" constant="no"/>
+<attribute name="ARROW_PRICE-STOCK" value="https://www.arrow.com/en/products/1n4148ws-7-f/diodes-incorporated?region=nac" constant="no"/>
+<attribute name="DESCRIPTION" value="Diode Switching 150mA 75V 200mW SOD323 Diodes Inc 1N4148WS-7-F Switching Diode, 150mA 75V, 2-Pin SOD-323" constant="no"/>
+<attribute name="HEIGHT" value="1.2mm" constant="no"/>
+<attribute name="MANUFACTURER_NAME" value="Diodes Inc." constant="no"/>
+<attribute name="MANUFACTURER_PART_NUMBER" value="1N4148WS-7-F" constant="no"/>
+<attribute name="MOUSER_PART_NUMBER" value="621-1N4148WS-F" constant="no"/>
+<attribute name="MOUSER_PRICE-STOCK" value="https://www.mouser.co.uk/ProductDetail/Diodes-Incorporated/1N4148WS-7-F?qs=4drIV0IxA0r8aNy7%2Fu4kVw%3D%3D" constant="no"/>
 <attribute name="MOUSER_TESTING_PART_NUMBER" value="" constant="no"/>
 <attribute name="MOUSER_TESTING_PRICE-STOCK" value="" constant="no"/>
 </technology>
@@ -10935,7 +10931,6 @@ Es handelt sich hierbei um AK500 in horizontaler Ausführung.&lt;p&gt;
 <part name="R5" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-EU_" device="R0805" package3d_urn="urn:adsk.eagle:package:23553/2" value="1k"/>
 <part name="C2" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="C-EU" device="C0805" package3d_urn="urn:adsk.eagle:package:23617/2" value="100n"/>
 <part name="Q1" library="1-component-search" deviceset="SI2347DS-T1-GE3" device="" override_package3d_urn="urn:adsk.eagle:package:37877156/2" override_package_urn="urn:adsk.eagle:footprint:37877157/1"/>
-<part name="D1" library="1-component-search" deviceset="STPS2L30A" device="" override_package3d_urn="urn:adsk.eagle:package:37877152/2" override_package_urn="urn:adsk.eagle:footprint:37877153/1"/>
 <part name="R6" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-EU_" device="R0805" package3d_urn="urn:adsk.eagle:package:23553/2" value="10k"/>
 <part name="GND7" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 <part name="U$1" library="USBC6P" deviceset="USBC-6P" device="" override_package3d_urn="urn:adsk.eagle:package:37877180/2" override_package_urn="urn:adsk.eagle:footprint:37877181/1"/>
@@ -10946,9 +10941,8 @@ Es handelt sich hierbei um AK500 in horizontaler Ausführung.&lt;p&gt;
 <part name="X1" library="con-ptr500" library_urn="urn:adsk.eagle:library:181" deviceset="AK300/2" device="" package3d_urn="urn:adsk.eagle:package:9881/1" value="PV_PANEL"/>
 <part name="X2" library="con-ptr500" library_urn="urn:adsk.eagle:library:181" deviceset="AK300/2" device="" package3d_urn="urn:adsk.eagle:package:9881/1" value="BATTERY"/>
 <part name="GND5" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
-<part name="PS1" library="1-component-search" deviceset="BU33SD5WG-TR" device="" override_package3d_urn="urn:adsk.eagle:package:37877144/2" override_package_urn="urn:adsk.eagle:footprint:37877145/1"/>
-<part name="C3" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="C-EU" device="C0805" package3d_urn="urn:adsk.eagle:package:23617/2" value="470n"/>
-<part name="C4" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="C-EU" device="C0805" package3d_urn="urn:adsk.eagle:package:23617/2" value="470n"/>
+<part name="C3" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="C-EU" device="C0805" package3d_urn="urn:adsk.eagle:package:23617/2" value="1u"/>
+<part name="C4" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="C-EU" device="C0805" package3d_urn="urn:adsk.eagle:package:23617/2" value="1u"/>
 <part name="GND9" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 <part name="GND10" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 <part name="GND11" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
@@ -10964,10 +10958,11 @@ Es handelt sich hierbei um AK500 in horizontaler Ausführung.&lt;p&gt;
 <part name="JP3" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-1X1" device="" package3d_urn="urn:adsk.eagle:package:22485/2" value="VIN">
 <attribute name="SPICEPREFIX" value="X"/>
 </part>
-<part name="JP4" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-1X1" device="" package3d_urn="urn:adsk.eagle:package:22485/2" value="OUT+"/>
 <part name="JP5" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-1X1" device="" package3d_urn="urn:adsk.eagle:package:22485/2" value="BAT_V"/>
 <part name="IC2" library="1-component-search" deviceset="DW01A-G" device=""/>
 <part name="Q2" library="1-component-search" deviceset="FS8205A" device=""/>
+<part name="IC3" library="1-component-search" deviceset="ME6211C33M5G-N" device=""/>
+<part name="D1" library="1-component-search" deviceset="1N4148WS-7-F" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -11036,10 +11031,6 @@ Es handelt sich hierbei um AK500 in horizontaler Ausführung.&lt;p&gt;
 <attribute name="NAME" x="82.55" y="87.63" size="1.778" layer="95" rot="MR0" align="center-left"/>
 <attribute name="VALUE" x="82.55" y="85.09" size="1.778" layer="96" rot="MR0" align="center-left"/>
 </instance>
-<instance part="D1" gate="G$1" x="99.06" y="83.82" smashed="yes" rot="R90">
-<attribute name="NAME" x="101.6" y="102.87" size="1.778" layer="95" align="center-left"/>
-<attribute name="VALUE" x="101.6" y="100.33" size="1.778" layer="96" align="center-left"/>
-</instance>
 <instance part="R6" gate="G$1" x="81.28" y="101.6" smashed="yes">
 <attribute name="NAME" x="77.47" y="103.0986" size="1.778" layer="95"/>
 <attribute name="VALUE" x="77.47" y="98.298" size="1.778" layer="96"/>
@@ -11082,10 +11073,6 @@ Es handelt sich hierbei um AK500 in horizontaler Ausführung.&lt;p&gt;
 </instance>
 <instance part="GND5" gate="1" x="142.24" y="109.22" smashed="yes">
 <attribute name="VALUE" x="139.7" y="106.68" size="1.778" layer="96"/>
-</instance>
-<instance part="PS1" gate="G$1" x="177.8" y="66.04" smashed="yes">
-<attribute name="NAME" x="179.07" y="73.66" size="1.778" layer="95" align="center-left"/>
-<attribute name="VALUE" x="179.07" y="71.12" size="1.778" layer="96" align="center-left"/>
 </instance>
 <instance part="C3" gate="G$1" x="162.56" y="55.88" smashed="yes">
 <attribute name="NAME" x="164.084" y="58.801" size="1.778" layer="95"/>
@@ -11144,10 +11131,6 @@ Es handelt sich hierbei um AK500 in horizontaler Ausführung.&lt;p&gt;
 <attribute name="NAME" x="102.87" y="114.935" size="1.778" layer="95"/>
 <attribute name="VALUE" x="102.87" y="111.76" size="1.778" layer="96"/>
 </instance>
-<instance part="JP4" gate="G$1" x="114.3" y="86.36" smashed="yes">
-<attribute name="NAME" x="107.95" y="92.075" size="1.778" layer="95"/>
-<attribute name="VALUE" x="107.95" y="88.9" size="1.778" layer="96"/>
-</instance>
 <instance part="JP5" gate="G$1" x="124.46" y="43.18" smashed="yes">
 <attribute name="NAME" x="118.11" y="48.895" size="1.778" layer="95"/>
 <attribute name="VALUE" x="118.11" y="45.72" size="1.778" layer="96"/>
@@ -11159,6 +11142,14 @@ Es handelt sich hierbei um AK500 in horizontaler Ausführung.&lt;p&gt;
 <instance part="Q2" gate="G$1" x="22.86" y="25.4" smashed="yes">
 <attribute name="NAME" x="24.13" y="33.02" size="1.778" layer="95" align="center-left"/>
 <attribute name="VALUE" x="24.13" y="30.48" size="1.778" layer="96" align="center-left"/>
+</instance>
+<instance part="IC3" gate="G$1" x="177.8" y="66.04" smashed="yes">
+<attribute name="NAME" x="179.07" y="73.66" size="1.778" layer="95" align="center-left"/>
+<attribute name="VALUE" x="179.07" y="71.12" size="1.778" layer="96" align="center-left"/>
+</instance>
+<instance part="D1" gate="G$1" x="99.06" y="86.36" smashed="yes" rot="R90">
+<attribute name="NAME" x="100.33" y="101.6" size="1.778" layer="95" align="center-left"/>
+<attribute name="VALUE" x="100.33" y="99.06" size="1.778" layer="96" align="center-left"/>
 </instance>
 </instances>
 <busses>
@@ -11250,10 +11241,10 @@ Es handelt sich hierbei um AK500 in horizontaler Ausführung.&lt;p&gt;
 <wire x1="210.82" y1="50.8" x2="210.82" y2="45.72" width="0.1524" layer="91"/>
 </segment>
 <segment>
-<pinref part="PS1" gate="G$1" pin="GND"/>
 <wire x1="177.8" y1="63.5" x2="175.26" y2="63.5" width="0.1524" layer="91"/>
 <wire x1="175.26" y1="63.5" x2="175.26" y2="45.72" width="0.1524" layer="91"/>
 <pinref part="GND9" gate="1" pin="GND"/>
+<pinref part="IC3" gate="G$1" pin="VSS"/>
 </segment>
 <segment>
 <pinref part="R5" gate="G$1" pin="1"/>
@@ -11362,22 +11353,15 @@ Es handelt sich hierbei um AK500 in horizontaler Ausführung.&lt;p&gt;
 <net name="OUT+" class="0">
 <segment>
 <pinref part="Q1" gate="G$1" pin="S"/>
-<wire x1="106.68" y1="78.74" x2="101.6" y2="78.74" width="0.1524" layer="91"/>
-<pinref part="D1" gate="G$1" pin="K"/>
-<wire x1="101.6" y1="78.74" x2="99.06" y2="78.74" width="0.1524" layer="91"/>
+<wire x1="106.68" y1="78.74" x2="99.06" y2="78.74" width="0.1524" layer="91"/>
 <wire x1="99.06" y1="78.74" x2="93.98" y2="78.74" width="0.1524" layer="91"/>
 <wire x1="99.06" y1="86.36" x2="99.06" y2="78.74" width="0.1524" layer="91"/>
 <junction x="99.06" y="78.74"/>
 <label x="106.68" y="78.74" size="1.778" layer="95" xref="yes"/>
-<pinref part="JP4" gate="G$1" pin="1"/>
-<wire x1="111.76" y1="86.36" x2="101.6" y2="86.36" width="0.1524" layer="91"/>
-<wire x1="101.6" y1="86.36" x2="101.6" y2="78.74" width="0.1524" layer="91"/>
-<junction x="101.6" y="78.74"/>
+<pinref part="D1" gate="G$1" pin="K"/>
 </segment>
 <segment>
-<pinref part="PS1" gate="G$1" pin="VIN"/>
 <wire x1="177.8" y1="66.04" x2="170.18" y2="66.04" width="0.1524" layer="91"/>
-<pinref part="PS1" gate="G$1" pin="STBY"/>
 <wire x1="170.18" y1="66.04" x2="162.56" y2="66.04" width="0.1524" layer="91"/>
 <wire x1="162.56" y1="66.04" x2="154.94" y2="66.04" width="0.1524" layer="91"/>
 <wire x1="177.8" y1="60.96" x2="170.18" y2="60.96" width="0.1524" layer="91"/>
@@ -11387,6 +11371,8 @@ Es handelt sich hierbei um AK500 in horizontaler Ausführung.&lt;p&gt;
 <wire x1="162.56" y1="66.04" x2="162.56" y2="58.42" width="0.1524" layer="91"/>
 <junction x="162.56" y="66.04"/>
 <label x="154.94" y="66.04" size="1.778" layer="95" rot="R180" xref="yes"/>
+<pinref part="IC3" gate="G$1" pin="VIN"/>
+<pinref part="IC3" gate="G$1" pin="CE"/>
 </segment>
 </net>
 <net name="N$4" class="0">
@@ -11472,7 +11458,6 @@ Es handelt sich hierbei um AK500 in horizontaler Ausführung.&lt;p&gt;
 <pinref part="X1" gate="-1" pin="KL"/>
 </segment>
 <segment>
-<pinref part="D1" gate="G$1" pin="A"/>
 <wire x1="99.06" y1="101.6" x2="99.06" y2="109.22" width="0.1524" layer="91"/>
 <wire x1="99.06" y1="109.22" x2="88.9" y2="109.22" width="0.1524" layer="91"/>
 <pinref part="Q1" gate="G$1" pin="G"/>
@@ -11487,17 +11472,18 @@ Es handelt sich hierbei um AK500 in horizontaler Ausführung.&lt;p&gt;
 <pinref part="JP3" gate="G$1" pin="1"/>
 <wire x1="106.68" y1="109.22" x2="99.06" y2="109.22" width="0.1524" layer="91"/>
 <junction x="99.06" y="109.22"/>
+<pinref part="D1" gate="G$1" pin="A"/>
 </segment>
 </net>
 <net name="N$14" class="0">
 <segment>
-<pinref part="PS1" gate="G$1" pin="VOUT"/>
 <wire x1="205.74" y1="63.5" x2="210.82" y2="63.5" width="0.1524" layer="91"/>
 <pinref part="C4" gate="G$1" pin="1"/>
 <wire x1="210.82" y1="63.5" x2="220.98" y2="63.5" width="0.1524" layer="91"/>
 <wire x1="210.82" y1="63.5" x2="210.82" y2="58.42" width="0.1524" layer="91"/>
 <junction x="210.82" y="63.5"/>
 <pinref part="X3" gate="-1" pin="KL"/>
+<pinref part="IC3" gate="G$1" pin="VOUT"/>
 </segment>
 </net>
 <net name="BAT-" class="0">

@@ -10,6 +10,7 @@
 #define RXD2 16
 #define TXD2 17
 int PSM_EINT_N = 5;
+int RESET = 18;
 int AT = 13;
 
 String sending;
@@ -29,13 +30,17 @@ void setup() {
   Serial.begin(115200);
   //Serial1.begin(9600, SERIAL_8N1, RXD2, TXD2);
   Serial2.begin(115200, SERIAL_8N1, RXD2, TXD2);
+  pinMode(RESET, OUTPUT);
+  digitalWrite(RESET, HIGH);
+  delay(10);
+  digitalWrite(RESET, LOW);
   pinMode(PSM_EINT_N, OUTPUT);
   digitalWrite(PSM_EINT_N, LOW);
   pinMode(AT, INPUT_PULLUP);
   delay(500);
-  digitalWrite(PSM_EINT_N, HIGH);
-  delay(5);
-  digitalWrite(PSM_EINT_N, LOW);
+  //digitalWrite(PSM_EINT_N, HIGH);
+  //delay(5);
+  //digitalWrite(PSM_EINT_N, LOW);
   delay(100);
   atcommand("AT+QSCLK=0");
   delay(50);

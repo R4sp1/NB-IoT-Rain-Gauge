@@ -1,18 +1,23 @@
 #define DEBUG 
 
-#include <Wire.h>
-#include <Adafruit_BME280.h>
-#include <Adafruit_Sensor.h>
+#include <ESP32Time.h>
+#include <OneWire.h> 
+#include <DallasTemperature.h>
 #include <ArduinoJson.h>
 #include "ATcommands.h"
 
 
-#define uS_TO_MIN_FACTOR 60000000 //Conversion factor from uSeconds to minutes
-#define TIME_TO_SLEEP  15         //Time ESP will go to sleep (in minutes)
+#define uS_TO_S_FACTOR 1000000 //Conversion factor from uSeconds to minutes
+#define TIME_TO_SLEEP  300         //Time ESP will go to sleep (in minutes)
 #define MCU_RX 16 // Remember MCU RX connects to module TX and vice versa
 #define MCU_TX 17
-#define RST 5 // MCU pin to control module reset
+#define RST 19 // MCU pin to control module reset
 #define PSM 18 // MCU pin to control module wake up pin (PSM-EINT_N)
+#define TPIN 32 // DS18B20 pin
+
+RTC_DATA_ATTR int sendCount = 0;
+RTC_DATA_ATTR ulong wakeUpEpoch = 0;
+RTC_DATA_ATTR int rainCount = 0;
 
 HardwareSerial *moduleSerial = &Serial2;
 
@@ -22,19 +27,21 @@ int value = 0;
 String MQTTtopic = "Test/NB";
 
 //Sensors definitions
-Adafruit_BME280 bme; // I2C
-
+OneWire oneWire(TPIN); //OneWire
+DallasTemperature oneWireTemp(&oneWire);
+ESP32Time rtc;  
 ATcommands module = ATcommands(RST, PSM, true);
 
 String JSONmessage;
 float temp;
 int NBdelay = 1000;
 
+int timeToSleep = 0;
+ulong currentEpoch = 0;
+
 void print_wakeup_reason(){
   esp_sleep_wakeup_cause_t wakeup_reason;
-
   wakeup_reason = esp_sleep_get_wakeup_cause();
-
   switch(wakeup_reason)
   {
     case ESP_SLEEP_WAKEUP_EXT0 : Serial.println("Wakeup caused by external signal using RTC_IO"); break;
@@ -47,145 +54,156 @@ void print_wakeup_reason(){
 }
 
 void setupSensors(){
-    Wire.begin (21, 22);
-
-    if (!bme.begin(0x76)) {
-      #ifdef DEBUG
-      Serial.println("Could not find a valid bme280 sensor, check wiring!");
-      #endif
-      //while (1);
-    }
-
-    //BME280 forced mode
-    bme.setSampling(Adafruit_BME280::MODE_FORCED,
-                    Adafruit_BME280::SAMPLING_X1, // temperature
-                    Adafruit_BME280::SAMPLING_X1, // pressure
-                    Adafruit_BME280::SAMPLING_X1, // humidity
-                    Adafruit_BME280::FILTER_OFF,
-                    Adafruit_BME280::STANDBY_MS_500); 
+    oneWireTemp.begin(); 
 }
 
 void readSensors(){
-    if (bme.takeForcedMeasurement()) {
-    temp = bme.readTemperature();
+  oneWireTemp.requestTemperatures();
+  temp = oneWireTemp.getTempCByIndex(0); //Index 0 => first sensor on wire
+  #ifdef DEBUG
+  Serial.print("DS18B on wire temp: ");
+  Serial.print(temp);
+  Serial.println(" °C");
+  Serial.println();
+  #endif
+}
 
+bool sleepLogic(){
+  currentEpoch = rtc.getEpoch();
+
+  if(currentEpoch < wakeUpEpoch){
+    timeToSleep = (wakeUpEpoch - currentEpoch) * uS_TO_S_FACTOR;
     #ifdef DEBUG
-    Serial.print(F("BME280 on adress 0x76 temp: "));
-    Serial.print(temp);
-    Serial.println(" °C");
-    Serial.println();
+    Serial.println("ESP will sleep for: " + String(timeToSleep/1000000) + " seconds");
     #endif
   } else {
+    timeToSleep = TIME_TO_SLEEP * uS_TO_S_FACTOR;
+    wakeUpEpoch = (currentEpoch + TIME_TO_SLEEP);
     #ifdef DEBUG
-    Serial.println("Forced measurement failed!");
+    Serial.println("ESP will sleep for: " + String(timeToSleep/1000000) + " seconds");
     #endif
+  }
+
+  esp_sleep_enable_ext0_wakeup(GPIO_NUM_4, 1);
+  esp_sleep_enable_timer_wakeup(timeToSleep);
+
+  if(esp_sleep_get_wakeup_cause() == 2){      // 2=ext0, 4=timer
+    #ifdef DEBUG
+    Serial.println("Wake = 2; pushbutton");
+    #endif
+    return true;
+  } else {
+    #ifdef DEBUG
+    Serial.println("Wake = 4; timer");
+    #endif
+    return false;
   }
 }
 
-void transmitData() {
+String prepMSG(){
   char msg[200];
   StaticJsonDocument<200> doc;
-
+    doc["send"] = sendCount;
     doc["temp"] = temp;
-
-
+    doc["rain"] = rainCount;
   serializeJson(doc, JSONmessage);
   JSONmessage.toCharArray(msg, JSONmessage.length() + 1);
   
-
   #ifdef DEBUG
   Serial.print("Publish message: ");
   Serial.println(msg);
-  Serial.print("RAW JSON: ");
-  Serial.println(JSONmessage);
   Serial.print("Lenght of message: ");
   Serial.println(JSONmessage.length());
+  Serial.println();
   delay(1000);
   #endif
 
-  moduleSerial->begin(115200);
-  module.begin(*moduleSerial);
-  delay(100);
-
   String MQTTsend = "AT+QMTPUB=0,0,0,0,";
   String result = MQTTsend + MQTTtopic + "," + strlen(msg) + "," + msg;
-  char finResult[200];
-  result.toCharArray(finResult, result.length()+1);
-
-  bool next = true;
   
-  while(next){
-    if(module.wakeUp(HIGH,10,"DEEPSLEEP")) next = false;
-    delay(NBdelay);
-  }
-  next = true;
+  return result;
+}
 
-  while(next){
-    if(module.sendCommand("ATE0", "OK")) next = false;
-    delay(NBdelay);
-  }
-  next = true;
-
-  while(next){
-    if(module.sendCommand("AT+QSCLK=0", "OK")) next = false;
-    delay(NBdelay);
-  }
-  next = true;
-
-  while(next){
-    if(module.sendCommand("AT+CGPADDR?", "+CGPADDR: 0,")) next = false;
-    delay(NBdelay);
-  }
-  next = true;
+void transmitData() {
+  moduleSerial->begin(115200);
+  module.begin(*moduleSerial);
+  delay(100); 
   
-  while(next){
-    if(module.sendCommand("AT+QMTOPEN=0,89.221.217.87,1883", "+QMTOPEN: 0,0")) next = false;
-    delay(NBdelay);
-  }
-  next = true;
 
-  while(next){
-    if(module.sendCommand("AT+QMTCONN=0,DevKit-0123456", "+QMTCONN: 0,0,0")) next = false;
-    delay(NBdelay);
-  }
-  next = true;
+  /*
+  if(module.wakeUp(HIGH,10,"DEEPSLEEP")) Serial.println("Wake up succes!"); //Wakeup module
+  delay(NBdelay);
+  */
+  if(module.sendCommand("AT", "DEEPSLEEP")) Serial.println("Set AT succes!");  //Turn off deepsleep
+  delay(NBdelay);
 
-  while(next){
-    if(module.sendCommand(finResult, "+QMTPUB: 0,0,0")) next = false;
-    delay(NBdelay);
-  }
-  next = true;
+  if(module.sendCommand("AT+QSCLK=0", "OK", 5000)) Serial.println("Set QSCLK=0 succes!");  //Turn off deepsleep
+  delay(NBdelay);
 
-  while(next){
-    if(module.sendCommand("AT+QSCLK=1", "OK")) next = false;
-    delay(NBdelay);
-  }
-  next = true;
+  /*
+  if(module.sendCommand("ATE0", "OK")) Serial.println("Set ATE0 succes!"); //Turn off local echo
+  delay(NBdelay);
+  */
+  
+  if(module.sendCommand("AT+CGPADDR?", "+CGPADDR: 0,")) Serial.println("Check IP succes!");  //Check if we have IP addr assigned
+  delay(NBdelay);
 
+  if(module.sendCommand("AT+QMTOPEN=0,89.221.217.87,1883", "+QMTOPEN: 0,0")) Serial.println("Set QMTOPEN succes!");  //Open MQTT connection
+  delay(NBdelay);
+
+  if(module.sendCommand("AT+QMTCONN=0,DevKit-0123456", "+QMTCONN: 0,0,0")) Serial.println("Set QMTCONN succes!");  //Connect to MQTT server with ID
+  delay(NBdelay);
+  
+  char MQTTpub[200];
+  String res = prepMSG();
+  res.toCharArray(MQTTpub, res.length()+1);
+  if(module.sendCommand(MQTTpub, "+QMTPUB: 0,0,0")) Serial.println("Send QMTPUB succes!");  //Publish msg
+  delay(NBdelay);
+
+  if(module.sendCommand("AT+QMTCLOSE=0", "+QMTCLOSE: 0,0")) Serial.println("Close QMTCLOSE succes!");  //Close MQTT connection
+  delay(NBdelay);
+
+  if(module.sendCommand("AT+QSCLK=1", "OK")) Serial.println("Set QSCLK=1 succes!");  //Turn on deepsleep
+  delay(NBdelay);
+}
+
+void callBack(){
+  rainCount++;
+  #ifdef DEBUG
+  Serial.println("Rain count incremented by interrupt to: " + String(rainCount));
+  #endif
 }
 
 void setup() {
   Serial.begin(115200);
-  esp_sleep_enable_timer_wakeup(TIME_TO_SLEEP * uS_TO_MIN_FACTOR);
+  delay(100);
+  attachInterrupt(4, callBack, HIGH);  
 
-  #ifdef DEBUG
-  print_wakeup_reason();
-  Serial.println("ESP will sleep for " + String(TIME_TO_SLEEP) +" minutes");
-  #endif
-
-  setupSensors();
-  readSensors();
-  transmitData();
-  delay(1000);
-
-  #ifdef DEBUG
-  Serial.println("Going to sleep now");
-  Serial.flush();
-  #endif
-  
-  esp_deep_sleep_start();
+  if(sleepLogic()){
+    rainCount++;
+    #ifdef DEBUG
+    Serial.println("Rain count: " + String(rainCount));
+    print_wakeup_reason();
+    delay(5000);
+    Serial.println("Going to sleep now");
+    #endif
+    delay(500);
+    esp_deep_sleep_start();
+  } else {
+    ++sendCount;
+    setupSensors();
+    readSensors();
+    transmitData();
+    rainCount = 0;
+    #ifdef DEBUG
+    Serial.println("Data send!");
+    delay(5000);
+    Serial.println("Going to sleep now");
+    #endif
+    delay(500);
+    esp_deep_sleep_start();
+  }
 }
 
 void loop() {
-
 }

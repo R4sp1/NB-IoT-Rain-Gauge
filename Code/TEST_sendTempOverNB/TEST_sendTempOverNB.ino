@@ -6,6 +6,8 @@
 #include <ArduinoJson.h>
 #include "ATcommands.h"
 #include "esp_adc_cal.h"
+#include <BH1750.h>
+#include <Wire.h>
 
 
 #define uS_TO_S_FACTOR 1000000 //Conversion factor from uSeconds to minutes
@@ -15,9 +17,10 @@
 #define RST 19 // MCU pin to control module reset
 #define PSM 18 // MCU pin to control module wake up pin (PSM-EINT_N)
 #define TPIN 32 // DS18B20 pin
-#define VOL_SENS    34
-#define EN 33
-#define CAL 1.99
+#define VOL_SENS 34 // Pin to measure voltage of battery
+#define CAL 2 // Voltage devider ratio
+#define EN 33 // Pin to power on sensors
+#define NBdelay  1000   // Delay between two AT commands
 
 RTC_DATA_ATTR int sendCount = 0;
 RTC_DATA_ATTR ulong wakeUpEpoch = 0;
@@ -30,21 +33,25 @@ char msg[50];
 int value = 0;
 String MQTTtopic = "Test/NB";
 
+String JSONmessage;
+  float temp;
+  float light;
+  int volSens_Result = 0; // Raw value from ADC
+  float Voltage = 0.00;   // Voltage in mV
+
+
 //Sensors definitions
 OneWire oneWire(TPIN); //OneWire
 DallasTemperature oneWireTemp(&oneWire);
 ESP32Time rtc;  
 ATcommands module = ATcommands(RST, PSM, true);
+BH1750 lightMeter(0x23);
 
-String JSONmessage;
-float temp;
-int NBdelay = 1000;
+
 
 int timeToSleep = 0;
 ulong currentEpoch = 0;
 
-int volSens_Result = 0;
-float Voltage = 0.0;
 
 void print_wakeup_reason(){
   esp_sleep_wakeup_cause_t wakeup_reason;
@@ -64,10 +71,23 @@ void setupSensors(){
     pinMode(EN, OUTPUT);
     digitalWrite(EN, HIGH);
     delay(100);
+
+    Wire.begin (21, 22);
     oneWireTemp.begin(); 
+    if (lightMeter.begin(BH1750::ONE_TIME_HIGH_RES_MODE_2)) {
+      #ifdef DEBUG
+      Serial.println(F("BH1750 Advanced begin"));
+      #endif
+    } else {
+      #ifdef DEBUG
+      Serial.println(F("Error initialising BH1750"));
+      #endif
+    }
 }
 
 void readSensors(){
+
+  //Temp sensor
   oneWireTemp.requestTemperatures();
   temp = oneWireTemp.getTempCByIndex(0); //Index 0 => first sensor on wire
   #ifdef DEBUG
@@ -77,6 +97,7 @@ void readSensors(){
   Serial.println();
   #endif
 
+  //Voltage of battery
   volSens_Result = analogRead(VOL_SENS);
   Voltage = readADC_Cal(volSens_Result) * CAL;
   #ifdef DEBUG
@@ -85,7 +106,17 @@ void readSensors(){
   Serial.println(Voltage);      // Print Voltage (in mV)
   Serial.println(" mV");
   #endif
-  digitalWrite(EN, LOW);
+  
+
+  //Light meter
+  if (lightMeter.measurementReady()) {
+    light = lightMeter.readLightLevel();
+    #ifdef DEBUG
+    Serial.print("Light: ");
+    Serial.print(light);
+    Serial.println(" lx");
+    #endif
+  }
 }
 
 
@@ -134,7 +165,8 @@ String prepMSG(){
   StaticJsonDocument<200> doc;
     doc["send"] = sendCount;
     doc["temp"] = temp;
-    doc["vol"] = Voltage;
+    doc["vol"] = Voltage/1000;
+    doc["light"] = light;
     doc["rain"] = rainCount;
   serializeJson(doc, JSONmessage);
   JSONmessage.toCharArray(msg, JSONmessage.length() + 1);
@@ -214,10 +246,11 @@ void setup() {
       #ifdef DEBUG
       Serial.println("Rain count: " + String(rainCount));
       print_wakeup_reason();
-      delay(5000);
+      delay(1000);
       Serial.println("Going to sleep now");
       #endif
-      delay(500);
+      digitalWrite(EN, LOW);
+      delay(100);
       esp_deep_sleep_start();
     } else {
       ++sendCount;
@@ -227,10 +260,11 @@ void setup() {
       rainCount = 0;
       #ifdef DEBUG
       Serial.println("Data send!");
-      delay(5000);
+      delay(1000);
       Serial.println("Going to sleep now");
       #endif
-      delay(500);
+      digitalWrite(EN, LOW);
+      delay(100);
       esp_deep_sleep_start();
     }
   }

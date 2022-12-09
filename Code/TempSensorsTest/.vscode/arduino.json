@@ -3,5 +3,5 @@
     "board": "esp32:esp32:esp32",
     "sketch": "TempSensorsTest.ino",
     "output": "../build",
-    "port": "COM10"
+    "port": "COM22"
 }

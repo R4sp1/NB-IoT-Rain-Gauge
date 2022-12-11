@@ -34,11 +34,12 @@ int value = 0;
 String MQTTtopic = "Test/NB";
 
 String JSONmessage;
-  float temp;
+  float temp1;
+  float temp2;
   float light;
-  int volSens_Result = 0; // Raw value from ADC
   float Voltage = 0.00;   // Voltage in mV
 
+int volSens_Result = 0; // Raw value from ADC
 
 //Sensors definitions
 OneWire oneWire(TPIN); //OneWire
@@ -87,12 +88,22 @@ void setupSensors(){
 
 void readSensors(){
 
-  //Temp sensor
+  //First Temp sensor
   oneWireTemp.requestTemperatures();
-  temp = oneWireTemp.getTempCByIndex(0); //Index 0 => first sensor on wire
+  temp1 = oneWireTemp.getTempCByIndex(0); //Index 0 => first sensor on wire
   #ifdef DEBUG
-  Serial.print("DS18B on wire temp: ");
-  Serial.print(temp);
+  Serial.print("First DS18B temp: ");
+  Serial.print(temp1);
+  Serial.println(" °C");
+  Serial.println();
+  #endif
+
+  //Second Temp sensor
+  //oneWireTemp.requestTemperatures();
+  temp2 = oneWireTemp.getTempCByIndex(1); //Index 1 => first sensor on wire
+  #ifdef DEBUG
+  Serial.print("Second DS18B temp: ");
+  Serial.print(temp2);
   Serial.println(" °C");
   Serial.println();
   #endif
@@ -164,7 +175,8 @@ String prepMSG(){
   char msg[200];
   StaticJsonDocument<200> doc;
     doc["send"] = sendCount;
-    doc["temp"] = temp;
+    doc["temp"] = temp1;
+    doc["temp2"] = temp2;
     doc["vol"] = Voltage/1000;
     doc["light"] = light;
     doc["rain"] = rainCount;

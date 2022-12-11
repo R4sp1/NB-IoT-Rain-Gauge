@@ -186,7 +186,7 @@
 <layer number="255" name="logo" color="13" fill="1" visible="no" active="yes"/>
 </layers>
 <board>
-<fusionsync huburn="a.YnVzaW5lc3M6Z21haWwxMjg5Mjg3" projecturn="a.YnVzaW5lc3M6Z21haWwxMjg5Mjg3I0QyMDIwMTEwOTM1MTIyMDI3Ng" f3durn="urn:adsk.wipprod:dm.lineage:YDRk8zheT7WvqLD-3hyhiQ" pcbguid="" lastpulledtime="" lastsyncedchangeguid="" latestrevisionid="c09fe33a-a065-4483-a2e7-d4adf2de5377" lastsyncedrevisionid="c09fe33a-a065-4483-a2e7-d4adf2de5377" lastboardhashguid="713742b6-04a9-c4b4-3792-ee2867f6df96" lastpushedtime="2022-11-24T12:01:19Z" linktopcb3d="true"/>
+<fusionsync huburn="a.YnVzaW5lc3M6Z21haWwxMjg5Mjg3" projecturn="a.YnVzaW5lc3M6Z21haWwxMjg5Mjg3I0QyMDIwMTEwOTM1MTIyMDI3Ng" f3durn="urn:adsk.wipprod:dm.lineage:YDRk8zheT7WvqLD-3hyhiQ" pcbguid="" lastpulledtime="" lastsyncedchangeguid="" latestrevisionid="280a7505-3414-4593-8feb-3b5020d55482" lastsyncedrevisionid="280a7505-3414-4593-8feb-3b5020d55482" lastboardhashguid="3bd02e85-0156-88dc-254c-4b7ee917a638" lastpushedtime="2022-12-11T17:02:03Z" linktopcb3d="true"/>
 <plain>
 <wire x1="0" y1="0" x2="83.8" y2="0" width="0" layer="20"/>
 <wire x1="83.8" y1="0" x2="83.8" y2="105.08" width="0" layer="20"/>
@@ -2012,6 +2012,7 @@ This connector does not include any data lines--just Vbus, Gnd, and CC1/CC2.</de
 </variantdefs>
 <classes>
 <class number="0" name="default" width="0" drill="0">
+<clearance class="0" value="0.205"/>
 </class>
 </classes>
 <designrules name="default">

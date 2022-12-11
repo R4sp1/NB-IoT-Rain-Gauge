@@ -18595,6 +18595,7 @@ This connector does not include any data lines--just Vbus, Gnd, and CC1/CC2.</de
 </variantdefs>
 <classes>
 <class number="0" name="default" width="0" drill="0">
+<clearance class="0" value="0.205"/>
 </class>
 </classes>
 <modules>

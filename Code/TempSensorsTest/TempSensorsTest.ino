@@ -288,10 +288,8 @@ void transmitData() {
 void setup() {
   ++bootCount;
   Serial.begin(115200);
-  pinMode(33, OUTPUT);
-  digitalWrite(33, HIGH);
   delay(200);
-  /*esp_sleep_enable_timer_wakeup(TIME_TO_SLEEP * uS_TO_MIN_FACTOR);
+  esp_sleep_enable_timer_wakeup(TIME_TO_SLEEP * uS_TO_MIN_FACTOR);
 
   #ifdef DEBUG
   print_wakeup_reason();
@@ -306,10 +304,10 @@ void setup() {
   }
   client.loop();
 
-*/
+
   setupSensors();
   readSensors();
-  /*transmitData();
+  transmitData();
 
   #ifdef DEBUG
   Serial.println("Going to sleep now");
@@ -317,7 +315,6 @@ void setup() {
   #endif
   
   esp_deep_sleep_start();
-  */
 }
 
 void loop() {

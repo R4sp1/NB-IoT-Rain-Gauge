@@ -1,13 +1,13 @@
 #define DEBUG 
 
-#include <ESP32Time.h>
-#include <OneWire.h> 
-#include <DallasTemperature.h>
-#include <ArduinoJson.h>
-#include "ATcommands.h"
-#include "esp_adc_cal.h"
-#include <BH1750.h>
-#include <Wire.h>
+#include <ESP32Time.h>            // https://github.com/fbiego/ESP32Time
+#include <OneWire.h>              // https://www.arduino.cc/reference/en/libraries/onewire/
+#include <DallasTemperature.h>    // https://github.com/milesburton/Arduino-Temperature-Control-Library
+#include <ArduinoJson.h>          // https://github.com/bblanchon/ArduinoJson
+#include "ATcommands.h"           // https://github.com/R4sp1/AT-Command-Library
+#include "esp_adc_cal.h"          // https://github.com/espressif/arduino-esp32/
+#include <BH1750.h>               // https://github.com/claws/BH1750
+//#include <Wire.h>
 
 
 #define uS_TO_S_FACTOR 1000000 //Conversion factor from uSeconds to minutes

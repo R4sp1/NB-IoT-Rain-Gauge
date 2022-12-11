@@ -3,5 +3,5 @@
     "board": "esp32:esp32:esp32",
     "port": "COM22",
     "output": "../build",
-    "sketch": "TEST_sendTempOverNB.ino"
+    "sketch": "NB_v01.ino"
 }

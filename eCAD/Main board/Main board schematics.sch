@@ -18862,7 +18862,7 @@ This connector does not include any data lines--just Vbus, Gnd, and CC1/CC2.</de
 <instance part="GND29" gate="1" x="152.4" y="15.24" smashed="yes">
 <attribute name="VALUE" x="149.86" y="12.7" size="1.778" layer="96"/>
 </instance>
-<instance part="C11" gate="G$1" x="35.56" y="152.4" smashed="yes">
+<instance part="C11" gate="G$1" x="35.56" y="149.86" smashed="yes" rot="R180">
 <attribute name="NAME" x="36.703" y="152.8826" size="1.778" layer="95"/>
 <attribute name="VALUE" x="36.703" y="147.8026" size="1.778" layer="96"/>
 </instance>
@@ -18948,9 +18948,9 @@ This connector does not include any data lines--just Vbus, Gnd, and CC1/CC2.</de
 <wire x1="45.72" y1="157.48" x2="45.72" y2="154.94" width="0.1524" layer="91"/>
 <junction x="45.72" y="157.48"/>
 <label x="53.34" y="157.48" size="1.778" layer="95" rot="R90" xref="yes"/>
-<pinref part="C11" gate="G$1" pin="+"/>
-<wire x1="35.56" y1="154.94" x2="35.56" y2="157.48" width="0.1524" layer="91"/>
 <pinref part="IC1" gate="G$1" pin="GND_1"/>
+<pinref part="C11" gate="G$1" pin="-"/>
+<wire x1="35.56" y1="154.94" x2="35.56" y2="157.48" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <wire x1="93.98" y1="114.3" x2="96.52" y2="114.3" width="0.1524" layer="91"/>
@@ -19092,9 +19092,9 @@ This connector does not include any data lines--just Vbus, Gnd, and CC1/CC2.</de
 <label x="68.58" y="35.56" size="1.778" layer="95" xref="yes"/>
 </segment>
 <segment>
-<wire x1="55.88" y1="88.9" x2="53.34" y2="88.9" width="0.1524" layer="91"/>
-<label x="53.34" y="88.9" size="1.778" layer="95" rot="R180"/>
-<pinref part="IC1" gate="G$1" pin="IO2"/>
+<pinref part="IC1" gate="G$1" pin="IO0"/>
+<wire x1="93.98" y1="147.32" x2="96.52" y2="147.32" width="0.1524" layer="91"/>
+<label x="96.52" y="147.32" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="VDD33" class="0">
@@ -19116,10 +19116,10 @@ This connector does not include any data lines--just Vbus, Gnd, and CC1/CC2.</de
 <wire x1="35.56" y1="144.78" x2="33.02" y2="144.78" width="0.1524" layer="91"/>
 <wire x1="45.72" y1="147.32" x2="45.72" y2="144.78" width="0.1524" layer="91"/>
 <junction x="45.72" y="144.78"/>
-<pinref part="C11" gate="G$1" pin="-"/>
+<pinref part="IC1" gate="G$1" pin="3V3"/>
+<pinref part="C11" gate="G$1" pin="+"/>
 <wire x1="35.56" y1="147.32" x2="35.56" y2="144.78" width="0.1524" layer="91"/>
 <junction x="35.56" y="144.78"/>
-<pinref part="IC1" gate="G$1" pin="3V3"/>
 </segment>
 <segment>
 <pinref part="JP1" gate="A" pin="1"/>
@@ -19584,12 +19584,7 @@ This connector does not include any data lines--just Vbus, Gnd, and CC1/CC2.</de
 <segment>
 <pinref part="GND27" gate="1" pin="GND"/>
 <pinref part="C9" gate="G$1" pin="2"/>
-<wire x1="152.4" y1="88.9" x2="152.4" y2="86.36" width="0.1524" layer="91"/>
-<pinref part="JP2" gate="A" pin="3"/>
-<wire x1="152.4" y1="86.36" x2="152.4" y2="81.28" width="0.1524" layer="91"/>
-<wire x1="162.56" y1="81.28" x2="162.56" y2="86.36" width="0.1524" layer="91"/>
-<wire x1="162.56" y1="86.36" x2="152.4" y2="86.36" width="0.1524" layer="91"/>
-<junction x="152.4" y="86.36"/>
+<wire x1="152.4" y1="88.9" x2="152.4" y2="81.28" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="GND26" gate="1" pin="GND"/>
@@ -19598,9 +19593,14 @@ This connector does not include any data lines--just Vbus, Gnd, and CC1/CC2.</de
 </segment>
 <segment>
 <wire x1="177.8" y1="99.06" x2="175.26" y2="99.06" width="0.1524" layer="91"/>
-<wire x1="175.26" y1="99.06" x2="175.26" y2="81.28" width="0.1524" layer="91"/>
+<wire x1="175.26" y1="99.06" x2="175.26" y2="86.36" width="0.1524" layer="91"/>
 <pinref part="GND25" gate="1" pin="GND"/>
 <pinref part="IC5" gate="G$1" pin="VSS"/>
+<pinref part="JP2" gate="A" pin="1"/>
+<wire x1="175.26" y1="86.36" x2="175.26" y2="81.28" width="0.1524" layer="91"/>
+<wire x1="167.64" y1="81.28" x2="167.64" y2="86.36" width="0.1524" layer="91"/>
+<wire x1="167.64" y1="86.36" x2="175.26" y2="86.36" width="0.1524" layer="91"/>
+<junction x="175.26" y="86.36"/>
 </segment>
 <segment>
 <wire x1="33.02" y1="139.7" x2="38.1" y2="139.7" width="0.1524" layer="91"/>
@@ -19672,17 +19672,17 @@ This connector does not include any data lines--just Vbus, Gnd, and CC1/CC2.</de
 <pinref part="D1" gate="G$1" pin="A"/>
 </segment>
 <segment>
-<wire x1="177.8" y1="101.6" x2="165.1" y2="101.6" width="0.1524" layer="91"/>
 <pinref part="C9" gate="G$1" pin="1"/>
-<wire x1="165.1" y1="101.6" x2="152.4" y2="101.6" width="0.1524" layer="91"/>
+<wire x1="177.8" y1="101.6" x2="162.56" y2="101.6" width="0.1524" layer="91"/>
+<wire x1="162.56" y1="101.6" x2="152.4" y2="101.6" width="0.1524" layer="91"/>
 <wire x1="152.4" y1="101.6" x2="152.4" y2="96.52" width="0.1524" layer="91"/>
 <pinref part="IC5" gate="G$1" pin="VIN"/>
 <wire x1="152.4" y1="101.6" x2="147.32" y2="101.6" width="0.1524" layer="91"/>
 <junction x="152.4" y="101.6"/>
 <label x="147.32" y="101.6" size="1.778" layer="95" rot="R180" xref="yes"/>
-<pinref part="JP2" gate="A" pin="2"/>
-<wire x1="165.1" y1="81.28" x2="165.1" y2="101.6" width="0.1524" layer="91"/>
-<junction x="165.1" y="101.6"/>
+<pinref part="JP2" gate="A" pin="3"/>
+<wire x1="162.56" y1="81.28" x2="162.56" y2="101.6" width="0.1524" layer="91"/>
+<junction x="162.56" y="101.6"/>
 </segment>
 <segment>
 <pinref part="J1" gate="G$1" pin="1"/>
@@ -19860,10 +19860,10 @@ This connector does not include any data lines--just Vbus, Gnd, and CC1/CC2.</de
 </net>
 <net name="N$6" class="0">
 <segment>
-<pinref part="JP2" gate="A" pin="1"/>
 <pinref part="IC5" gate="G$1" pin="CE"/>
-<wire x1="167.64" y1="81.28" x2="167.64" y2="96.52" width="0.1524" layer="91"/>
-<wire x1="167.64" y1="96.52" x2="177.8" y2="96.52" width="0.1524" layer="91"/>
+<wire x1="165.1" y1="96.52" x2="177.8" y2="96.52" width="0.1524" layer="91"/>
+<pinref part="JP2" gate="A" pin="2"/>
+<wire x1="165.1" y1="96.52" x2="165.1" y2="81.28" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="N$11" class="0">

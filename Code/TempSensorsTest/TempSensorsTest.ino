@@ -32,7 +32,7 @@ int value = 0;
 Adafruit_BME280 bme_1; // I2C
 Adafruit_BME280 bme_2; // I2C
 DHT dht(19, DHT22);
-OneWire oneWire(18); //OneWire
+OneWire oneWire(32); //OneWire
 DallasTemperature oneWireTemp(&oneWire);
 BH1750 lightMeter(0x23);
 
@@ -288,7 +288,10 @@ void transmitData() {
 void setup() {
   ++bootCount;
   Serial.begin(115200);
-  esp_sleep_enable_timer_wakeup(TIME_TO_SLEEP * uS_TO_MIN_FACTOR);
+  pinMode(33, OUTPUT);
+  digitalWrite(33, HIGH);
+  delay(200);
+  /*esp_sleep_enable_timer_wakeup(TIME_TO_SLEEP * uS_TO_MIN_FACTOR);
 
   #ifdef DEBUG
   print_wakeup_reason();
@@ -303,10 +306,10 @@ void setup() {
   }
   client.loop();
 
-
+*/
   setupSensors();
   readSensors();
-  transmitData();
+  /*transmitData();
 
   #ifdef DEBUG
   Serial.println("Going to sleep now");
@@ -314,6 +317,7 @@ void setup() {
   #endif
   
   esp_deep_sleep_start();
+  */
 }
 
 void loop() {

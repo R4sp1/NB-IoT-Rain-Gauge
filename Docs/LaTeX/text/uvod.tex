@@ -1,21 +1,7 @@
 \chapter*{Úvod}
 \phantomsection
 \addcontentsline{toc}{chapter}{Úvod}
+\par Při výzkumu možností měření objemu spadlých srážek pomocí komerčních mikrovlnných spojů je jedním z problémů nemožnost ověření výstupních informací. Meteorologické srážkoměrné stanice jsou zpravidla umístěna pouze na místech, které jsou meteorologicky zajímavé a slouží hlavně k tvorbě předpovědí počasí. Jejich data také často nejsou veřejně dostupná. Vzniká zde tedy potřeba po nízkonákladových srážkoměrných stanicích, které budou kombinovat nízkou spotřebu pro možnosti běhu měření i bez dostupné energetické sítě a relativně přesné měření objemu spadlých srážek.
+\par V této práci se zabýváme řešením tohoto problému. V prví části zjišťujeme možnosti automatizovaného měření objemu spadlých srážek a porovnáváme technologie pro přenos naměřených dat pomocí low-power wide-area sítí (LPWAN). V druhé části využijeme nasbírané informace a zabýváme se návrhem nízkoenergetického zařízení, jež by s dostatečnou přesností měřilo objem spadlých srážek a pro přenos naměřených dat využilo sítě NB-IoT.bO přenos dat v síti NB-IoT se bude starat modul Quectel BC660K-GL, zatímco řízení celého zařízení bude mít na starost mikrokontroler Espressif ESP32.
+\par Cílem práce je návrh prototypu zařízení, které by ve své finální podobě sloužilo k podpoře probíhajícího výzkumu měření objemu srážek pomocí komerčních mikrovlnných spojů, který probíhá na půdě Vysokého učení technického v Brně.
 
-
-Úvod studentské práce, např\,\dots
-
-Nečíslovaná kapitola Úvod obsahuje \uv{seznámení} čtenáře s~problematikou práce.
-Typicky se zde uvádí:
-(a) do jaké tematické oblasti práce spadá, (b) co jsou hlavní cíle celé práce a (c) jakým způsobem jich bylo dosaženo.
-Úvod zpravidla nepřesahuje jednu stranu.
-Poslední odstavec Úvodu standardně představuje základní strukturu celého dokumentu.
-
-Tato práce se věnuje oblasti \acs{DSP} (\acl{DSP}), zejména jevům, které nastanou při nedodržení Nyquistovy podmínky pro \ac{symfvz}.%
-\footnote{Tato věta je pouze ukázkou použití příkazů pro sazbu zkratek.}
-
-Šablona je nastavena na \emph{dvoustranný tisk}.
-Nebuďte překvapeni, že ve vzniklém PDF jsou volné stránky.
-Je to proto, aby důležité stránky jako např.\ začátky kapitol začínaly po vytisknutí a svázání vždy na pravé straně.
-%
-Pokud máte nějaký závažný důvod sázet (a~zejména tisknout) jednostranně, nezapomeňte si přepnout volbu \texttt{twoside} na \texttt{oneside}!

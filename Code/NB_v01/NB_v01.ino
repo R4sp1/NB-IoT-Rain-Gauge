@@ -1,5 +1,10 @@
-#define DEBUG 
+#define DEBUG
+//#define NB
+#define WIFI
 
+#include <WiFi.h>
+#include <PubSubClient.h>
+#include <credentials.h>
 #include <ESP32Time.h>            // https://github.com/fbiego/ESP32Time
 #include <OneWire.h>              // https://www.arduino.cc/reference/en/libraries/onewire/
 #include <DallasTemperature.h>    // https://github.com/milesburton/Arduino-Temperature-Control-Library
@@ -10,21 +15,37 @@
 //#include <Wire.h>
 
 
+//Deep sleep related definitions
 #define uS_TO_S_FACTOR 1000000 //Conversion factor from uSeconds to minutes
 #define TIME_TO_SLEEP  300         //Time ESP will go to sleep (in minutes)
+
+//ND related definitions
 #define MCU_RX 16 // Remember MCU RX connects to module TX and vice versa
 #define MCU_TX 17
 #define RST 19 // MCU pin to control module reset
 #define PSM 18 // MCU pin to control module wake up pin (PSM-EINT_N)
+#define NBdelay  1000   // Delay between two AT commands
+
+//Sensors related definitions
 #define TPIN 32 // DS18B20 pin
 #define VOL_SENS 34 // Pin to measure voltage of battery
 #define CAL 2 // Voltage devider ratio
 #define EN 33 // Pin to power on sensors
-#define NBdelay  1000   // Delay between two AT commands
 
+
+//Data stored in RTC memory
 RTC_DATA_ATTR int sendCount = 0;
 RTC_DATA_ATTR ulong wakeUpEpoch = 0;
 RTC_DATA_ATTR int rainCount = 0;
+
+//WIFI definitions
+const char* ssid = mySSID;
+const char* password = myPASSWORD;
+const char* mqtt_server = mqttSERVER;
+WiFiClient espClient;
+PubSubClient client(espClient);
+
+
 
 HardwareSerial *moduleSerial = &Serial2;
 
@@ -199,6 +220,8 @@ String prepMSG(){
 }
 
 void transmitData() {
+
+  #ifdef NB
   moduleSerial->begin(115200);
   module.begin(*moduleSerial);
   delay(100); 
@@ -239,6 +262,78 @@ void transmitData() {
 
   if(module.sendCommand("AT+QSCLK=1", "OK")) Serial.println("Set QSCLK=1 succes!");  //Turn on deepsleep
   delay(NBdelay);
+
+  #endif
+
+  #ifdef WIFI
+  //Setup WiFi connection
+  delay(10);
+  #ifdef DEBUG
+  Serial.println();
+  Serial.print("Connecting to ");
+  Serial.println(ssid);
+  #endif
+  WiFi.begin(ssid, password);
+
+  while (WiFi.status() != WL_CONNECTED) {
+    delay(500);
+    #ifdef DEBUG
+    Serial.print(".");
+    #endif
+  }
+  #ifdef DEBUG
+  Serial.println("");
+  Serial.println("WiFi connected");
+  Serial.println("IP address: ");
+  Serial.println(WiFi.localIP());
+  #endif
+
+  //WiFi MQTT connect
+  client.setServer(mqtt_server, 1883);
+  while (!client.connected()) {
+    #ifdef DEBUG
+    Serial.print("Attempting MQTT connection...");
+    #endif
+    // Create a random client ID
+    String clientId = "ESP32Client-";
+    clientId += String(random(0xffff), HEX);
+    // Attempt to connect
+    if (client.connect(clientId.c_str())) {
+    #ifdef DEBUG
+      Serial.println("connected");
+    #endif
+  } else {
+    Serial.print("failed, rc=");
+    Serial.print(client.state());
+    }
+  }
+
+  //WiFi MQTT publish
+  char msg[200];
+  StaticJsonDocument<200> doc;
+
+    doc["send"] = sendCount;
+    doc["temp"] = temp1;
+    doc["temp2"] = temp2;
+    doc["vol"] = Voltage/1000;
+    doc["light"] = light;
+    doc["rain"] = rainCount;
+
+  serializeJson(doc, JSONmessage);
+  JSONmessage.toCharArray(msg, JSONmessage.length() + 1);
+
+  #ifdef DEBUG
+  Serial.print("Publish message: ");
+  Serial.println(msg);
+  Serial.print("RAW JSON: ");
+  Serial.println(JSONmessage);
+  Serial.print("Lenght of message: ");
+  Serial.println(JSONmessage.length());
+  delay(1000);
+  #endif
+
+  client.publish("Test/NB", msg);
+  #endif
 }
 
 void callBack(){

@@ -788,78 +788,6 @@ DIN A4, landscape with location and doc. field</description>
 </deviceset>
 </devicesets>
 </library>
-<library name="1-component-search">
-<description>&lt;b&gt;https://eagle.componentsearchengine.com&lt;/b&gt;&lt;p&gt;&lt;author&gt;Created by SamacSys&lt;/author&gt;</description>
-<packages>
-<package name="VEML7700">
-<description>&lt;b&gt;VEML7700&lt;/b&gt;&lt;br&gt;
-</description>
-<smd name="1" x="1.495" y="-0.4" dx="1.6" dy="0.7" layer="1" rot="R90"/>
-<smd name="2" x="2.765" y="-0.4" dx="1.6" dy="0.7" layer="1" rot="R90"/>
-<smd name="3" x="4.035" y="-0.4" dx="1.6" dy="0.7" layer="1" rot="R90"/>
-<smd name="4" x="5.305" y="-0.4" dx="1.6" dy="0.7" layer="1" rot="R90"/>
-<text x="3.083459375" y="1.75438125" size="1.27" layer="25" align="center">&gt;NAME</text>
-<text x="3.083459375" y="1.75438125" size="1.27" layer="27" align="center">&gt;VALUE</text>
-<wire x1="0" y1="3.2" x2="6.8" y2="3.2" width="0.2" layer="51"/>
-<wire x1="6.8" y1="3.2" x2="6.8" y2="0" width="0.2" layer="51"/>
-<wire x1="6.8" y1="0" x2="0" y2="0" width="0.2" layer="51"/>
-<wire x1="0" y1="0" x2="0" y2="3.2" width="0.2" layer="51"/>
-<wire x1="0" y1="3.2" x2="6.8" y2="3.2" width="0.2" layer="21"/>
-<wire x1="6.8" y1="3.2" x2="6.8" y2="0" width="0.2" layer="21"/>
-<wire x1="0" y1="3.2" x2="0" y2="0" width="0.2" layer="21"/>
-<wire x1="0" y1="0" x2="0.944" y2="0" width="0.2" layer="21"/>
-<wire x1="6.8" y1="0" x2="5.92" y2="0" width="0.2" layer="21"/>
-<circle x="0.61" y="-0.942" radius="0.11968125" width="0.2" layer="25"/>
-</package>
-</packages>
-<symbols>
-<symbol name="VEML7700-TR">
-<wire x1="5.08" y1="2.54" x2="17.78" y2="2.54" width="0.254" layer="94"/>
-<wire x1="17.78" y1="-10.16" x2="17.78" y2="2.54" width="0.254" layer="94"/>
-<wire x1="17.78" y1="-10.16" x2="5.08" y2="-10.16" width="0.254" layer="94"/>
-<wire x1="5.08" y1="2.54" x2="5.08" y2="-10.16" width="0.254" layer="94"/>
-<text x="19.05" y="7.62" size="1.778" layer="95" align="center-left">&gt;NAME</text>
-<text x="19.05" y="5.08" size="1.778" layer="96" align="center-left">&gt;VALUE</text>
-<pin name="SCL" x="0" y="0" length="middle"/>
-<pin name="VDD" x="0" y="-2.54" length="middle" direction="pwr"/>
-<pin name="GND" x="0" y="-5.08" length="middle" direction="pwr"/>
-<pin name="SDA" x="0" y="-7.62" length="middle"/>
-</symbol>
-</symbols>
-<devicesets>
-<deviceset name="VEML7700-TR" prefix="IC">
-<description>&lt;b&gt;High Accuracy Ambient Light Sensor with I2C Interface&lt;/b&gt;&lt;p&gt;
-Source: &lt;a href="http://www.vishay.com/docs/84286/veml7700.pdf"&gt; Datasheet &lt;/a&gt;</description>
-<gates>
-<gate name="G$1" symbol="VEML7700-TR" x="0" y="0"/>
-</gates>
-<devices>
-<device name="" package="VEML7700">
-<connects>
-<connect gate="G$1" pin="GND" pad="3"/>
-<connect gate="G$1" pin="SCL" pad="1"/>
-<connect gate="G$1" pin="SDA" pad="4"/>
-<connect gate="G$1" pin="VDD" pad="2"/>
-</connects>
-<technologies>
-<technology name="">
-<attribute name="ARROW_PART_NUMBER" value="VEML7700-TR" constant="no"/>
-<attribute name="ARROW_PRICE-STOCK" value="https://www.arrow.com/en/products/veml7700-tr/vishay?region=nac" constant="no"/>
-<attribute name="DESCRIPTION" value="High Accuracy Ambient Light Sensor with I2C Interface" constant="no"/>
-<attribute name="HEIGHT" value="mm" constant="no"/>
-<attribute name="MANUFACTURER_NAME" value="Vishay" constant="no"/>
-<attribute name="MANUFACTURER_PART_NUMBER" value="VEML7700-TR" constant="no"/>
-<attribute name="MOUSER_PART_NUMBER" value="78-VEML7700-TR" constant="no"/>
-<attribute name="MOUSER_PRICE-STOCK" value="https://www.mouser.co.uk/ProductDetail/Vishay-Semiconductors/VEML7700-TR?qs=BcfjnG7NVaWcZHs8m27pyQ%3D%3D" constant="no"/>
-<attribute name="MOUSER_TESTING_PART_NUMBER" value="" constant="no"/>
-<attribute name="MOUSER_TESTING_PRICE-STOCK" value="" constant="no"/>
-</technology>
-</technologies>
-</device>
-</devices>
-</deviceset>
-</devicesets>
-</library>
 </libraries>
 <attributes>
 </attributes>
@@ -872,13 +800,11 @@ Source: &lt;a href="http://www.vishay.com/docs/84286/veml7700.pdf"&gt; Datasheet
 <parts>
 <part name="FRAME1" library="frames" library_urn="urn:adsk.eagle:library:229" deviceset="A4L-LOC" device=""/>
 <part name="VEML7700" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-1X4" device="" package3d_urn="urn:adsk.eagle:package:22407/2"/>
-<part name="DS18B20" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-1X3" device="" package3d_urn="urn:adsk.eagle:package:22458/2"/>
+<part name="DS18B20_1" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-1X3" device="" package3d_urn="urn:adsk.eagle:package:22458/2"/>
 <part name="FAN" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-1X2" device="" package3d_urn="urn:adsk.eagle:package:22435/2"/>
 <part name="OUTPUT" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-1X6" device="" package3d_urn="urn:adsk.eagle:package:22472/2"/>
 <part name="GND1" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
-<part name="IC1" library="1-component-search" deviceset="VEML7700-TR" device=""/>
-<part name="VEML_BRAKEOUT" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-1X4" device="" package3d_urn="urn:adsk.eagle:package:22407/2"/>
-<part name="GND2" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
+<part name="DS18B20_2" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-1X3" device="" package3d_urn="urn:adsk.eagle:package:22458/2"/>
 </parts>
 <sheets>
 <sheet>
@@ -890,35 +816,28 @@ Source: &lt;a href="http://www.vishay.com/docs/84286/veml7700.pdf"&gt; Datasheet
 <attribute name="LAST_DATE_TIME" x="217.17" y="10.16" size="2.286" layer="94"/>
 <attribute name="SHEET" x="230.505" y="5.08" size="2.54" layer="94"/>
 </instance>
-<instance part="VEML7700" gate="A" x="111.76" y="99.06" smashed="yes">
-<attribute name="NAME" x="105.41" y="107.315" size="1.778" layer="95"/>
-<attribute name="VALUE" x="105.41" y="91.44" size="1.778" layer="96"/>
+<instance part="VEML7700" gate="A" x="177.8" y="104.14" smashed="yes">
+<attribute name="NAME" x="171.45" y="112.395" size="1.778" layer="95"/>
+<attribute name="VALUE" x="171.45" y="96.52" size="1.778" layer="96"/>
 </instance>
-<instance part="DS18B20" gate="A" x="111.76" y="83.82" smashed="yes">
-<attribute name="NAME" x="105.41" y="89.535" size="1.778" layer="95"/>
-<attribute name="VALUE" x="105.41" y="76.2" size="1.778" layer="96"/>
+<instance part="DS18B20_1" gate="A" x="177.8" y="88.9" smashed="yes">
+<attribute name="NAME" x="171.45" y="94.615" size="1.778" layer="95"/>
+<attribute name="VALUE" x="171.45" y="81.28" size="1.778" layer="96"/>
 </instance>
-<instance part="FAN" gate="G$1" x="111.76" y="68.58" smashed="yes">
-<attribute name="NAME" x="105.41" y="74.295" size="1.778" layer="95"/>
-<attribute name="VALUE" x="105.41" y="63.5" size="1.778" layer="96"/>
+<instance part="FAN" gate="G$1" x="177.8" y="58.42" smashed="yes">
+<attribute name="NAME" x="171.45" y="64.135" size="1.778" layer="95"/>
+<attribute name="VALUE" x="171.45" y="53.34" size="1.778" layer="96"/>
 </instance>
-<instance part="OUTPUT" gate="A" x="38.1" y="86.36" smashed="yes" rot="R180">
-<attribute name="NAME" x="44.45" y="75.565" size="1.778" layer="95" rot="R180"/>
-<attribute name="VALUE" x="44.45" y="96.52" size="1.778" layer="96" rot="R180"/>
+<instance part="OUTPUT" gate="A" x="78.74" y="91.44" smashed="yes" rot="R180">
+<attribute name="NAME" x="85.09" y="80.645" size="1.778" layer="95" rot="R180"/>
+<attribute name="VALUE" x="85.09" y="101.6" size="1.778" layer="96" rot="R180"/>
 </instance>
-<instance part="GND1" gate="1" x="96.52" y="63.5" smashed="yes">
-<attribute name="VALUE" x="93.98" y="60.96" size="1.778" layer="96"/>
+<instance part="GND1" gate="1" x="137.16" y="45.72" smashed="yes">
+<attribute name="VALUE" x="134.62" y="43.18" size="1.778" layer="96"/>
 </instance>
-<instance part="IC1" gate="G$1" x="198.12" y="96.52" smashed="yes">
-<attribute name="NAME" x="204.47" y="104.14" size="1.778" layer="95" align="center-left"/>
-<attribute name="VALUE" x="204.47" y="101.6" size="1.778" layer="96" align="center-left"/>
-</instance>
-<instance part="VEML_BRAKEOUT" gate="A" x="180.34" y="93.98" smashed="yes" rot="R180">
-<attribute name="NAME" x="186.69" y="85.725" size="1.778" layer="95" rot="R180"/>
-<attribute name="VALUE" x="186.69" y="101.6" size="1.778" layer="96" rot="R180"/>
-</instance>
-<instance part="GND2" gate="1" x="195.58" y="83.82" smashed="yes">
-<attribute name="VALUE" x="193.04" y="81.28" size="1.778" layer="96"/>
+<instance part="DS18B20_2" gate="A" x="177.8" y="73.66" smashed="yes">
+<attribute name="NAME" x="171.45" y="79.375" size="1.778" layer="95"/>
+<attribute name="VALUE" x="171.45" y="66.04" size="1.778" layer="96"/>
 </instance>
 </instances>
 <busses>
@@ -926,113 +845,96 @@ Source: &lt;a href="http://www.vishay.com/docs/84286/veml7700.pdf"&gt; Datasheet
 <nets>
 <net name="SENSE_VDD33" class="0">
 <segment>
-<wire x1="101.6" y1="86.36" x2="101.6" y2="104.14" width="0.1524" layer="91"/>
+<wire x1="142.24" y1="91.44" x2="142.24" y2="109.22" width="0.1524" layer="91"/>
 <pinref part="VEML7700" gate="A" pin="1"/>
-<wire x1="101.6" y1="104.14" x2="109.22" y2="104.14" width="0.1524" layer="91"/>
-<pinref part="DS18B20" gate="A" pin="1"/>
-<wire x1="101.6" y1="86.36" x2="109.22" y2="86.36" width="0.1524" layer="91"/>
-<label x="104.14" y="106.68" size="1.778" layer="95" rot="R180"/>
-<label x="104.14" y="88.9" size="1.778" layer="95" rot="R180"/>
+<wire x1="142.24" y1="109.22" x2="175.26" y2="109.22" width="0.1524" layer="91"/>
+<pinref part="DS18B20_1" gate="A" pin="1"/>
+<wire x1="142.24" y1="91.44" x2="175.26" y2="91.44" width="0.1524" layer="91"/>
+<label x="170.18" y="111.76" size="1.778" layer="95" rot="R180"/>
+<label x="170.18" y="93.98" size="1.778" layer="95" rot="R180"/>
 <pinref part="OUTPUT" gate="A" pin="4"/>
-<wire x1="40.64" y1="86.36" x2="101.6" y2="86.36" width="0.1524" layer="91"/>
-<junction x="101.6" y="86.36"/>
-<label x="45.72" y="86.36" size="1.778" layer="95"/>
+<wire x1="81.28" y1="91.44" x2="142.24" y2="91.44" width="0.1524" layer="91"/>
+<junction x="142.24" y="91.44"/>
+<label x="86.36" y="91.44" size="1.778" layer="95"/>
+<pinref part="DS18B20_2" gate="A" pin="1"/>
+<wire x1="175.26" y1="76.2" x2="142.24" y2="76.2" width="0.1524" layer="91"/>
+<wire x1="142.24" y1="76.2" x2="142.24" y2="91.44" width="0.1524" layer="91"/>
+<label x="170.18" y="78.74" size="1.778" layer="95" rot="R180"/>
 </segment>
 </net>
 <net name="VDD_FAN" class="0">
 <segment>
 <pinref part="FAN" gate="G$1" pin="1"/>
-<wire x1="91.44" y1="71.12" x2="109.22" y2="71.12" width="0.1524" layer="91"/>
-<label x="104.14" y="73.66" size="1.778" layer="95" rot="R180"/>
+<wire x1="132.08" y1="60.96" x2="175.26" y2="60.96" width="0.1524" layer="91"/>
+<label x="170.18" y="63.5" size="1.778" layer="95" rot="R180"/>
 <pinref part="OUTPUT" gate="A" pin="1"/>
-<wire x1="40.64" y1="78.74" x2="91.44" y2="78.74" width="0.1524" layer="91"/>
-<wire x1="91.44" y1="78.74" x2="91.44" y2="71.12" width="0.1524" layer="91"/>
-<label x="45.72" y="78.74" size="1.778" layer="95"/>
+<wire x1="81.28" y1="83.82" x2="132.08" y2="83.82" width="0.1524" layer="91"/>
+<wire x1="132.08" y1="83.82" x2="132.08" y2="60.96" width="0.1524" layer="91"/>
+<label x="86.36" y="83.82" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="GND" class="0">
 <segment>
-<wire x1="96.52" y1="83.82" x2="96.52" y2="101.6" width="0.1524" layer="91"/>
+<wire x1="137.16" y1="88.9" x2="137.16" y2="106.68" width="0.1524" layer="91"/>
 <pinref part="VEML7700" gate="A" pin="2"/>
-<wire x1="96.52" y1="101.6" x2="109.22" y2="101.6" width="0.1524" layer="91"/>
-<pinref part="DS18B20" gate="A" pin="2"/>
-<wire x1="96.52" y1="83.82" x2="109.22" y2="83.82" width="0.1524" layer="91"/>
-<wire x1="96.52" y1="83.82" x2="96.52" y2="68.58" width="0.1524" layer="91"/>
-<junction x="96.52" y="83.82"/>
+<wire x1="137.16" y1="106.68" x2="175.26" y2="106.68" width="0.1524" layer="91"/>
+<pinref part="DS18B20_1" gate="A" pin="2"/>
+<wire x1="137.16" y1="88.9" x2="175.26" y2="88.9" width="0.1524" layer="91"/>
+<wire x1="137.16" y1="88.9" x2="137.16" y2="73.66" width="0.1524" layer="91"/>
+<junction x="137.16" y="88.9"/>
 <pinref part="FAN" gate="G$1" pin="2"/>
-<wire x1="96.52" y1="68.58" x2="109.22" y2="68.58" width="0.1524" layer="91"/>
+<wire x1="137.16" y1="73.66" x2="137.16" y2="58.42" width="0.1524" layer="91"/>
+<wire x1="137.16" y1="58.42" x2="175.26" y2="58.42" width="0.1524" layer="91"/>
 <pinref part="GND1" gate="1" pin="GND"/>
-<wire x1="96.52" y1="66.04" x2="96.52" y2="68.58" width="0.1524" layer="91"/>
-<junction x="96.52" y="68.58"/>
-<label x="104.14" y="104.14" size="1.778" layer="95" rot="R180"/>
-<label x="104.14" y="86.36" size="1.778" layer="95" rot="R180"/>
-<label x="104.14" y="71.12" size="1.778" layer="95" rot="R180"/>
+<wire x1="137.16" y1="48.26" x2="137.16" y2="58.42" width="0.1524" layer="91"/>
+<junction x="137.16" y="58.42"/>
+<label x="170.18" y="109.22" size="1.778" layer="95" rot="R180"/>
+<label x="170.18" y="91.44" size="1.778" layer="95" rot="R180"/>
+<label x="170.18" y="53.34" size="1.778" layer="95" rot="R180"/>
 <pinref part="OUTPUT" gate="A" pin="3"/>
-<wire x1="40.64" y1="83.82" x2="96.52" y2="83.82" width="0.1524" layer="91"/>
-<label x="45.72" y="83.82" size="1.778" layer="95"/>
-</segment>
-<segment>
-<pinref part="VEML_BRAKEOUT" gate="A" pin="2"/>
-<pinref part="IC1" gate="G$1" pin="GND"/>
-<wire x1="182.88" y1="91.44" x2="195.58" y2="91.44" width="0.1524" layer="91"/>
-<label x="187.96" y="91.44" size="1.778" layer="95"/>
-<pinref part="GND2" gate="1" pin="GND"/>
-<wire x1="195.58" y1="91.44" x2="198.12" y2="91.44" width="0.1524" layer="91"/>
-<wire x1="195.58" y1="86.36" x2="195.58" y2="91.44" width="0.1524" layer="91"/>
-<junction x="195.58" y="91.44"/>
+<wire x1="81.28" y1="88.9" x2="137.16" y2="88.9" width="0.1524" layer="91"/>
+<label x="86.36" y="88.9" size="1.778" layer="95"/>
+<pinref part="DS18B20_2" gate="A" pin="2"/>
+<wire x1="175.26" y1="73.66" x2="137.16" y2="73.66" width="0.1524" layer="91"/>
+<junction x="137.16" y="73.66"/>
+<label x="170.18" y="76.2" size="1.778" layer="95" rot="R180"/>
 </segment>
 </net>
 <net name="DS18B_SIG" class="0">
 <segment>
-<pinref part="DS18B20" gate="A" pin="3"/>
-<label x="104.14" y="83.82" size="1.778" layer="95" rot="R180"/>
+<pinref part="DS18B20_1" gate="A" pin="3"/>
+<label x="170.18" y="88.9" size="1.778" layer="95" rot="R180"/>
 <pinref part="OUTPUT" gate="A" pin="2"/>
-<wire x1="40.64" y1="81.28" x2="109.22" y2="81.28" width="0.1524" layer="91"/>
-<label x="45.72" y="81.28" size="1.778" layer="95"/>
+<wire x1="81.28" y1="86.36" x2="139.7" y2="86.36" width="0.1524" layer="91"/>
+<label x="86.36" y="86.36" size="1.778" layer="95"/>
+<pinref part="DS18B20_2" gate="A" pin="3"/>
+<wire x1="139.7" y1="86.36" x2="175.26" y2="86.36" width="0.1524" layer="91"/>
+<wire x1="175.26" y1="71.12" x2="139.7" y2="71.12" width="0.1524" layer="91"/>
+<wire x1="139.7" y1="71.12" x2="139.7" y2="86.36" width="0.1524" layer="91"/>
+<junction x="139.7" y="86.36"/>
+<label x="170.18" y="73.66" size="1.778" layer="95" rot="R180"/>
 </segment>
 </net>
 <net name="SDA" class="0">
 <segment>
 <pinref part="VEML7700" gate="A" pin="3"/>
-<wire x1="86.36" y1="99.06" x2="109.22" y2="99.06" width="0.1524" layer="91"/>
-<label x="104.14" y="101.6" size="1.778" layer="95" rot="R180"/>
+<wire x1="127" y1="104.14" x2="175.26" y2="104.14" width="0.1524" layer="91"/>
+<label x="170.18" y="106.68" size="1.778" layer="95" rot="R180"/>
 <pinref part="OUTPUT" gate="A" pin="6"/>
-<wire x1="40.64" y1="91.44" x2="86.36" y2="91.44" width="0.1524" layer="91"/>
-<wire x1="86.36" y1="91.44" x2="86.36" y2="99.06" width="0.1524" layer="91"/>
-<label x="45.72" y="91.44" size="1.778" layer="95"/>
+<wire x1="81.28" y1="96.52" x2="127" y2="96.52" width="0.1524" layer="91"/>
+<wire x1="127" y1="96.52" x2="127" y2="104.14" width="0.1524" layer="91"/>
+<label x="86.36" y="96.52" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="SCL" class="0">
 <segment>
 <pinref part="VEML7700" gate="A" pin="4"/>
-<wire x1="88.9" y1="96.52" x2="109.22" y2="96.52" width="0.1524" layer="91"/>
-<label x="104.14" y="99.06" size="1.778" layer="95" rot="R180"/>
+<wire x1="129.54" y1="101.6" x2="175.26" y2="101.6" width="0.1524" layer="91"/>
+<label x="170.18" y="104.14" size="1.778" layer="95" rot="R180"/>
 <pinref part="OUTPUT" gate="A" pin="5"/>
-<wire x1="40.64" y1="88.9" x2="88.9" y2="88.9" width="0.1524" layer="91"/>
-<wire x1="88.9" y1="88.9" x2="88.9" y2="96.52" width="0.1524" layer="91"/>
-<label x="45.72" y="88.9" size="1.778" layer="95"/>
-</segment>
-</net>
-<net name="VDD" class="0">
-<segment>
-<pinref part="VEML_BRAKEOUT" gate="A" pin="3"/>
-<pinref part="IC1" gate="G$1" pin="VDD"/>
-<wire x1="182.88" y1="93.98" x2="198.12" y2="93.98" width="0.1524" layer="91"/>
-<label x="187.96" y="93.98" size="1.778" layer="95"/>
-</segment>
-</net>
-<net name="VEML_SCL" class="0">
-<segment>
-<pinref part="VEML_BRAKEOUT" gate="A" pin="4"/>
-<pinref part="IC1" gate="G$1" pin="SCL"/>
-<wire x1="182.88" y1="96.52" x2="198.12" y2="96.52" width="0.1524" layer="91"/>
-<label x="187.96" y="96.52" size="1.778" layer="95"/>
-</segment>
-<segment>
-<pinref part="VEML_BRAKEOUT" gate="A" pin="1"/>
-<pinref part="IC1" gate="G$1" pin="SDA"/>
-<wire x1="182.88" y1="88.9" x2="198.12" y2="88.9" width="0.1524" layer="91"/>
-<label x="187.96" y="88.9" size="1.778" layer="95"/>
+<wire x1="81.28" y1="93.98" x2="129.54" y2="93.98" width="0.1524" layer="91"/>
+<wire x1="129.54" y1="93.98" x2="129.54" y2="101.6" width="0.1524" layer="91"/>
+<label x="86.36" y="93.98" size="1.778" layer="95"/>
 </segment>
 </net>
 </nets>

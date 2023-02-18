@@ -1,7 +1,3 @@
-#define DEBUG
-//#define NB
-#define WIFI
-
 #include <WiFi.h>
 #include <PubSubClient.h>
 #include <credentials.h>
@@ -12,26 +8,30 @@
 #include "ATcommands.h"           // https://github.com/R4sp1/AT-Command-Library
 #include "esp_adc_cal.h"          // https://github.com/espressif/arduino-esp32/
 #include <BH1750.h>               // https://github.com/claws/BH1750
-//#include <Wire.h>
+#include <Wire.h>
 
+#define DEBUG
+#define NB
+//#define WIFI
 
 //Deep sleep related definitions
-#define uS_TO_S_FACTOR 1000000 //Conversion factor from uSeconds to minutes
+#define uS_TO_S_FACTOR 1000000     //Conversion factor from uSeconds to minutes
 #define TIME_TO_SLEEP  300         //Time ESP will go to sleep (in minutes)
 
 //ND related definitions
-#define MCU_RX 16 // Remember MCU RX connects to module TX and vice versa
+#define MCU_RX 16     // Remember MCU RX connects to module TX and vice versa
 #define MCU_TX 17
-#define RST 19 // MCU pin to control module reset
-#define PSM 18 // MCU pin to control module wake up pin (PSM-EINT_N)
-#define NBdelay  1000   // Delay between two AT commands
+#define RST 19        // MCU pin to control module reset
+#define PSM 18        // MCU pin to control module wake up pin (PSM-EINT_N)
+#define NBdelay 1000  // Delay between two AT commands
 
 //Sensors related definitions
-#define TPIN 32 // DS18B20 pin
+#define TPIN 32     // DS18B20 pin
 #define VOL_SENS 34 // Pin to measure voltage of battery
-#define CAL 2 // Voltage devider ratio
-#define EN 33 // Pin to power on sensors
+#define CAL 2       // Voltage devider ratio
+#define EN 33       // Pin to power on sensors
 
+HardwareSerial *moduleSerial = &Serial2;
 
 //Data stored in RTC memory
 RTC_DATA_ATTR int sendCount = 0;
@@ -45,22 +45,17 @@ const char* mqtt_server = mqttSERVER;
 WiFiClient espClient;
 PubSubClient client(espClient);
 
-
-
-HardwareSerial *moduleSerial = &Serial2;
-
-long lastMsg = 0;
-char msg[50];
-int value = 0;
+//long lastMsg = 0;
+char msg[200];
+//int value = 0;
 String MQTTtopic = "Test/NB";
 
 String JSONmessage;
-  float temp1;
-  float temp2;
-  float light;
-  float Voltage = 0.00;   // Voltage in mV
-
-int volSens_Result = 0; // Raw value from ADC
+float temp1;
+float temp2;
+float light;
+float Voltage;   // Voltage in mV
+int volSens_Result; // Raw value from ADC
 
 //Sensors definitions
 OneWire oneWire(TPIN); //OneWire
@@ -69,11 +64,12 @@ ESP32Time rtc;
 ATcommands module = ATcommands(RST, PSM, true);
 BH1750 lightMeter(0x23);
 
-
-
 int timeToSleep = 0;
 ulong currentEpoch = 0;
 
+double round2(double val) {           //Round to get only two decimal places
+   return (int)(val*100+0.5)/100.0;
+}
 
 void print_wakeup_reason(){
   esp_sleep_wakeup_cause_t wakeup_reason;
@@ -91,12 +87,11 @@ void print_wakeup_reason(){
 
 void setupSensors(){
     pinMode(EN, OUTPUT);
-    digitalWrite(EN, HIGH);
-    delay(100);
-
-    Wire.begin (21, 22);
-    oneWireTemp.begin(); 
-    if (lightMeter.begin(BH1750::ONE_TIME_HIGH_RES_MODE_2)) {
+    digitalWrite(EN, HIGH);   //Turn on sensors
+    delay(100);               //Delay to let sensors "boot"
+    Wire.begin (21, 22);      //I2C
+    oneWireTemp.begin();      //Onewire
+    if (lightMeter.begin(BH1750::ONE_TIME_HIGH_RES_MODE_2)) {   //BH1750 lightmeter
       #ifdef DEBUG
       Serial.println(F("BH1750 Advanced begin"));
       #endif
@@ -108,9 +103,8 @@ void setupSensors(){
 }
 
 void readSensors(){
-
   //First Temp sensor
-  oneWireTemp.requestTemperatures();
+  oneWireTemp.requestTemperatures();      //Send command to measure temperatures on each sensor on the bus
   temp1 = oneWireTemp.getTempCByIndex(0); //Index 0 => first sensor on wire
   #ifdef DEBUG
   Serial.print("First DS18B temp: ");
@@ -120,8 +114,8 @@ void readSensors(){
   #endif
 
   //Second Temp sensor
-  //oneWireTemp.requestTemperatures();
-  temp2 = oneWireTemp.getTempCByIndex(1); //Index 1 => first sensor on wire
+  //oneWireTemp.requestTemperatures();    //Temp requested before first sensor read
+  temp2 = oneWireTemp.getTempCByIndex(1); //Index 1 => second sensor on wire
   #ifdef DEBUG
   Serial.print("Second DS18B temp: ");
   Serial.print(temp2);
@@ -138,7 +132,6 @@ void readSensors(){
   Serial.println(Voltage);      // Print Voltage (in mV)
   Serial.println(" mV");
   #endif
-  
 
   //Light meter
   if (lightMeter.measurementReady()) {
@@ -155,7 +148,6 @@ void readSensors(){
 uint32_t readADC_Cal(int ADC_Raw)
 {
   esp_adc_cal_characteristics_t adc_chars;
-  
   esp_adc_cal_characterize(ADC_UNIT_1, ADC_ATTEN_DB_11, ADC_WIDTH_BIT_12, 1100, &adc_chars);
   return(esp_adc_cal_raw_to_voltage(ADC_Raw, &adc_chars));
 }
@@ -181,7 +173,7 @@ bool sleepLogic(){
 
   if(esp_sleep_get_wakeup_cause() == 2){      // 2=ext0, 4=timer
     #ifdef DEBUG
-    Serial.println("Wake = 2; pushbutton");
+    Serial.println("Wake = 2; pushbutton/rain sensor");
     #endif
     return true;
   } else {
@@ -193,29 +185,37 @@ bool sleepLogic(){
 }
 
 String prepMSG(){
-  char msg[200];
+  //char msg[200];
   StaticJsonDocument<200> doc;
     doc["send"] = sendCount;
-    doc["temp"] = temp1;
-    doc["temp2"] = temp2;
-    doc["vol"] = Voltage/1000;
-    doc["light"] = light;
+    doc["temp"] = round2(temp1);
+    doc["temp2"] = round2(temp2);
+    doc["vol"] = round2(Voltage/1000.0);
+    doc["light"] = round2(light);
     doc["rain"] = rainCount;
   serializeJson(doc, JSONmessage);
-  JSONmessage.toCharArray(msg, JSONmessage.length() + 1);
+  //JSONmessage.toCharArray(msg, JSONmessage.length() + 1);
   
   #ifdef DEBUG
   Serial.print("Publish message: ");
-  Serial.println(msg);
+  Serial.println(JSONmessage);
   Serial.print("Lenght of message: ");
   Serial.println(JSONmessage.length());
+
   Serial.println();
   delay(1000);
   #endif
 
+  #ifdef NB
   String MQTTsend = "AT+QMTPUB=0,0,0,0,";
-  String result = MQTTsend + MQTTtopic + "," + strlen(msg) + "," + msg;
-  
+  //String result = MQTTsend + MQTTtopic + "," + strlen(msg) + "," + msg;
+  String result = MQTTsend + MQTTtopic + "," + JSONmessage.length() + "," + JSONmessage;
+  #endif
+
+  #ifdef WIFI
+  String result = JSONmessage;
+  #endif
+
   return result;
 }
 
@@ -262,7 +262,6 @@ void transmitData() {
 
   if(module.sendCommand("AT+QSCLK=1", "OK")) Serial.println("Set QSCLK=1 succes!");  //Turn on deepsleep
   delay(NBdelay);
-
   #endif
 
   #ifdef WIFI
@@ -309,30 +308,18 @@ void transmitData() {
   }
 
   //WiFi MQTT publish
-  char msg[200];
-  StaticJsonDocument<200> doc;
+  char MQTTpub[200];
+  char MQTTtop[200];
+  String res = prepMSG();
+  res.toCharArray(MQTTpub, res.length()+1);
+  MQTTtopic.toCharArray(MQTTtop, MQTTtopic.length()+1);
 
-    doc["send"] = sendCount;
-    doc["temp"] = temp1;
-    doc["temp2"] = temp2;
-    doc["vol"] = Voltage/1000;
-    doc["light"] = light;
-    doc["rain"] = rainCount;
+  client.publish(MQTTtop, MQTTpub);
 
-  serializeJson(doc, JSONmessage);
-  JSONmessage.toCharArray(msg, JSONmessage.length() + 1);
-
-  #ifdef DEBUG
-  Serial.print("Publish message: ");
-  Serial.println(msg);
-  Serial.print("RAW JSON: ");
-  Serial.println(JSONmessage);
-  Serial.print("Lenght of message: ");
-  Serial.println(JSONmessage.length());
-  delay(1000);
-  #endif
-
-  client.publish("Test/NB", msg);
+  //End WiFi relation
+  client.disconnect();
+  delay(100);
+  WiFi.disconnect(true, false);
   #endif
 }
 
@@ -346,7 +333,7 @@ void callBack(){
 void setup() {
   Serial.begin(115200);
   delay(100);
-  attachInterrupt(4, callBack, HIGH);  
+  attachInterrupt(4, callBack, HIGH);
 
   if(sleepLogic()){
       rainCount++;

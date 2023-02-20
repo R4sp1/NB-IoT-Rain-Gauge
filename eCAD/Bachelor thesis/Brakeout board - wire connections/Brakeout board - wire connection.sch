@@ -805,6 +805,7 @@ DIN A4, landscape with location and doc. field</description>
 <part name="OUTPUT" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-1X6" device="" package3d_urn="urn:adsk.eagle:package:22472/2"/>
 <part name="GND1" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 <part name="DS18B20_2" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-1X3" device="" package3d_urn="urn:adsk.eagle:package:22458/2"/>
+<part name="I2C_RES" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-1X4" device="" package3d_urn="urn:adsk.eagle:package:22407/2"/>
 </parts>
 <sheets>
 <sheet>
@@ -839,12 +840,19 @@ DIN A4, landscape with location and doc. field</description>
 <attribute name="NAME" x="171.45" y="79.375" size="1.778" layer="95"/>
 <attribute name="VALUE" x="171.45" y="66.04" size="1.778" layer="96"/>
 </instance>
+<instance part="I2C_RES" gate="A" x="177.8" y="121.92" smashed="yes">
+<attribute name="NAME" x="171.45" y="130.175" size="1.778" layer="95"/>
+<attribute name="VALUE" x="171.45" y="114.3" size="1.778" layer="96"/>
+</instance>
 </instances>
 <busses>
 </busses>
 <nets>
 <net name="SENSE_VDD33" class="0">
 <segment>
+<pinref part="I2C_RES" gate="A" pin="1"/>
+<wire x1="142.24" y1="127" x2="175.26" y2="127" width="0.1524" layer="91"/>
+<label x="170.18" y="129.54" size="1.778" layer="95" rot="R180"/>
 <wire x1="142.24" y1="91.44" x2="142.24" y2="109.22" width="0.1524" layer="91"/>
 <pinref part="VEML7700" gate="A" pin="1"/>
 <wire x1="142.24" y1="109.22" x2="175.26" y2="109.22" width="0.1524" layer="91"/>
@@ -860,6 +868,8 @@ DIN A4, landscape with location and doc. field</description>
 <wire x1="175.26" y1="76.2" x2="142.24" y2="76.2" width="0.1524" layer="91"/>
 <wire x1="142.24" y1="76.2" x2="142.24" y2="91.44" width="0.1524" layer="91"/>
 <label x="170.18" y="78.74" size="1.778" layer="95" rot="R180"/>
+<wire x1="142.24" y1="127" x2="142.24" y2="109.22" width="0.1524" layer="91"/>
+<junction x="142.24" y="109.22"/>
 </segment>
 </net>
 <net name="VDD_FAN" class="0">
@@ -898,6 +908,11 @@ DIN A4, landscape with location and doc. field</description>
 <wire x1="175.26" y1="73.66" x2="137.16" y2="73.66" width="0.1524" layer="91"/>
 <junction x="137.16" y="73.66"/>
 <label x="170.18" y="76.2" size="1.778" layer="95" rot="R180"/>
+<pinref part="I2C_RES" gate="A" pin="2"/>
+<wire x1="137.16" y1="124.46" x2="175.26" y2="124.46" width="0.1524" layer="91"/>
+<label x="170.18" y="127" size="1.778" layer="95" rot="R180"/>
+<wire x1="137.16" y1="124.46" x2="137.16" y2="106.68" width="0.1524" layer="91"/>
+<junction x="137.16" y="106.68"/>
 </segment>
 </net>
 <net name="DS18B_SIG" class="0">
@@ -917,17 +932,25 @@ DIN A4, landscape with location and doc. field</description>
 </net>
 <net name="SDA" class="0">
 <segment>
-<pinref part="VEML7700" gate="A" pin="3"/>
-<wire x1="127" y1="104.14" x2="175.26" y2="104.14" width="0.1524" layer="91"/>
+<pinref part="I2C_RES" gate="A" pin="3"/>
+<wire x1="127" y1="121.92" x2="175.26" y2="121.92" width="0.1524" layer="91"/>
+<label x="170.18" y="124.46" size="1.778" layer="95" rot="R180"/>
 <label x="170.18" y="106.68" size="1.778" layer="95" rot="R180"/>
 <pinref part="OUTPUT" gate="A" pin="6"/>
 <wire x1="81.28" y1="96.52" x2="127" y2="96.52" width="0.1524" layer="91"/>
-<wire x1="127" y1="96.52" x2="127" y2="104.14" width="0.1524" layer="91"/>
 <label x="86.36" y="96.52" size="1.778" layer="95"/>
+<wire x1="127" y1="121.92" x2="127" y2="104.14" width="0.1524" layer="91"/>
+<pinref part="VEML7700" gate="A" pin="3"/>
+<wire x1="127" y1="104.14" x2="127" y2="96.52" width="0.1524" layer="91"/>
+<wire x1="175.26" y1="104.14" x2="127" y2="104.14" width="0.1524" layer="91"/>
+<junction x="127" y="104.14"/>
 </segment>
 </net>
 <net name="SCL" class="0">
 <segment>
+<pinref part="I2C_RES" gate="A" pin="4"/>
+<wire x1="129.54" y1="119.38" x2="175.26" y2="119.38" width="0.1524" layer="91"/>
+<label x="170.18" y="121.92" size="1.778" layer="95" rot="R180"/>
 <pinref part="VEML7700" gate="A" pin="4"/>
 <wire x1="129.54" y1="101.6" x2="175.26" y2="101.6" width="0.1524" layer="91"/>
 <label x="170.18" y="104.14" size="1.778" layer="95" rot="R180"/>
@@ -935,6 +958,8 @@ DIN A4, landscape with location and doc. field</description>
 <wire x1="81.28" y1="93.98" x2="129.54" y2="93.98" width="0.1524" layer="91"/>
 <wire x1="129.54" y1="93.98" x2="129.54" y2="101.6" width="0.1524" layer="91"/>
 <label x="86.36" y="93.98" size="1.778" layer="95"/>
+<wire x1="129.54" y1="119.38" x2="129.54" y2="101.6" width="0.1524" layer="91"/>
+<junction x="129.54" y="101.6"/>
 </segment>
 </net>
 </nets>

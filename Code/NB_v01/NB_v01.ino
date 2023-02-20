@@ -10,20 +10,31 @@
 #include <BH1750.h>               // https://github.com/claws/BH1750
 #include <Wire.h>
 
-#define DEBUG
-#define NB
-//#define WIFI
+#define DEBUG   //Comment this line if you want to "debug" with Serial.print()
+//#define NB    //Comment this line if you want to use WiFi instead
 
 //Deep sleep related definitions
 #define uS_TO_S_FACTOR 1000000     //Conversion factor from uSeconds to minutes
 #define TIME_TO_SLEEP  300         //Time ESP will go to sleep (in minutes)
 
-//ND related definitions
-#define MCU_RX 16     // Remember MCU RX connects to module TX and vice versa
-#define MCU_TX 17
-#define RST 19        // MCU pin to control module reset
-#define PSM 18        // MCU pin to control module wake up pin (PSM-EINT_N)
-#define NBdelay 1000  // Delay between two AT commands
+#ifdef NB
+  //NB related definitions
+  #define MCU_RX 16     // Remember MCU RX connects to module TX and vice versa
+  #define MCU_TX 17
+  #define RST 19        // MCU pin to control module reset
+  #define PSM 18        // MCU pin to control module wake up pin (PSM-EINT_N)
+  #define NBdelay 1000  // Delay between two AT commands
+
+  HardwareSerial *moduleSerial = &Serial2;
+  ATcommands module = ATcommands(RST, PSM, true);
+#else
+  //WIFI definitions
+  const char* ssid = mySSID;
+  const char* password = myPASSWORD;
+  const char* mqtt_server = mqttSERVER;
+  WiFiClient espClient;
+  PubSubClient client(espClient);
+#endif
 
 //Sensors related definitions
 #define TPIN 32     // DS18B20 pin
@@ -31,43 +42,33 @@
 #define CAL 2       // Voltage devider ratio
 #define EN 33       // Pin to power on sensors
 
-HardwareSerial *moduleSerial = &Serial2;
 
 //Data stored in RTC memory
 RTC_DATA_ATTR int sendCount = 0;
 RTC_DATA_ATTR ulong wakeUpEpoch = 0;
 RTC_DATA_ATTR int rainCount = 0;
 
-//WIFI definitions
-const char* ssid = mySSID;
-const char* password = myPASSWORD;
-const char* mqtt_server = mqttSERVER;
-WiFiClient espClient;
-PubSubClient client(espClient);
 
-//long lastMsg = 0;
 char msg[200];
-//int value = 0;
 String MQTTtopic = "Test/NB";
 
 String JSONmessage;
 float temp1;
 float temp2;
 float light;
-float Voltage;   // Voltage in mV
+float Voltage;      // Voltage in mV
 int volSens_Result; // Raw value from ADC
 
 //Sensors definitions
 OneWire oneWire(TPIN); //OneWire
 DallasTemperature oneWireTemp(&oneWire);
 ESP32Time rtc;  
-ATcommands module = ATcommands(RST, PSM, true);
 BH1750 lightMeter(0x23);
 
 int timeToSleep = 0;
 ulong currentEpoch = 0;
 
-double round2(double val) {           //Round to get only two decimal places
+double round2(double val) {           //Round fun to get only two decimal places
    return (int)(val*100+0.5)/100.0;
 }
 
@@ -210,9 +211,7 @@ String prepMSG(){
   String MQTTsend = "AT+QMTPUB=0,0,0,0,";
   //String result = MQTTsend + MQTTtopic + "," + strlen(msg) + "," + msg;
   String result = MQTTsend + MQTTtopic + "," + JSONmessage.length() + "," + JSONmessage;
-  #endif
-
-  #ifdef WIFI
+  #else
   String result = JSONmessage;
   #endif
 
@@ -262,9 +261,7 @@ void transmitData() {
 
   if(module.sendCommand("AT+QSCLK=1", "OK")) Serial.println("Set QSCLK=1 succes!");  //Turn on deepsleep
   delay(NBdelay);
-  #endif
-
-  #ifdef WIFI
+  #else
   //Setup WiFi connection
   delay(10);
   #ifdef DEBUG

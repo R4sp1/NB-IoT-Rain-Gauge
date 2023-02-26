@@ -11,7 +11,7 @@
 #include <Wire.h>
 
 #define DEBUG   //Comment this line if you want to "debug" with Serial.print()
-//#define NB    //Comment this line if you want to use WiFi instead
+#define NB    //Comment this line if you want to use WiFi instead
 
 //Deep sleep related definitions
 #define uS_TO_S_FACTOR 1000000     //Conversion factor from uSeconds to minutes
@@ -21,8 +21,8 @@
   //NB related definitions
   #define MCU_RX 16     // Remember MCU RX connects to module TX and vice versa
   #define MCU_TX 17
-  #define RST 19        // MCU pin to control module reset
-  #define PSM 18        // MCU pin to control module wake up pin (PSM-EINT_N)
+  #define RST 18        // MCU pin to control module reset
+  #define PSM 5        // MCU pin to control module wake up pin (PSM-EINT_N)
   #define NBdelay 1000  // Delay between two AT commands
 
   HardwareSerial *moduleSerial = &Serial2;

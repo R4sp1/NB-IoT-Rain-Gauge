@@ -6,7 +6,7 @@
 
 #define SERIAL_PORT Serial2
 #define VOL_SENS 34 // Pin to measure voltage of battery
-#define CAL 2.25       // Voltage devider ratio
+#define CAL 2       // Voltage devider ratio
 #define EN 33       // Pin to power on sensors
 
  //WIFI definitions

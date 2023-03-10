@@ -21,7 +21,7 @@
 #define SERIAL_PORT Serial2
 #define TPIN 32     // DS18B20 pin
 #define VOL_SENS 34 // Pin to measure voltage of battery
-#define CAL 2.25       // Voltage devider ratio
+#define CAL 2       // Voltage devider ratio
 #define EN 33       // Pin to power on sensors
 
  //WIFI definitions
@@ -112,7 +112,14 @@ bool sleepLogic(){
 }
 
 double round2(double val) {           //Round fun to get only two decimal places
-   return (int)(val*100+0.5)/100.0;
+   if(val > 0)
+   {
+      return (int)(val*100+0.5)/100.0;
+   }
+   else
+   {
+      return (int)(val*100-0.5)/100.0;
+   }
 }
 
 void setupSensors(){

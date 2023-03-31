@@ -20952,8 +20952,8 @@ Feel free to contact us at &lt;a href="mailto:Support@PCBLayout.com"&gt;Support@
 </module>
 </modules>
 <parts>
-<part name="R1" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-EU_" device="R0603" package3d_urn="urn:adsk.eagle:package:23555/3" value="10K"/>
-<part name="R2" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-EU_" device="R0603" package3d_urn="urn:adsk.eagle:package:23555/3" value="10K"/>
+<part name="R1" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-EU_" device="R0603" package3d_urn="urn:adsk.eagle:package:23555/3" value="10k"/>
+<part name="R2" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-EU_" device="R0603" package3d_urn="urn:adsk.eagle:package:23555/3" value="10k"/>
 <part name="GND3" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 <part name="GND4" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 <part name="C1" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="C-EU" device="C0603" package3d_urn="urn:adsk.eagle:package:23616/2" value="1u"/>
@@ -20996,7 +20996,7 @@ Feel free to contact us at &lt;a href="mailto:Support@PCBLayout.com"&gt;Support@
 <part name="GND34" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 <part name="GND35" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 <part name="IC8" library="1-component-search" deviceset="ME6211C33M5G-N" device="" override_package3d_urn="urn:adsk.eagle:package:38373060/2" override_package_urn="urn:adsk.eagle:footprint:38373061/1"/>
-<part name="R3" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-EU_" device="R0603" package3d_urn="urn:adsk.eagle:package:23555/3" value="10K"/>
+<part name="R3" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-EU_" device="R0603" package3d_urn="urn:adsk.eagle:package:23555/3" value="10k"/>
 <part name="GND38" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 <part name="C2" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="CPOL-EU" device="D" package3d_urn="urn:adsk.eagle:package:23424/2" value="470u"/>
 <part name="IC1" library="1-component-search" deviceset="ESP32-WROOM-32E_M113EH3200PH3Q" device="" override_package3d_urn="urn:adsk.eagle:package:38372138/2" override_package_urn="urn:adsk.eagle:footprint:38372140/1"/>
@@ -21051,7 +21051,7 @@ Feel free to contact us at &lt;a href="mailto:Support@PCBLayout.com"&gt;Support@
 <part name="R13" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-EU_" device="R0603" package3d_urn="urn:adsk.eagle:package:23555/3" value="5k1"/>
 <part name="R11" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-EU_" device="R0603" package3d_urn="urn:adsk.eagle:package:23555/3" value="1M"/>
 <part name="J3" library="1-component-search" deviceset="XT30PW-M" device=""/>
-<part name="D3" library="1-component-search" deviceset="PMEG2010EJ,115" device=""/>
+<part name="D3" library="1-component-search" deviceset="PMEG2010EJ,115" device="" override_package3d_urn="urn:adsk.eagle:package:39832746/2" override_package_urn="urn:adsk.eagle:footprint:39832747/1"/>
 <part name="SJ3" library="jumper" library_urn="urn:adsk.eagle:library:252" deviceset="SJ" device="" package3d_urn="urn:adsk.eagle:package:15471/1"/>
 <part name="GND27" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 <part name="GND32" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
@@ -21082,13 +21082,13 @@ Feel free to contact us at &lt;a href="mailto:Support@PCBLayout.com"&gt;Support@
 <part name="R24" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-EU_" device="R0805" package3d_urn="urn:adsk.eagle:package:23553/2"/>
 <part name="GND71" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 <part name="GND72" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
-<part name="R15" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-EU_" device="R0805" package3d_urn="urn:adsk.eagle:package:23553/2"/>
-<part name="R16" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-EU_" device="R0805" package3d_urn="urn:adsk.eagle:package:23553/2"/>
+<part name="R15" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-EU_" device="R0805" package3d_urn="urn:adsk.eagle:package:23553/2" value="100k"/>
+<part name="R16" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-EU_" device="R0805" package3d_urn="urn:adsk.eagle:package:23553/2" value="330k"/>
 <part name="R25" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-EU_" device="R0805" package3d_urn="urn:adsk.eagle:package:23553/2"/>
 <part name="R20" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-EU_" device="R0603" package3d_urn="urn:adsk.eagle:package:23555/3" value="10k"/>
 <part name="R21" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-EU_" device="R0603" package3d_urn="urn:adsk.eagle:package:23555/3" value="10k"/>
 <part name="R22" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-EU_" device="R0603" package3d_urn="urn:adsk.eagle:package:23555/3" value="10k"/>
-<part name="C26" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="CPOL-EU" device="E5-10.5" package3d_urn="urn:adsk.eagle:package:23372/2" value="50"/>
+<part name="C26" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="CPOL-EU" device="E5-10.5" package3d_urn="urn:adsk.eagle:package:23372/2" value="30F"/>
 <part name="GND14" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 <part name="C4" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="C-EU" device="C0603" package3d_urn="urn:adsk.eagle:package:23616/2" value="22u"/>
 <part name="HM1" library="1-component-search" deviceset="BME280" device=""/>
@@ -21114,7 +21114,7 @@ Feel free to contact us at &lt;a href="mailto:Support@PCBLayout.com"&gt;Support@
 <part name="$3_30_$_2023-03-21_17-43-41" library="battery-holders" deviceset="BLOSSOM-BLM-18650-1PCS" device="" package3d_urn="urn:adsk.eagle:package:7289004/3"/>
 <part name="JP10" library="jumper" library_urn="urn:adsk.eagle:library:252" deviceset="JP1E" device="" package3d_urn="urn:adsk.eagle:package:15455/1" value="FAN"/>
 <part name="D2" library="1-component-search" deviceset="PTVS6V5S1UR,115" device=""/>
-<part name="D1" library="1-component-search" deviceset="PTVS6V5S1UR,115" device=""/>
+<part name="D1" library="1-component-search" deviceset="PTVS6V5S1UR,115" device="" override_package3d_urn="urn:adsk.eagle:package:39832749/2" override_package_urn="urn:adsk.eagle:footprint:39832750/1"/>
 <part name="D5" library="1-component-search" deviceset="PTVS6V5S1UR,115" device=""/>
 </parts>
 <sheets>
@@ -22182,6 +22182,10 @@ Feel free to contact us at &lt;a href="mailto:Support@PCBLayout.com"&gt;Support@
 <sheet>
 <plain>
 <text x="217.17" y="20.32" size="2.032" layer="94">Power</text>
+<text x="165.1" y="154.94" size="1.778" layer="97">VPCC: 1.23=(R15/R15+R16)*VPCC
+With 100k and 330k R we get VPCC voltage 5.29 V.
+For more info see MCP73871 datasheet, chapter 3.3.</text>
+<text x="172.72" y="157.48" size="1.778" layer="97"></text>
 </plain>
 <instances>
 <instance part="FRAME3" gate="G$1" x="0" y="0" smashed="yes">
@@ -22371,12 +22375,12 @@ Feel free to contact us at &lt;a href="mailto:Support@PCBLayout.com"&gt;Support@
 <attribute name="VALUE" x="182.88" y="104.14" size="1.778" layer="96"/>
 </instance>
 <instance part="R15" gate="G$1" x="124.46" y="152.4" smashed="yes" rot="R90">
-<attribute name="NAME" x="125.73" y="156.4386" size="1.778" layer="95"/>
-<attribute name="VALUE" x="122.682" y="148.59" size="1.778" layer="96" rot="R90"/>
+<attribute name="NAME" x="125.73" y="158.9786" size="1.778" layer="95"/>
+<attribute name="VALUE" x="125.73" y="156.718" size="1.778" layer="96"/>
 </instance>
 <instance part="R16" gate="G$1" x="132.08" y="152.4" smashed="yes" rot="R90">
 <attribute name="NAME" x="133.35" y="156.4386" size="1.778" layer="95"/>
-<attribute name="VALUE" x="130.302" y="148.59" size="1.778" layer="96" rot="R90"/>
+<attribute name="VALUE" x="133.35" y="154.178" size="1.778" layer="96"/>
 </instance>
 <instance part="R25" gate="G$1" x="185.42" y="116.84" smashed="yes" rot="R270">
 <attribute name="NAME" x="186.69" y="120.8786" size="1.778" layer="95"/>
@@ -22626,7 +22630,7 @@ Feel free to contact us at &lt;a href="mailto:Support@PCBLayout.com"&gt;Support@
 </segment>
 <segment>
 <pinref part="IC6" gate="G$1" pin="SEL"/>
-<wire x1="137.16" y1="127" x2="121.92" y2="127" width="0.1524" layer="91"/>
+<wire x1="137.16" y1="127" x2="119.38" y2="127" width="0.1524" layer="91"/>
 <pinref part="IC6" gate="G$1" pin="CE"/>
 <wire x1="157.48" y1="154.94" x2="157.48" y2="165.1" width="0.1524" layer="91"/>
 <wire x1="157.48" y1="165.1" x2="154.94" y2="165.1" width="0.1524" layer="91"/>
@@ -22640,16 +22644,16 @@ Feel free to contact us at &lt;a href="mailto:Support@PCBLayout.com"&gt;Support@
 <label x="104.14" y="165.1" size="1.778" layer="95" rot="R180"/>
 <pinref part="C19" gate="G$1" pin="1"/>
 <wire x1="152.4" y1="165.1" x2="124.46" y2="165.1" width="0.1524" layer="91"/>
-<wire x1="124.46" y1="165.1" x2="121.92" y2="165.1" width="0.1524" layer="91"/>
-<wire x1="121.92" y1="165.1" x2="111.76" y2="165.1" width="0.1524" layer="91"/>
+<wire x1="124.46" y1="165.1" x2="119.38" y2="165.1" width="0.1524" layer="91"/>
+<wire x1="119.38" y1="165.1" x2="111.76" y2="165.1" width="0.1524" layer="91"/>
 <wire x1="111.76" y1="165.1" x2="104.14" y2="165.1" width="0.1524" layer="91"/>
 <wire x1="111.76" y1="160.02" x2="111.76" y2="165.1" width="0.1524" layer="91"/>
 <junction x="111.76" y="165.1"/>
 <pinref part="R15" gate="G$1" pin="2"/>
 <wire x1="124.46" y1="157.48" x2="124.46" y2="165.1" width="0.1524" layer="91"/>
 <junction x="124.46" y="165.1"/>
-<wire x1="121.92" y1="127" x2="121.92" y2="165.1" width="0.1524" layer="91"/>
-<junction x="121.92" y="165.1"/>
+<wire x1="119.38" y1="127" x2="119.38" y2="165.1" width="0.1524" layer="91"/>
+<junction x="119.38" y="165.1"/>
 </segment>
 <segment>
 <pinref part="IC6" gate="G$1" pin="PROG2"/>
@@ -23638,6 +23642,10 @@ Feel free to contact us at &lt;a href="mailto:Support@PCBLayout.com"&gt;Support@
 </schematic>
 </drawing>
 <compatibility>
+<note version="6.3" minversion="6.2.2" severity="warning">
+Since Version 6.2.2 text objects can contain more than one line,
+which will not be processed correctly with this version.
+</note>
 <note version="8.2" severity="warning">
 Since Version 8.2, EAGLE supports online libraries. The ids
 of those online libraries will not be understood (or retained)

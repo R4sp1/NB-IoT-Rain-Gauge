@@ -1,4 +1,3 @@
-#include <WiFi.h>
 #include <credentials.h>
 #include <ESP32Time.h>            // https://github.com/fbiego/ESP32Time
 #include <OneWire.h>              // https://www.arduino.cc/reference/en/libraries/onewire/
@@ -8,14 +7,12 @@
 #include <BH1750.h>               // https://github.com/claws/BH1750
 #include <Wire.h>
 
-#define DEBUG   //Comment this line if you want to "debug" with Serial.print()
-#define NB    //Comment this line if you want to use WiFi instead
+// #define DEBUG   //Comment this line if you want to "debug" with Serial.print()
 
 //Deep sleep related definitions
 #define uS_TO_S_FACTOR 1000000     //Conversion factor from uSeconds to seconds
 #define TIME_TO_SLEEP  300         //Time ESP will go to sleep (in seconds)
 
-#ifdef NB
   //NB related definitions
   #define SERIAL_PORT Serial2
   #define RST 18        // MCU pin to control module reset
@@ -26,13 +23,7 @@
   int nbPort = 1883;
 
   QuectelBC660 quectel = QuectelBC660(PSM, DEB);
-#else
-  //WIFI definitions
-  const char* ssid = mySSID;
-  const char* password = myPASSWORD;
-  const char* mqtt_server = mqttSERVER;
-  WiFiClient espClient;
-#endif
+
 
 //Sensors related definitions
 #define TPIN 32     // DS18B20 pin
@@ -182,14 +173,12 @@ bool sleepLogic(){
 }
 
 void transmitData() {
-
-    #ifdef NB
     quectel.begin(&SERIAL_PORT);
     delay(100); 
     
     quectel.setDeepSleep();   // Disable deep sleep
     delay(1000);
-    if(quectel.registered(5)) // Check if nb module is registred to network  
+    if(quectel.getRegistrationStatus(5)) // Check if nb module is registred to network  
     {
         #ifdef DEBUG
         Serial.println("Module is registered to network");
@@ -214,37 +203,6 @@ void transmitData() {
         quectel.closeUDP();
     }
     quectel.setDeepSleep(1);
-    
-
-    #else
-    //Setup WiFi connection
-    delay(10);
-    #ifdef DEBUG
-    Serial.println();
-    Serial.print("Connecting to ");
-    Serial.println(ssid);
-    #endif
-    WiFi.begin(ssid, password);
-
-    while (WiFi.status() != WL_CONNECTED) {
-        delay(500);
-        #ifdef DEBUG
-        Serial.print(".");
-        #endif
-    }
-    #ifdef DEBUG
-    Serial.println("");
-    Serial.println("WiFi connected");
-    Serial.println("IP address: ");
-    Serial.println(WiFi.localIP());
-    #endif
-
-    
-
-    //End WiFi relation
-    delay(100);
-    WiFi.disconnect(true, false);
-    #endif
 }
 
 void callBack(){

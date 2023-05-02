@@ -6,6 +6,7 @@
 #include "esp_adc_cal.h"          // https://github.com/espressif/arduino-esp32/
 #include <BH1750.h>               // https://github.com/claws/BH1750
 #include <Wire.h>
+#include "Adafruit_VEML7700.h"
 
 // #define DEBUG   //Comment this line if you want to "debug" with Serial.print()
 
@@ -18,7 +19,7 @@
   #define RST 18        // MCU pin to control module reset
   #define PSM 5        // MCU pin to control module wake up pin (PSM-EINT_N)
   #define NBdelay 1000  // Delay between two AT commands
-  #define DEB true     // True or False debug option
+  #define DEB false     // True or False debug option
   const char* nbServer = nbSERVER;
   int nbPort = 1883;
 
@@ -33,24 +34,27 @@
 
 
 //Data stored in RTC memory
-RTC_DATA_ATTR int sendCount = 0;
 RTC_DATA_ATTR ulong wakeUpEpoch = 0;
 RTC_DATA_ATTR int rainCount = 0;
 
-float temp1;
-float temp2;
-float light;
-float Voltage;      // Voltage in mV
-int volSens_Result; // Raw value from ADC
+float temp1 = -255;
+float temp2 = -255;
+float light = -255;
+float Voltage = 0;      // Voltage in mV
+int volSens_Result =0; // Raw value from ADC
 
 //Sensors definitions
 OneWire oneWire(TPIN); //OneWire
 DallasTemperature oneWireTemp(&oneWire);
 ESP32Time rtc;  
-BH1750 lightMeter(0x23);
+Adafruit_VEML7700 veml = Adafruit_VEML7700();
+int vemlFix = 0;
 
 int timeToSleep = 0;
 ulong currentEpoch = 0;
+
+unsigned long lastDebounceTime = 0;  // the last time the raingauge was overturned
+unsigned long debounceDelay = 200;    // the debounce time
 
 float round2(float val) {           //Round fun to get only two decimal places
     if(val < 0)
@@ -78,16 +82,13 @@ void setupSensors(){
     pinMode(EN, OUTPUT);
     digitalWrite(EN, HIGH);   //Turn on sensors
     delay(100);               //Delay to let sensors "boot"
-    Wire.begin (21, 22);      //I2C
+    //Wire.begin (21, 22);      //I2C
     oneWireTemp.begin();      //Onewire
-    if (lightMeter.begin(BH1750::ONE_TIME_HIGH_RES_MODE_2)) {   //BH1750 lightmeter
-      #ifdef DEBUG
-      Serial.println(F("BH1750 Advanced begin"));
-      #endif
-    } else {
-      #ifdef DEBUG
-      Serial.println(F("Error initialising BH1750"));
-      #endif
+    if(!veml.begin()){             //Light meter
+    vemlFix = 1;
+    #ifdef DEBUG
+    Serial.println("Sensor VEML7700 not found");
+    #endif
     }
 }
 
@@ -113,8 +114,13 @@ void readSensors(){
   #endif
 
   //Voltage of battery
-  volSens_Result = analogRead(VOL_SENS);
-  Voltage = readADC_Cal(volSens_Result) * CAL;
+  volSens_Result = 0;
+  for(int i = 0; i < 16; i++) //Read 16 times and average
+  {
+    volSens_Result += analogReadMilliVolts(VOL_SENS);
+    delay(5);
+  }
+  Voltage = CAL*(volSens_Result/16.0); //Calculate voltage by deviding by 16 (16 reads) and multiplying by 2 (voltage devider) - voltage is in mV
   #ifdef DEBUG
   Serial.print(Voltage/1000.0); // Print Voltage (in V)
   Serial.println(" V");
@@ -122,23 +128,16 @@ void readSensors(){
   Serial.println(" mV");
   #endif
 
-  //Light meter
-  if (lightMeter.measurementReady()) {
-    light = lightMeter.readLightLevel();
-    #ifdef DEBUG
-    Serial.print("Light: ");
-    Serial.print(light);
-    Serial.println(" lx");
-    #endif
+  if(vemlFix == 0){
+    light = veml.readLux(VEML_LUX_AUTO);
   }
+  #ifdef DEBUG
+  Serial.print("Light: ");
+  Serial.print(light);
+  Serial.println(" lx");
+  #endif
 }
 
-uint32_t readADC_Cal(int ADC_Raw)
-{
-  esp_adc_cal_characteristics_t adc_chars;
-  esp_adc_cal_characterize(ADC_UNIT_1, ADC_ATTEN_DB_11, ADC_WIDTH_BIT_12, 1100, &adc_chars);
-  return(esp_adc_cal_raw_to_voltage(ADC_Raw, &adc_chars));
-}
 
 bool sleepLogic(){
   currentEpoch = rtc.getEpoch();
@@ -206,10 +205,17 @@ void transmitData() {
 }
 
 void callBack(){
-  rainCount++;
-  #ifdef DEBUG
-  Serial.println("Rain count incremented by interrupt to: " + String(rainCount));
-  #endif
+  if ((millis() - lastDebounceTime) > debounceDelay) {
+    rainCount++;
+    lastDebounceTime = millis();
+    #ifdef DEBUG
+    Serial.println("Rain count incremented by interrupt to: " + String(rainCount));
+    #endif
+  } else {
+    #ifdef DEBUG
+    Serial.println("Interrupt ignored by debounce");
+    #endif
+    }
 }
 
 void setup() {
@@ -219,6 +225,7 @@ void setup() {
 
   if(sleepLogic()){
       rainCount++;
+      lastDebounceTime = millis();
       #ifdef DEBUG
       Serial.println("Rain count: " + String(rainCount));
       print_wakeup_reason();
@@ -226,10 +233,9 @@ void setup() {
       Serial.println("Going to sleep now");
       #endif
       digitalWrite(EN, LOW);
-      delay(100);
+      delay(5);
       esp_deep_sleep_start();
     } else {
-      ++sendCount;
       setupSensors();
       readSensors();
       transmitData();
@@ -240,7 +246,7 @@ void setup() {
       Serial.println("Going to sleep now");
       #endif
       digitalWrite(EN, LOW);
-      delay(100);
+      delay(5);
       esp_deep_sleep_start();
     }
   }

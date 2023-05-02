@@ -186,7 +186,7 @@
 <layer number="255" name="logo" color="13" fill="1" visible="no" active="yes"/>
 </layers>
 <board>
-<fusionsync huburn="a.YnVzaW5lc3M6Z21haWwxMjg5Mjg3" projecturn="a.YnVzaW5lc3M6Z21haWwxMjg5Mjg3IzIwMjIxMjE2NTg5ODM1NTUx" f3durn="urn:adsk.wipprod:dm.lineage:cTlje76PRjGCdoz_PzEfoQ" pcbguid="" lastpulledtime="" lastsyncedchangeguid="" latestrevisionid="83d32e65-e6ac-4c6e-9f0e-de9508e60988" lastsyncedrevisionid="83d32e65-e6ac-4c6e-9f0e-de9508e60988" lastboardhashguid="5992728e-a151-40b8-724f-c07babb03218" lastpushedtime="2023-03-24T21:01:46Z" linktopcb3d="true"/>
+<fusionsync huburn="a.YnVzaW5lc3M6Z21haWwxMjg5Mjg3" projecturn="a.YnVzaW5lc3M6Z21haWwxMjg5Mjg3IzIwMjIxMjE2NTg5ODM1NTUx" f3durn="urn:adsk.wipprod:dm.lineage:cTlje76PRjGCdoz_PzEfoQ" pcbguid="" lastpulledtime="" lastsyncedchangeguid="" latestrevisionid="32a4e163-b02b-4606-8c50-fcb28e7b7cd0" lastsyncedrevisionid="32a4e163-b02b-4606-8c50-fcb28e7b7cd0" lastboardhashguid="d0113ea3-23f0-f7d0-e42b-7ed67bf3e51a" lastpushedtime="2023-04-16T09:40:48Z" linktopcb3d="true"/>
 <plain>
 <wire x1="-1" y1="0" x2="9.8" y2="0" width="0" layer="20"/>
 <wire x1="9.8" y1="0" x2="10.6" y2="1.2" width="0" layer="20"/>
@@ -2473,6 +2473,7 @@
 <rectangle x1="61.8109" y1="68.4403" x2="69.3547" y2="68.4657" layer="25"/>
 <text x="61.8236" y="60.8076" size="0.0508" layer="25" font="vector">C:/Users/jirka/Downloads/bitmap.bmp</text>
 <text x="65.6362" y="59.6518" size="1.27" layer="25" align="center">V2 - 03.2023</text>
+<dimension x1="-1" y1="0" x2="99" y2="5.4" x3="49" y3="-14" textsize="1.778" layer="1" dtype="horizontal"/>
 </plain>
 <libraries>
 <library name="USBC6P">

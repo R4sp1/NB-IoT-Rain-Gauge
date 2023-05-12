@@ -36,6 +36,7 @@ QuectelBC660 quectel = QuectelBC660(PSM, DEB);
 //Data stored in RTC memory
 RTC_DATA_ATTR ulong wakeUpEpoch = 0;
 RTC_DATA_ATTR int rainCount = 0;
+RTC_DATA_ATTR int connectionTries = 0;
 
 float temp1 = -127;
 float temp2 = -127;
@@ -172,36 +173,59 @@ bool sleepLogic(){
   }
 }
 
+void checkConnection(){
+  if(quectel.getRegistrationStatus(5)) // Check if nb module is registred to network  
+  {
+    #ifdef DEBUG
+    Serial.println("Module is registered to network");
+    #endif
+  } else {
+    if(connectionTries < 3){
+      connectionTries++;
+      #ifdef DEBUG
+      Serial.println("Module is not registered to network, trying again after deepsleep");
+      #endif
+      delay(10);
+      esp_deep_sleep_start();
+    } else {
+      connectionTries = 0;
+      #ifdef DEBUG
+      Serial.println("Module is not registered to network, trying again after UE functionality reset");
+      #endif
+      quectel.setUEFun(0);
+      delay(1000);
+      quectel.setUEFun(1);
+      delay(5000);
+      checkConnection();
+    }
+  }
+}
+
 void transmitData() {
     quectel.begin(&SERIAL_PORT);
     delay(100); 
     
     quectel.setDeepSleep(0);   // Disable deep sleep
     delay(1000);
-    if(quectel.getRegistrationStatus(5)) // Check if nb module is registred to network  
-    {
-        #ifdef DEBUG
-        Serial.println("Module is registered to network");
-        #endif
-        delay(1000);
-        quectel.getData();        // Init struct with engineering data
-        delay(1000);
-        quectel.openUDP(nbServer, nbPort);
-        delay(1000);
-        float t1 = round2(temp1);
-        float t2 = round2(temp2);
-        float l = round2(light);
-        float v = round2(Voltage/1000);
-        char *msg;
-        msg = (char *) malloc(255);
-        sprintf(msg, "%d,%d,%d,%d,%d,%.2f,%.2f,%.2f,%.2f,%d", DEVICE_ADDRESS, quectel.engineeringData.RSRP, quectel.engineeringData.RSRQ, quectel.engineeringData.RSSI, quectel.engineeringData.SINR, t1, t2, l, v, rainCount);
-        Serial.println(msg);
-        //Serial.println(msgch);
-        quectel.sendDataUDPn(msg, strlen(msg),1);
-        free(msg);
-        delay(1000);
-        quectel.closeUDP();
-    }
+    checkConnection();
+    delay(1000);
+    quectel.getData();        // Init struct with engineering data
+    delay(1000);
+    quectel.openUDP(nbServer, nbPort);
+    delay(1000);
+    float t1 = round2(temp1);
+    float t2 = round2(temp2);
+    float l = round2(light);
+    float v = round2(Voltage/1000);
+    char *msg;
+    msg = (char *) malloc(255);
+    sprintf(msg, "%d,%d,%d,%d,%d,%.2f,%.2f,%.2f,%.2f,%d", DEVICE_ADDRESS, quectel.engineeringData.RSRP, quectel.engineeringData.RSRQ, quectel.engineeringData.RSSI, quectel.engineeringData.SINR, t1, t2, l, v, rainCount);
+    Serial.println(msg);
+    //Serial.println(msgch);
+    quectel.sendDataUDPn(msg, strlen(msg),1);
+    free(msg);
+    delay(1000);
+    quectel.closeUDP();
     delay(300);
     quectel.setDeepSleep(1);
 }

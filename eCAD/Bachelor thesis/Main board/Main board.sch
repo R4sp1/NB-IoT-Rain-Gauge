@@ -22985,7 +22985,7 @@ For more info see MCP73871 datasheet, chapter 3.3.</text>
 <wire x1="154.94" y1="93.98" x2="154.94" y2="99.06" width="0.1524" layer="91"/>
 </segment>
 </net>
-<net name="PROG2" class="0">
+<net name="PROG3" class="0">
 <segment>
 <pinref part="IC6" gate="G$1" pin="PROG3"/>
 <wire x1="170.18" y1="124.46" x2="177.8" y2="124.46" width="0.1524" layer="91"/>
@@ -22993,7 +22993,7 @@ For more info see MCP73871 datasheet, chapter 3.3.</text>
 <wire x1="177.8" y1="124.46" x2="177.8" y2="121.92" width="0.1524" layer="91"/>
 </segment>
 </net>
-<net name="PROG4" class="0">
+<net name="PROG1" class="0">
 <segment>
 <pinref part="IC6" gate="G$1" pin="PROG1"/>
 <wire x1="170.18" y1="127" x2="185.42" y2="127" width="0.1524" layer="91"/>

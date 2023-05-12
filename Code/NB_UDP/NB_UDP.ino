@@ -54,12 +54,13 @@ int timeToSleep = 0;
 ulong currentEpoch = 0;
 
 unsigned long lastDebounceTime = 0;  // the last time the raingauge was overturned
-unsigned long debounceDelay = 200;    // the debounce time
+unsigned long debounceDelay = 200;   // the debounce time
 
-float round2(float val) {           //Round fun to get only two decimal places
-    if(val < 0)
+// Function to round float to two decimal places
+float round2(float val) {
+    if(val < 0)                      //Check if we are rounding negative number
     {
-      return (int)(val*100-0.5)/100.0;  
+      return (int)(val*100-0.5)/100.0;
     }
     return (int)(val*100+0.5)/100.0;
 }
@@ -82,9 +83,9 @@ void setupSensors(){
     pinMode(EN, OUTPUT);
     digitalWrite(EN, HIGH);   //Turn on sensors
     delay(100);               //Delay to let sensors "boot"
-    //Wire.begin (21, 22);      //I2C
+    //Wire.begin (21, 22);    //I2C
     oneWireTemp.begin();      //Onewire
-    if(!veml.begin()){             //Light meter
+    if(!veml.begin()){        //Light meter
     vemlFix = 1;
     #ifdef DEBUG
     Serial.println("Sensor VEML7700 not found");
@@ -160,7 +161,7 @@ bool sleepLogic(){
 
   if(esp_sleep_get_wakeup_cause() == 2){      // 2=ext0, 4=timer
     #ifdef DEBUG
-    Serial.println("Wake = 2; pushbutton/rain sensor");
+    Serial.println("Wake = 2; rain sensor");
     #endif
     return true;
   } else {

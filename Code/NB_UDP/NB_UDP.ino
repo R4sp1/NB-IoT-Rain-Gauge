@@ -8,22 +8,22 @@
 #include <Wire.h>
 #include "Adafruit_VEML7700.h"
 
-// #define DEBUG   //Comment this line if you want to "debug" with Serial.print()
+// #define DEBUG   //Comment this line if you want to print out to serial "debug" messages
+#define DEVICE_ADDRESS 1          //Device address (1-255) used to identify device on server
 
 //Deep sleep related definitions
 #define uS_TO_S_FACTOR 1000000     //Conversion factor from uSeconds to seconds
 #define TIME_TO_SLEEP  300         //Time ESP will go to sleep (in seconds)
 
-  //NB related definitions
-  #define SERIAL_PORT Serial2
-  #define RST 18        // MCU pin to control module reset
-  #define PSM 5        // MCU pin to control module wake up pin (PSM-EINT_N)
-  #define NBdelay 1000  // Delay between two AT commands
-  #define DEB false     // True or False debug option
-  const char* nbServer = nbSERVER;
-  int nbPort = 1883;
-
-  QuectelBC660 quectel = QuectelBC660(PSM, DEB);
+//NB related definitions
+#define SERIAL_PORT Serial2
+#define RST 18        // MCU pin to control module reset
+#define PSM 5        // MCU pin to control module wake up pin (PSM-EINT_N)
+#define NBdelay 1000  // Delay between two AT commands
+#define DEB false     // True or False debug option
+const char* nbServer = nbSERVER;
+int nbPort = 1883;
+QuectelBC660 quectel = QuectelBC660(PSM, DEB);
 
 
 //Sensors related definitions
@@ -193,7 +193,7 @@ void transmitData() {
         float v = round2(Voltage/1000);
         char *msg;
         msg = (char *) malloc(255);
-        sprintf(msg, "%d,%d,%d,%d,%d,%.2f,%.2f,%.2f,%.2f,%d", quectel.engineeringData.epoch, quectel.engineeringData.RSRP, quectel.engineeringData.RSRQ, quectel.engineeringData.RSSI, quectel.engineeringData.SINR, t1, t2, l, v, rainCount);
+        sprintf(msg, "%d,%d,%d,%d,%d,%.2f,%.2f,%.2f,%.2f,%d", DEVICE_ADDRESS, quectel.engineeringData.RSRP, quectel.engineeringData.RSRQ, quectel.engineeringData.RSSI, quectel.engineeringData.SINR, t1, t2, l, v, rainCount);
         Serial.println(msg);
         //Serial.println(msgch);
         quectel.sendDataUDPn(msg, strlen(msg),1);

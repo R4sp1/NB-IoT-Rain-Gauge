@@ -37,9 +37,9 @@
 RTC_DATA_ATTR ulong wakeUpEpoch = 0;
 RTC_DATA_ATTR int rainCount = 0;
 
-float temp1 = -255;
-float temp2 = -255;
-float light = -255;
+float temp1 = -127;
+float temp2 = -127;
+float light = -127;
 float Voltage = 0;      // Voltage in mV
 int volSens_Result =0; // Raw value from ADC
 
@@ -175,7 +175,7 @@ void transmitData() {
     quectel.begin(&SERIAL_PORT);
     delay(100); 
     
-    quectel.setDeepSleep();   // Disable deep sleep
+    quectel.setDeepSleep(0);   // Disable deep sleep
     delay(1000);
     if(quectel.getRegistrationStatus(5)) // Check if nb module is registred to network  
     {
@@ -196,11 +196,12 @@ void transmitData() {
         sprintf(msg, "%d,%d,%d,%d,%d,%.2f,%.2f,%.2f,%.2f,%d", quectel.engineeringData.epoch, quectel.engineeringData.RSRP, quectel.engineeringData.RSRQ, quectel.engineeringData.RSSI, quectel.engineeringData.SINR, t1, t2, l, v, rainCount);
         Serial.println(msg);
         //Serial.println(msgch);
-        quectel.sendDataUDP(msg, strlen(msg));
+        quectel.sendDataUDPn(msg, strlen(msg),1);
         free(msg);
         delay(1000);
         quectel.closeUDP();
     }
+    delay(300);
     quectel.setDeepSleep(1);
 }
 

@@ -6,7 +6,7 @@
 <setting alwaysvectorfont="no"/>
 <setting verticaltext="up"/>
 </settings>
-<grid distance="0.1" unitdist="inch" unit="inch" style="lines" multiple="1" display="no" altdistance="0.01" altunitdist="inch" altunit="inch"/>
+<grid distance="0.1" unitdist="inch" unit="mil" style="lines" multiple="1" display="yes" altdistance="0.01" altunitdist="inch" altunit="mil"/>
 <layers>
 <layer number="1" name="Top" color="4" fill="1" visible="no" active="no"/>
 <layer number="2" name="Route2" color="16" fill="1" visible="no" active="no"/>
@@ -21013,10 +21013,10 @@ Feel free to contact us at &lt;a href="mailto:Support@PCBLayout.com"&gt;Support@
 <part name="Q2" library="PDTC114EU_115" deviceset="PDTC114EU,115" device=""/>
 <part name="GND1" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 <part name="LED1" library="led" library_urn="urn:adsk.eagle:library:259" deviceset="LED" device="CHIPLED_0805" package3d_urn="urn:adsk.eagle:package:15821/2" value="NETSTAT"/>
-<part name="R9" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-EU_" device="R0603" package3d_urn="urn:adsk.eagle:package:23555/3" value="2k2"/>
+<part name="R9" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-EU_" device="R0603" package3d_urn="urn:adsk.eagle:package:23555/3" value="470"/>
 <part name="Q1" library="PDTC114EU_115" deviceset="PDTC114EU,115" device=""/>
 <part name="GND2" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
-<part name="C17" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="C-EU" device="C0603" package3d_urn="urn:adsk.eagle:package:23616/2" value="100n"/>
+<part name="C17" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="C-EU" device="C0603" package3d_urn="urn:adsk.eagle:package:23616/2"/>
 <part name="J1" library="Connectors" library_urn="urn:adsk.eagle:library:28493002" deviceset="U.FL-R-SMT(10)" device="" package3d_urn="urn:adsk.eagle:package:10989919/2"/>
 <part name="C12" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="C-EU" device="C0603" package3d_urn="urn:adsk.eagle:package:23616/2"/>
 <part name="C15" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="C-EU" device="C0603" package3d_urn="urn:adsk.eagle:package:23616/2"/>
@@ -21107,8 +21107,6 @@ Feel free to contact us at &lt;a href="mailto:Support@PCBLayout.com"&gt;Support@
 <part name="JP1" library="jumper" library_urn="urn:adsk.eagle:library:252" deviceset="JP1E" device="" package3d_urn="urn:adsk.eagle:package:15455/1" value="ESP_RST"/>
 <part name="JP2" library="jumper" library_urn="urn:adsk.eagle:library:252" deviceset="JP1E" device="" package3d_urn="urn:adsk.eagle:package:15455/1" value="ESP_BOOT"/>
 <part name="JP3" library="jumper" library_urn="urn:adsk.eagle:library:252" deviceset="JP1E" device="" package3d_urn="urn:adsk.eagle:package:15455/1" value="NB_RST"/>
-<part name="C3" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="C-EU" device="C0603" package3d_urn="urn:adsk.eagle:package:23616/2" value="100n"/>
-<part name="GND36" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 <part name="JP4" library="jumper" library_urn="urn:adsk.eagle:library:252" deviceset="JP1E" device="" package3d_urn="urn:adsk.eagle:package:15455/1" value="NB_BOOT"/>
 <part name="JP5" library="jumper" library_urn="urn:adsk.eagle:library:252" deviceset="JP1E" device="" package3d_urn="urn:adsk.eagle:package:15455/1" value="PSM_EINT"/>
 <part name="$3_30_$_2023-03-21_17-43-41" library="battery-holders" deviceset="BLOSSOM-BLM-18650-1PCS" device="" package3d_urn="urn:adsk.eagle:package:7289004/3"/>
@@ -21121,6 +21119,9 @@ Feel free to contact us at &lt;a href="mailto:Support@PCBLayout.com"&gt;Support@
 <sheet>
 <plain>
 <text x="217.17" y="20.32" size="2.54" layer="94">ESP32</text>
+<text x="163.83" y="20.32" size="2.54" layer="94" align="top-left">NB-IoT connected rain gauge
+FEEC VUT
+Jiri Jilek, 2023</text>
 </plain>
 <instances>
 <instance part="R1" gate="G$1" x="25.4" y="43.18" smashed="yes" rot="R90">
@@ -21156,9 +21157,9 @@ Feel free to contact us at &lt;a href="mailto:Support@PCBLayout.com"&gt;Support@
 <attribute name="LAST_DATE_TIME" x="217.17" y="10.16" size="2.286" layer="94"/>
 <attribute name="SHEET" x="230.505" y="5.08" size="2.54" layer="94"/>
 </instance>
-<instance part="R3" gate="G$1" x="144.78" y="27.94" smashed="yes" rot="R90">
-<attribute name="NAME" x="146.05" y="29.4386" size="1.778" layer="95"/>
-<attribute name="VALUE" x="146.05" y="27.178" size="1.778" layer="96"/>
+<instance part="R3" gate="G$1" x="144.78" y="43.18" smashed="yes" rot="R90">
+<attribute name="NAME" x="146.05" y="44.6786" size="1.778" layer="95"/>
+<attribute name="VALUE" x="146.05" y="42.418" size="1.778" layer="96"/>
 </instance>
 <instance part="GND38" gate="1" x="144.78" y="15.24" smashed="yes">
 <attribute name="VALUE" x="142.24" y="12.7" size="1.778" layer="96"/>
@@ -21206,20 +21207,13 @@ Feel free to contact us at &lt;a href="mailto:Support@PCBLayout.com"&gt;Support@
 <attribute name="NAME" x="88.9" y="31.75" size="1.778" layer="95" rot="R180"/>
 <attribute name="VALUE" x="88.9" y="38.735" size="1.778" layer="96" rot="R180"/>
 </instance>
-<instance part="C3" gate="G$1" x="93.98" y="25.4" smashed="yes">
-<attribute name="NAME" x="95.504" y="25.781" size="1.778" layer="95"/>
-<attribute name="VALUE" x="95.504" y="20.701" size="1.778" layer="96"/>
-</instance>
-<instance part="GND36" gate="1" x="93.98" y="15.24" smashed="yes">
-<attribute name="VALUE" x="91.44" y="12.7" size="1.778" layer="96"/>
-</instance>
 <instance part="JP4" gate="A" x="119.38" y="33.02" smashed="yes" rot="R90">
 <attribute name="NAME" x="119.38" y="31.75" size="1.778" layer="95" rot="R180"/>
 <attribute name="VALUE" x="119.38" y="38.735" size="1.778" layer="96" rot="R180"/>
 </instance>
-<instance part="JP5" gate="A" x="139.7" y="40.64" smashed="yes" rot="R90">
-<attribute name="NAME" x="139.7" y="39.37" size="1.778" layer="95" rot="R180"/>
-<attribute name="VALUE" x="139.7" y="46.355" size="1.778" layer="96" rot="R180"/>
+<instance part="JP5" gate="A" x="142.24" y="33.02" smashed="yes" rot="R90">
+<attribute name="NAME" x="142.24" y="31.75" size="1.778" layer="95" rot="R180"/>
+<attribute name="VALUE" x="142.24" y="38.735" size="1.778" layer="96" rot="R180"/>
 </instance>
 </instances>
 <busses>
@@ -21316,20 +21310,10 @@ Feel free to contact us at &lt;a href="mailto:Support@PCBLayout.com"&gt;Support@
 <pinref part="JP6" gate="G$1" pin="4"/>
 </segment>
 <segment>
-<pinref part="GND38" gate="1" pin="GND"/>
-<pinref part="R3" gate="G$1" pin="1"/>
-<wire x1="144.78" y1="22.86" x2="144.78" y2="17.78" width="0.1524" layer="91"/>
-</segment>
-<segment>
 <wire x1="233.68" y1="48.26" x2="231.14" y2="48.26" width="0.1524" layer="91"/>
 <wire x1="231.14" y1="48.26" x2="231.14" y2="45.72" width="0.1524" layer="91"/>
 <pinref part="GND40" gate="1" pin="GND"/>
 <pinref part="JP7" gate="G$1" pin="4"/>
-</segment>
-<segment>
-<pinref part="C3" gate="G$1" pin="2"/>
-<pinref part="GND36" gate="1" pin="GND"/>
-<wire x1="93.98" y1="20.32" x2="93.98" y2="17.78" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="JP3" gate="A" pin="2"/>
@@ -21342,6 +21326,11 @@ Feel free to contact us at &lt;a href="mailto:Support@PCBLayout.com"&gt;Support@
 <wire x1="121.92" y1="35.56" x2="124.46" y2="35.56" width="0.1524" layer="91"/>
 <wire x1="124.46" y1="35.56" x2="124.46" y2="50.8" width="0.1524" layer="91"/>
 <label x="124.46" y="50.8" size="1.778" layer="95" rot="R90"/>
+</segment>
+<segment>
+<pinref part="JP5" gate="A" pin="1"/>
+<pinref part="GND38" gate="1" pin="GND"/>
+<wire x1="144.78" y1="33.02" x2="144.78" y2="17.78" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="ESP_BOOT" class="0">
@@ -21394,15 +21383,14 @@ Feel free to contact us at &lt;a href="mailto:Support@PCBLayout.com"&gt;Support@
 <pinref part="JP6" gate="G$1" pin="1"/>
 </segment>
 <segment>
-<wire x1="144.78" y1="43.18" x2="144.78" y2="50.8" width="0.1524" layer="91"/>
-<label x="144.78" y="50.8" size="1.778" layer="95" rot="R90"/>
-<pinref part="JP5" gate="A" pin="2"/>
-<wire x1="142.24" y1="43.18" x2="144.78" y2="43.18" width="0.1524" layer="91"/>
-</segment>
-<segment>
 <wire x1="233.68" y1="55.88" x2="231.14" y2="55.88" width="0.1524" layer="91"/>
 <label x="231.14" y="55.88" size="1.778" layer="95" rot="R180"/>
 <pinref part="JP7" gate="G$1" pin="1"/>
+</segment>
+<segment>
+<pinref part="R3" gate="G$1" pin="2"/>
+<wire x1="144.78" y1="48.26" x2="144.78" y2="50.8" width="0.1524" layer="91"/>
+<label x="144.78" y="50.8" size="1.778" layer="95" rot="R90"/>
 </segment>
 </net>
 <net name="VOL_SENS" class="0">
@@ -21540,11 +21528,7 @@ Feel free to contact us at &lt;a href="mailto:Support@PCBLayout.com"&gt;Support@
 <net name="RESET_N" class="0">
 <segment>
 <pinref part="JP3" gate="A" pin="1"/>
-<wire x1="91.44" y1="33.02" x2="93.98" y2="33.02" width="0.1524" layer="91"/>
-<wire x1="93.98" y1="33.02" x2="93.98" y2="27.94" width="0.1524" layer="91"/>
-<pinref part="C3" gate="G$1" pin="1"/>
-<wire x1="93.98" y1="33.02" x2="96.52" y2="33.02" width="0.1524" layer="91"/>
-<junction x="93.98" y="33.02"/>
+<wire x1="91.44" y1="33.02" x2="96.52" y2="33.02" width="0.1524" layer="91"/>
 <label x="96.52" y="33.02" size="1.778" layer="95"/>
 </segment>
 </net>
@@ -21557,19 +21541,17 @@ Feel free to contact us at &lt;a href="mailto:Support@PCBLayout.com"&gt;Support@
 </net>
 <net name="PSM_EINT" class="0">
 <segment>
-<pinref part="R3" gate="G$1" pin="2"/>
-<wire x1="144.78" y1="35.56" x2="144.78" y2="33.02" width="0.1524" layer="91"/>
-<wire x1="144.78" y1="35.56" x2="147.32" y2="35.56" width="0.1524" layer="91"/>
-<junction x="144.78" y="35.56"/>
-<wire x1="144.78" y1="40.64" x2="144.78" y2="35.56" width="0.1524" layer="91"/>
-<label x="147.32" y="35.56" size="1.778" layer="95"/>
-<pinref part="JP5" gate="A" pin="1"/>
-<wire x1="142.24" y1="40.64" x2="144.78" y2="40.64" width="0.1524" layer="91"/>
-</segment>
-<segment>
 <wire x1="147.32" y1="132.08" x2="149.86" y2="132.08" width="0.1524" layer="91"/>
 <label x="149.86" y="132.08" size="1.778" layer="95"/>
 <pinref part="IC1" gate="G$1" pin="IO5"/>
+</segment>
+<segment>
+<pinref part="JP5" gate="A" pin="2"/>
+<wire x1="144.78" y1="35.56" x2="144.78" y2="38.1" width="0.1524" layer="91"/>
+<pinref part="R3" gate="G$1" pin="1"/>
+<wire x1="144.78" y1="35.56" x2="147.32" y2="35.56" width="0.1524" layer="91"/>
+<junction x="144.78" y="35.56"/>
+<label x="147.32" y="35.56" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="ESP_ENABLE" class="0">
@@ -21596,6 +21578,9 @@ Feel free to contact us at &lt;a href="mailto:Support@PCBLayout.com"&gt;Support@
 <plain>
 <text x="217.17" y="20.32" size="2.54" layer="94">Quectel bc660k-gl</text>
 <text x="101.6" y="43.18" size="1.778" layer="97">VIO_SEL grounded for 3.3V logic levels</text>
+<text x="163.83" y="20.32" size="2.54" layer="94" align="top-left">NB-IoT connected rain gauge
+FEEC VUT
+Jiri Jilek, 2023</text>
 </plain>
 <instances>
 <instance part="FRAME2" gate="G$1" x="0" y="0" smashed="yes">
@@ -21648,7 +21633,7 @@ Feel free to contact us at &lt;a href="mailto:Support@PCBLayout.com"&gt;Support@
 <attribute name="VALUE" x="231.14" y="91.44" size="1.778" layer="96"/>
 </instance>
 <instance part="C17" gate="G$1" x="233.68" y="106.68" smashed="yes">
-<attribute name="NAME" x="235.204" y="109.601" size="1.778" layer="95"/>
+<attribute name="NAME" x="235.204" y="107.061" size="1.778" layer="95"/>
 <attribute name="VALUE" x="235.204" y="107.061" size="1.778" layer="96"/>
 </instance>
 <instance part="J1" gate="G$1" x="142.24" y="93.98" smashed="yes">
@@ -22186,6 +22171,9 @@ Feel free to contact us at &lt;a href="mailto:Support@PCBLayout.com"&gt;Support@
 With 100k and 330k R we get VPCC voltage 5.29 V.
 For more info see MCP73871 datasheet, chapter 3.3.</text>
 <text x="172.72" y="157.48" size="1.778" layer="97"></text>
+<text x="163.83" y="20.32" size="2.54" layer="94" align="top-left">NB-IoT connected rain gauge
+FEEC VUT
+Jiri Jilek, 2023</text>
 </plain>
 <instances>
 <instance part="FRAME3" gate="G$1" x="0" y="0" smashed="yes">
@@ -23062,6 +23050,9 @@ For more info see MCP73871 datasheet, chapter 3.3.</text>
 <plain>
 <text x="217.17" y="20.32" size="2.286" layer="94">Sensors and connections</text>
 <text x="104.14" y="22.86" size="1.778" layer="97">I2C addr: 0x76</text>
+<text x="163.83" y="20.32" size="2.54" layer="94" align="top-left">NB-IoT connected rain gauge
+FEEC VUT
+Jiri Jilek, 2023</text>
 </plain>
 <instances>
 <instance part="FRAME4" gate="G$1" x="0" y="0" smashed="yes">

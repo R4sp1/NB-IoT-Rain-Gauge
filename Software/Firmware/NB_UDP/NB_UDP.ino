@@ -9,7 +9,7 @@
 #include "Adafruit_VEML7700.h"
 
 // #define DEBUG   //Comment this line if you want to print out to serial "debug" messages
-#define DEVICE_ADDRESS 3          //Device address (1-255) used to identify device on server
+#define DEVICE_ADDRESS 1          //Device address (1-255) used to identify device on server
 
 //Deep sleep related definitions
 #define uS_TO_S_FACTOR 1000000     //Conversion factor from uSeconds to seconds

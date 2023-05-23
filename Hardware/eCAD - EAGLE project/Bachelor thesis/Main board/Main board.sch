@@ -21120,7 +21120,8 @@ Feel free to contact us at &lt;a href="mailto:Support@PCBLayout.com"&gt;Support@
 <plain>
 <text x="217.17" y="20.32" size="2.54" layer="94">ESP32</text>
 <text x="163.83" y="20.32" size="2.54" layer="94" align="top-left">NB-IoT connected rain gauge
-FEEC VUT
+UTKO, FEEC
+Brno University of Technology
 Jiri Jilek, 2023</text>
 </plain>
 <instances>
@@ -21579,7 +21580,8 @@ Jiri Jilek, 2023</text>
 <text x="217.17" y="20.32" size="2.54" layer="94">Quectel bc660k-gl</text>
 <text x="101.6" y="43.18" size="1.778" layer="97">VIO_SEL grounded for 3.3V logic levels</text>
 <text x="163.83" y="20.32" size="2.54" layer="94" align="top-left">NB-IoT connected rain gauge
-FEEC VUT
+UTKO, FEEC
+Brno University of Technology
 Jiri Jilek, 2023</text>
 </plain>
 <instances>
@@ -22166,13 +22168,14 @@ Jiri Jilek, 2023</text>
 </sheet>
 <sheet>
 <plain>
-<text x="217.17" y="20.32" size="2.032" layer="94">Power</text>
+<text x="217.17" y="20.32" size="2.54" layer="94">Power</text>
 <text x="165.1" y="154.94" size="1.778" layer="97">VPCC: 1.23=(R15/R15+R16)*VPCC
 With 100k and 330k R we get VPCC voltage 5.29 V.
 For more info see MCP73871 datasheet, chapter 3.3.</text>
 <text x="172.72" y="157.48" size="1.778" layer="97"></text>
 <text x="163.83" y="20.32" size="2.54" layer="94" align="top-left">NB-IoT connected rain gauge
-FEEC VUT
+UTKO, FEEC
+Brno University of Technology
 Jiri Jilek, 2023</text>
 </plain>
 <instances>
@@ -23051,7 +23054,8 @@ Jiri Jilek, 2023</text>
 <text x="217.17" y="20.32" size="2.286" layer="94">Sensors and connections</text>
 <text x="104.14" y="22.86" size="1.778" layer="97">I2C addr: 0x76</text>
 <text x="163.83" y="20.32" size="2.54" layer="94" align="top-left">NB-IoT connected rain gauge
-FEEC VUT
+UTKO, FEEC
+Brno University of Technology
 Jiri Jilek, 2023</text>
 </plain>
 <instances>

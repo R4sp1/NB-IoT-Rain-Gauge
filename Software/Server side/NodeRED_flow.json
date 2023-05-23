@@ -1,0 +1,268 @@
+[
+    {
+        "id": "a6c340eb.e51a8",
+        "type": "tab",
+        "label": "NB raingauge",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "e0f99001.9b0b8",
+        "type": "udp in",
+        "z": "a6c340eb.e51a8",
+        "name": "UDP listener",
+        "iface": "",
+        "port": "1883",
+        "ipv": "udp4",
+        "multicast": "false",
+        "group": "",
+        "datatype": "utf8",
+        "x": 70,
+        "y": 160,
+        "wires": [
+            [
+                "6423403b.0a429",
+                "1b6bfd5c.0a66e3"
+            ]
+        ]
+    },
+    {
+        "id": "99edde7f.87907",
+        "type": "influxdb out",
+        "z": "a6c340eb.e51a8",
+        "influxdb": "",
+        "name": "Output to InfluxDB",
+        "measurement": "",
+        "precision": "",
+        "retentionPolicy": "",
+        "x": 1310,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "6423403b.0a429",
+        "type": "csv",
+        "z": "a6c340eb.e51a8",
+        "name": "Convert string to objects",
+        "sep": ",",
+        "hdrin": "",
+        "hdrout": "none",
+        "multi": "mult",
+        "ret": "\\n",
+        "temp": "",
+        "skip": "0",
+        "strings": true,
+        "include_empty_strings": "",
+        "include_null_values": "",
+        "x": 290,
+        "y": 160,
+        "wires": [
+            [
+                "de5b193f.794968"
+            ]
+        ]
+    },
+    {
+        "id": "25d3abb1.14c264",
+        "type": "function",
+        "z": "a6c340eb.e51a8",
+        "name": "Parse message from node No. 2",
+        "func": "msg.payload = {\n    RSRP: msg.payload[0].col2,\n    RSRQ: msg.payload[0].col3,\n    RSSI: msg.payload[0].col4,\n    SINR: msg.payload[0].col5,\n    Temp1: msg.payload[0].col6,\n    Temp2: msg.payload[0].col7,\n    Temp_avg: (msg.payload[0].col6 + msg.payload[0].col7)/2,\n    Light: msg.payload[0].col8,\n    Voltage: msg.payload[0].col9,\n    RainCount: msg.payload[0].col10,\n    Rain_mm: (msg.payload[0].col10)*0.2794\n}\n\n\nif (msg.payload.Light == -127) {\n    msg.payload.Light = null\n}\nif (msg.payload.Temp1 == -127 || msg.payload.Temp2 == -127){\n    if (msg.payload.Temp1 == -127 && msg.payload.Temp2 == -127){\n        msg.payload.Temp1 = null\n        msg.payload.Temp2 = null\n        msg.payload.Temp_avg = null\n    }\n    else if (msg.payload.Temp1 == -127) {\n        msg.payload.Temp1 = null\n        msg.payload.Temp_avg = msg.payload.Temp2\n    }\n    else if (msg.payload.Temp2 = -127){\n        msg.payload.Temp2 = null\n        msg.payload.Temp_avg = msg.payload.Temp1\n    }\n}\n\nnode.status({ fill: \"blue\", shape: \"dot\", text: msg.payload.Voltage });\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 790,
+        "y": 160,
+        "wires": [
+            [
+                "4ede89ec.071918"
+            ]
+        ]
+    },
+    {
+        "id": "de5b193f.794968",
+        "type": "function",
+        "z": "a6c340eb.e51a8",
+        "name": "Sort messages",
+        "func": "if (msg.payload[0].col1 == 1) {\n    return [msg,null,null]\n} else if (msg.payload[0].col1 == 2) {\n    return [null,msg,null]\n} else if (msg.payload[0].col1 == 3) {\n    return [null, null, msg]\n} else {\n    return [null,null,null]\n}\n",
+        "outputs": 3,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 520,
+        "y": 160,
+        "wires": [
+            [
+                "ee93713f.bc78c"
+            ],
+            [
+                "25d3abb1.14c264"
+            ],
+            [
+                "e2356a33.991528"
+            ]
+        ]
+    },
+    {
+        "id": "e2356a33.991528",
+        "type": "function",
+        "z": "a6c340eb.e51a8",
+        "name": "Parse message from node No. 3",
+        "func": "msg.payload = {\n    RSRP: msg.payload[0].col2,\n    RSRQ: msg.payload[0].col3,\n    RSSI: msg.payload[0].col4,\n    SINR: msg.payload[0].col5,\n    Temp1: msg.payload[0].col6,\n    Temp2: msg.payload[0].col7,\n    Temp_avg: (msg.payload[0].col6 + msg.payload[0].col7)/2,\n    Light: msg.payload[0].col8,\n    Voltage: msg.payload[0].col9,\n    RainCount: msg.payload[0].col10,\n    Rain_mm: (msg.payload[0].col10)*0.2794\n}\n\n\nif (msg.payload.Light == -127) {\n    msg.payload.Light = null\n}\nif (msg.payload.Temp1 == -127 || msg.payload.Temp2 == -127){\n    if (msg.payload.Temp1 == -127 && msg.payload.Temp2 == -127){\n        msg.payload.Temp1 = null\n        msg.payload.Temp2 = null\n        msg.payload.Temp_avg = null\n    }\n    else if (msg.payload.Temp1 == -127) {\n        msg.payload.Temp1 = null\n        msg.payload.Temp_avg = msg.payload.Temp2\n    }\n    else if (msg.payload.Temp2 = -127){\n        msg.payload.Temp2 = null\n        msg.payload.Temp_avg = msg.payload.Temp1\n    }\n}\n\nnode.status({ fill: \"blue\", shape: \"dot\", text: msg.payload.Voltage });\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 790,
+        "y": 240,
+        "wires": [
+            [
+                "26a83932.6b25c6"
+            ]
+        ]
+    },
+    {
+        "id": "e98e77ab.d6a6d8",
+        "type": "debug",
+        "z": "a6c340eb.e51a8",
+        "name": "debug node No. 2",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1050,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "57eef6b9.53ee88",
+        "type": "debug",
+        "z": "a6c340eb.e51a8",
+        "name": "debug node No. 3",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1050,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "26a83932.6b25c6",
+        "type": "function",
+        "z": "a6c340eb.e51a8",
+        "name": "TEST rename fun 3",
+        "func": "msg.payload = {\n    RSRP_3: msg.payload.RSRP,\n    RSRQ_3: msg.payload.RSRQ,\n    RSSI_3: msg.payload.RSSI,\n    SINR_3: msg.payload.SINR,\n    Temp1_3: msg.payload.Temp1,\n    Temp2_3: msg.payload.Temp2,\n    Temp_avg_3: msg.payload.Temp_avg,\n    Light_3: msg.payload.Light,\n    Voltage_3: msg.payload.Voltage,\n    RainCount_3: msg.payload.RainCount,\n    Rain_mm_3: msg.payload.Rain_mm\n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 1050,
+        "y": 240,
+        "wires": [
+            [
+                "57eef6b9.53ee88",
+                "99edde7f.87907"
+            ]
+        ]
+    },
+    {
+        "id": "ee93713f.bc78c",
+        "type": "function",
+        "z": "a6c340eb.e51a8",
+        "name": "Parse message from node No. 1",
+        "func": "msg.payload = {\n    RSRP: msg.payload[0].col2,\n    RSRQ: msg.payload[0].col3,\n    RSSI: msg.payload[0].col4,\n    SINR: msg.payload[0].col5,\n    Temp1: msg.payload[0].col6,\n    Temp2: msg.payload[0].col7,\n    Temp_avg: (msg.payload[0].col6 + msg.payload[0].col7)/2,\n    Light: msg.payload[0].col8,\n    Voltage: msg.payload[0].col9,\n    RainCount: msg.payload[0].col10,\n    Rain_mm: (msg.payload[0].col10)*0.2794\n}\n\n\nif (msg.payload.Light == -127) {\n    msg.payload.Light = null\n}\nif (msg.payload.Temp1 == -127 || msg.payload.Temp2 == -127){\n    if (msg.payload.Temp1 == -127 && msg.payload.Temp2 == -127){\n        msg.payload.Temp1 = null\n        msg.payload.Temp2 = null\n        msg.payload.Temp_avg = null\n    }\n    else if (msg.payload.Temp1 == -127) {\n        msg.payload.Temp1 = null\n        msg.payload.Temp_avg = msg.payload.Temp2\n    }\n    else if (msg.payload.Temp2 = -127){\n        msg.payload.Temp2 = null\n        msg.payload.Temp_avg = msg.payload.Temp1\n    }\n}\n\nnode.status({ fill: \"blue\", shape: \"dot\", text: msg.payload.Voltage });\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 790,
+        "y": 80,
+        "wires": [
+            [
+                "f827c6ab.d5e918"
+            ]
+        ]
+    },
+    {
+        "id": "4353e917.8e3688",
+        "type": "debug",
+        "z": "a6c340eb.e51a8",
+        "name": "debug node No. 1",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1050,
+        "y": 40,
+        "wires": []
+    },
+    {
+        "id": "f827c6ab.d5e918",
+        "type": "function",
+        "z": "a6c340eb.e51a8",
+        "name": "TEST rename fun 1",
+        "func": "msg.payload = {\n    RSRP_1: msg.payload.RSRP,\n    RSRQ_1: msg.payload.RSRQ,\n    RSSI_1: msg.payload.RSSI,\n    SINR_1: msg.payload.SINR,\n    Temp1_1: msg.payload.Temp1,\n    Temp2_1: msg.payload.Temp2,\n    Temp_avg_1: msg.payload.Temp_avg,\n    Light_1: msg.payload.Light,\n    Voltage_1: msg.payload.Voltage,\n    RainCount_1: msg.payload.RainCount,\n    Rain_mm_1: msg.payload.Rain_mm\n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 1050,
+        "y": 80,
+        "wires": [
+            [
+                "4353e917.8e3688",
+                "99edde7f.87907"
+            ]
+        ]
+    },
+    {
+        "id": "4ede89ec.071918",
+        "type": "function",
+        "z": "a6c340eb.e51a8",
+        "name": "TEST rename fun 2",
+        "func": "msg.payload = {\n    RSRP_2: msg.payload.RSRP,\n    RSRQ_2: msg.payload.RSRQ,\n    RSSI_2: msg.payload.RSSI,\n    SINR_2: msg.payload.SINR,\n    Temp1_2: msg.payload.Temp1,\n    Temp2_2: msg.payload.Temp2,\n    Temp_avg_2: msg.payload.Temp_avg,\n    Light_2: msg.payload.Light,\n    Voltage_2: msg.payload.Voltage,\n    RainCount_2: msg.payload.RainCount,\n    Rain_mm_2: msg.payload.Rain_mm\n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 1050,
+        "y": 160,
+        "wires": [
+            [
+                "99edde7f.87907",
+                "e98e77ab.d6a6d8"
+            ]
+        ]
+    },
+    {
+        "id": "1b6bfd5c.0a66e3",
+        "type": "debug",
+        "z": "a6c340eb.e51a8",
+        "name": "debug recived msg",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 270,
+        "y": 120,
+        "wires": []
+    }
+]

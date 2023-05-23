@@ -1,13 +1,13 @@
-# 1 "C:\\Users\\jirka\\Documents\\GitHub\\bachelor-thesis\\Code\\NB_UDP\\NB_UDP.ino"
-# 2 "C:\\Users\\jirka\\Documents\\GitHub\\bachelor-thesis\\Code\\NB_UDP\\NB_UDP.ino" 2
-# 3 "C:\\Users\\jirka\\Documents\\GitHub\\bachelor-thesis\\Code\\NB_UDP\\NB_UDP.ino" 2
-# 4 "C:\\Users\\jirka\\Documents\\GitHub\\bachelor-thesis\\Code\\NB_UDP\\NB_UDP.ino" 2
-# 5 "C:\\Users\\jirka\\Documents\\GitHub\\bachelor-thesis\\Code\\NB_UDP\\NB_UDP.ino" 2
-# 6 "C:\\Users\\jirka\\Documents\\GitHub\\bachelor-thesis\\Code\\NB_UDP\\NB_UDP.ino" 2
-# 7 "C:\\Users\\jirka\\Documents\\GitHub\\bachelor-thesis\\Code\\NB_UDP\\NB_UDP.ino" 2
-# 8 "C:\\Users\\jirka\\Documents\\GitHub\\bachelor-thesis\\Code\\NB_UDP\\NB_UDP.ino" 2
-# 9 "C:\\Users\\jirka\\Documents\\GitHub\\bachelor-thesis\\Code\\NB_UDP\\NB_UDP.ino" 2
-# 10 "C:\\Users\\jirka\\Documents\\GitHub\\bachelor-thesis\\Code\\NB_UDP\\NB_UDP.ino" 2
+# 1 "C:\\Users\\jirka\\Documents\\GitHub\\bachelor-thesis\\Software\\Firmware\\NB_UDP\\NB_UDP.ino"
+# 2 "C:\\Users\\jirka\\Documents\\GitHub\\bachelor-thesis\\Software\\Firmware\\NB_UDP\\NB_UDP.ino" 2
+# 3 "C:\\Users\\jirka\\Documents\\GitHub\\bachelor-thesis\\Software\\Firmware\\NB_UDP\\NB_UDP.ino" 2
+# 4 "C:\\Users\\jirka\\Documents\\GitHub\\bachelor-thesis\\Software\\Firmware\\NB_UDP\\NB_UDP.ino" 2
+# 5 "C:\\Users\\jirka\\Documents\\GitHub\\bachelor-thesis\\Software\\Firmware\\NB_UDP\\NB_UDP.ino" 2
+# 6 "C:\\Users\\jirka\\Documents\\GitHub\\bachelor-thesis\\Software\\Firmware\\NB_UDP\\NB_UDP.ino" 2
+# 7 "C:\\Users\\jirka\\Documents\\GitHub\\bachelor-thesis\\Software\\Firmware\\NB_UDP\\NB_UDP.ino" 2
+# 8 "C:\\Users\\jirka\\Documents\\GitHub\\bachelor-thesis\\Software\\Firmware\\NB_UDP\\NB_UDP.ino" 2
+# 9 "C:\\Users\\jirka\\Documents\\GitHub\\bachelor-thesis\\Software\\Firmware\\NB_UDP\\NB_UDP.ino" 2
+# 10 "C:\\Users\\jirka\\Documents\\GitHub\\bachelor-thesis\\Software\\Firmware\\NB_UDP\\NB_UDP.ino" 2
 
 // #define DEBUG   //Comment this line if you want to print out to serial "debug" messages
 
@@ -220,7 +220,7 @@ void transmitData() {
     float v = round2(Voltage/1000);
     char *msg;
     msg = (char *) malloc(255);
-    sprintf(msg, "%d,%d,%d,%d,%d,%.2f,%.2f,%.2f,%.2f,%d", 3 /*Device address (1-255) used to identify device on server*/, quectel.engineeringData.RSRP, quectel.engineeringData.RSRQ, quectel.engineeringData.RSSI, quectel.engineeringData.SINR, t1, t2, l, v, rainCount);
+    sprintf(msg, "%d,%d,%d,%d,%d,%.2f,%.2f,%.2f,%.2f,%d", 1 /*Device address (1-255) used to identify device on server*/, quectel.engineeringData.RSRP, quectel.engineeringData.RSRQ, quectel.engineeringData.RSSI, quectel.engineeringData.SINR, t1, t2, l, v, rainCount);
     Serial.println(msg);
     //Serial.println(msgch);
     quectel.sendDataUDPn(msg, strlen(msg),1);

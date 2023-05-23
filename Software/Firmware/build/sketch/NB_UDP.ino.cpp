@@ -1,5 +1,5 @@
 #include <Arduino.h>
-#line 1 "C:\\Users\\jirka\\Documents\\GitHub\\bachelor-thesis\\Code\\NB_UDP\\NB_UDP.ino"
+#line 1 "C:\\Users\\jirka\\Documents\\GitHub\\bachelor-thesis\\Software\\Firmware\\NB_UDP\\NB_UDP.ino"
 #include <credentials.h>
 #include <ESP32Time.h>            // https://github.com/fbiego/ESP32Time
 #include <OneWire.h>              // https://www.arduino.cc/reference/en/libraries/onewire/
@@ -11,7 +11,7 @@
 #include "Adafruit_VEML7700.h"
 
 // #define DEBUG   //Comment this line if you want to print out to serial "debug" messages
-#define DEVICE_ADDRESS 3          //Device address (1-255) used to identify device on server
+#define DEVICE_ADDRESS 1          //Device address (1-255) used to identify device on server
 
 //Deep sleep related definitions
 #define uS_TO_S_FACTOR 1000000     //Conversion factor from uSeconds to seconds
@@ -60,27 +60,27 @@ unsigned long lastDebounceTime = 0;  // the last time the raingauge was overturn
 unsigned long debounceDelay = 200;   // the debounce time
 
 // Function to round float to two decimal places
-#line 61 "C:\\Users\\jirka\\Documents\\GitHub\\bachelor-thesis\\Code\\NB_UDP\\NB_UDP.ino"
+#line 61 "C:\\Users\\jirka\\Documents\\GitHub\\bachelor-thesis\\Software\\Firmware\\NB_UDP\\NB_UDP.ino"
 float round2(float val);
-#line 69 "C:\\Users\\jirka\\Documents\\GitHub\\bachelor-thesis\\Code\\NB_UDP\\NB_UDP.ino"
+#line 69 "C:\\Users\\jirka\\Documents\\GitHub\\bachelor-thesis\\Software\\Firmware\\NB_UDP\\NB_UDP.ino"
 void print_wakeup_reason();
-#line 83 "C:\\Users\\jirka\\Documents\\GitHub\\bachelor-thesis\\Code\\NB_UDP\\NB_UDP.ino"
+#line 83 "C:\\Users\\jirka\\Documents\\GitHub\\bachelor-thesis\\Software\\Firmware\\NB_UDP\\NB_UDP.ino"
 void setupSensors();
-#line 97 "C:\\Users\\jirka\\Documents\\GitHub\\bachelor-thesis\\Code\\NB_UDP\\NB_UDP.ino"
+#line 97 "C:\\Users\\jirka\\Documents\\GitHub\\bachelor-thesis\\Software\\Firmware\\NB_UDP\\NB_UDP.ino"
 void readSensors();
-#line 144 "C:\\Users\\jirka\\Documents\\GitHub\\bachelor-thesis\\Code\\NB_UDP\\NB_UDP.ino"
+#line 144 "C:\\Users\\jirka\\Documents\\GitHub\\bachelor-thesis\\Software\\Firmware\\NB_UDP\\NB_UDP.ino"
 bool sleepLogic();
-#line 176 "C:\\Users\\jirka\\Documents\\GitHub\\bachelor-thesis\\Code\\NB_UDP\\NB_UDP.ino"
+#line 176 "C:\\Users\\jirka\\Documents\\GitHub\\bachelor-thesis\\Software\\Firmware\\NB_UDP\\NB_UDP.ino"
 void checkConnection();
-#line 204 "C:\\Users\\jirka\\Documents\\GitHub\\bachelor-thesis\\Code\\NB_UDP\\NB_UDP.ino"
+#line 204 "C:\\Users\\jirka\\Documents\\GitHub\\bachelor-thesis\\Software\\Firmware\\NB_UDP\\NB_UDP.ino"
 void transmitData();
-#line 233 "C:\\Users\\jirka\\Documents\\GitHub\\bachelor-thesis\\Code\\NB_UDP\\NB_UDP.ino"
+#line 233 "C:\\Users\\jirka\\Documents\\GitHub\\bachelor-thesis\\Software\\Firmware\\NB_UDP\\NB_UDP.ino"
 void callBack();
-#line 247 "C:\\Users\\jirka\\Documents\\GitHub\\bachelor-thesis\\Code\\NB_UDP\\NB_UDP.ino"
+#line 247 "C:\\Users\\jirka\\Documents\\GitHub\\bachelor-thesis\\Software\\Firmware\\NB_UDP\\NB_UDP.ino"
 void setup();
-#line 280 "C:\\Users\\jirka\\Documents\\GitHub\\bachelor-thesis\\Code\\NB_UDP\\NB_UDP.ino"
+#line 280 "C:\\Users\\jirka\\Documents\\GitHub\\bachelor-thesis\\Software\\Firmware\\NB_UDP\\NB_UDP.ino"
 void loop();
-#line 61 "C:\\Users\\jirka\\Documents\\GitHub\\bachelor-thesis\\Code\\NB_UDP\\NB_UDP.ino"
+#line 61 "C:\\Users\\jirka\\Documents\\GitHub\\bachelor-thesis\\Software\\Firmware\\NB_UDP\\NB_UDP.ino"
 float round2(float val) {
     if(val < 0)                      //Check if we are rounding negative number
     {

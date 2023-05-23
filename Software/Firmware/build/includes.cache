@@ -36,16 +36,6 @@
   },
   {
     "Sourcefile": "C:\\Users\\jirka\\Documents\\GitHub\\bachelor-thesis\\Software\\Firmware\\build\\sketch\\NB_UDP.ino.cpp",
-    "Include": "BH1750.h",
-    "Includepath": "C:\\Users\\jirka\\Documents\\Arduino\\libraries\\BH1750\\src"
-  },
-  {
-    "Sourcefile": "C:\\Users\\jirka\\Documents\\GitHub\\bachelor-thesis\\Software\\Firmware\\build\\sketch\\NB_UDP.ino.cpp",
-    "Include": "Wire.h",
-    "Includepath": "C:\\Users\\jirka\\AppData\\Local\\Arduino15\\packages\\esp32\\hardware\\esp32\\2.0.8\\libraries\\Wire\\src"
-  },
-  {
-    "Sourcefile": "C:\\Users\\jirka\\Documents\\GitHub\\bachelor-thesis\\Software\\Firmware\\build\\sketch\\NB_UDP.ino.cpp",
     "Include": "Adafruit_VEML7700.h",
     "Includepath": "C:\\Users\\jirka\\Documents\\Arduino\\libraries\\Adafruit_VEML7700-master"
   },
@@ -53,6 +43,11 @@
     "Sourcefile": "C:\\Users\\jirka\\Documents\\GitHub\\bachelor-thesis\\Software\\Firmware\\build\\sketch\\NB_UDP.ino.cpp",
     "Include": "Adafruit_I2CDevice.h",
     "Includepath": "C:\\Users\\jirka\\Documents\\Arduino\\libraries\\Adafruit_BusIO"
+  },
+  {
+    "Sourcefile": "C:\\Users\\jirka\\Documents\\GitHub\\bachelor-thesis\\Software\\Firmware\\build\\sketch\\NB_UDP.ino.cpp",
+    "Include": "Wire.h",
+    "Includepath": "C:\\Users\\jirka\\AppData\\Local\\Arduino15\\packages\\esp32\\hardware\\esp32\\2.0.8\\libraries\\Wire\\src"
   },
   {
     "Sourcefile": "C:\\Users\\jirka\\Documents\\GitHub\\bachelor-thesis\\Software\\Firmware\\build\\sketch\\NB_UDP.ino.cpp",
@@ -85,16 +80,6 @@
     "Includepath": null
   },
   {
-    "Sourcefile": "C:\\Users\\jirka\\Documents\\Arduino\\libraries\\BH1750\\src\\BH1750.cpp",
-    "Include": "",
-    "Includepath": null
-  },
-  {
-    "Sourcefile": "C:\\Users\\jirka\\AppData\\Local\\Arduino15\\packages\\esp32\\hardware\\esp32\\2.0.8\\libraries\\Wire\\src\\Wire.cpp",
-    "Include": "",
-    "Includepath": null
-  },
-  {
     "Sourcefile": "C:\\Users\\jirka\\Documents\\Arduino\\libraries\\Adafruit_VEML7700-master\\Adafruit_VEML7700.cpp",
     "Include": "",
     "Includepath": null
@@ -111,6 +96,11 @@
   },
   {
     "Sourcefile": "C:\\Users\\jirka\\Documents\\Arduino\\libraries\\Adafruit_BusIO\\Adafruit_SPIDevice.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\jirka\\AppData\\Local\\Arduino15\\packages\\esp32\\hardware\\esp32\\2.0.8\\libraries\\Wire\\src\\Wire.cpp",
     "Include": "",
     "Includepath": null
   },

@@ -1,4 +1,4 @@
-#include <credentials.h>       // Credentials for NB module and server
+#include <credentials.h>       // Credentials for NB module and server - contains IP address of NB-IoT server in char nbSERVER[]
 #include <ESP32Time.h>         // https://github.com/fbiego/ESP32Time
 #include <OneWire.h>           // https://www.arduino.cc/reference/en/libraries/onewire/
 #include <DallasTemperature.h> // https://github.com/milesburton/Arduino-Temperature-Control-Library

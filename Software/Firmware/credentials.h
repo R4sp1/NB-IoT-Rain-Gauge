@@ -1,0 +1,1 @@
+char nbSERVER[] = "";   // IP address of NB-IoT server

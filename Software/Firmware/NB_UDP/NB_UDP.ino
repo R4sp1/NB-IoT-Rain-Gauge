@@ -5,7 +5,7 @@
 #include <Quectel_BC660.h>     // https://github.com/R4sp1/Quectel-BC660/tree/dev
 #include "Adafruit_VEML7700.h" // https://github.com/adafruit/Adafruit_VEML7700
 
-// #define DEBUG         // Uncomment this line if you want to print out to serial "debug" messages
+#define DEBUG         // Uncomment this line if you want to print out to serial "debug" messages
 #define DEVICE_ADDRESS 1 // Device address (1-255) used to identify device on server
 
 // Deep sleep related definitions
@@ -137,7 +137,7 @@ void readSensors()
     volSens_Result += analogReadMilliVolts(VOL_SENS);
     delay(5);
   }
-  Voltage = CAL * (volSens_Result / 16.0); // Calculate voltage by deviding by 16 (16 reads) and multiplying by 2 (voltage devider) - voltage is in mV
+  Voltage = (volSens_Result / 16.0); // Calculate voltage by deviding by 16 (16 reads) and multiplying by 2 (voltage devider) - voltage is in mV
 #ifdef DEBUG
   Serial.print(Voltage / 1000.0); // Print Voltage (in V)
   Serial.println(" V");

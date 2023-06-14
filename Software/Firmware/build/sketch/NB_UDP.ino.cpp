@@ -1,13 +1,13 @@
 #include <Arduino.h>
 #line 1 "C:\\Users\\jirka\\Documents\\GitHub\\bachelor-thesis\\Software\\Firmware\\NB_UDP\\NB_UDP.ino"
-#include <credentials.h>       // Credentials for NB module and server
+#include <credentials.h>       // Credentials for NB module and server - contains IP address of NB-IoT server in char nbSERVER[]
 #include <ESP32Time.h>         // https://github.com/fbiego/ESP32Time
 #include <OneWire.h>           // https://www.arduino.cc/reference/en/libraries/onewire/
 #include <DallasTemperature.h> // https://github.com/milesburton/Arduino-Temperature-Control-Library
 #include <Quectel_BC660.h>     // https://github.com/R4sp1/Quectel-BC660/tree/dev
 #include "Adafruit_VEML7700.h" // https://github.com/adafruit/Adafruit_VEML7700
 
-// #define DEBUG         // Uncomment this line if you want to print out to serial "debug" messages
+#define DEBUG         // Uncomment this line if you want to print out to serial "debug" messages
 #define DEVICE_ADDRESS 1 // Device address (1-255) used to identify device on server
 
 // Deep sleep related definitions

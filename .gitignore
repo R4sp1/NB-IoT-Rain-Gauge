@@ -42,7 +42,7 @@ Code/*/.vscode/*
 #Code/StoreData/.vscode/c_cpp_properties.json
 
 # Build outupt
-Software/Firmware/build
+
 
 # Local History for Visual Studio Code
 .history/
@@ -101,3 +101,6 @@ Software/Firmware/build
 
 # file locks introduced since 7.x
 *.lck
+
+Software/Firmware/build/*
+Software/Firmware/build/preproc/ctags_target_for_gcc_minus_e.cpp

@@ -42,7 +42,7 @@ Code/*/.vscode/*
 #Code/StoreData/.vscode/c_cpp_properties.json
 
 # Build outupt
-Code/build
+Software/Firmware/build
 
 # Local History for Visual Studio Code
 .history/

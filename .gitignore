@@ -32,17 +32,17 @@
 *.app
 
 # VS code
-Code/*/.vscode/*
-!Code/*/.vscode/settings.json
-!Code/*/.vscode/tasks.json
-!Code/*/.vscode/launch.json
-!Code/*/.vscode/extensions.json
-!Code/*/.vscode/*.code-snippets
-!Code/*/.vscode/arduino.json
-#Code/StoreData/.vscode/c_cpp_properties.json
+Software/Firmware/*/.vscode/*
+!Software/Firmware/*/.vscode/settings.json
+!Software/Firmware/*/.vscode/tasks.json
+!Software/Firmware/*/.vscode/launch.json
+!Software/Firmware/*/.vscode/extensions.json
+!Software/Firmware/*/.vscode/*.code-snippets
+!Software/Firmware/*/.vscode/arduino.json
 
 # Build outupt
 
+Software/Firmware/build
 
 # Local History for Visual Studio Code
 .history/
@@ -102,5 +102,3 @@ Code/*/.vscode/*
 # file locks introduced since 7.x
 *.lck
 
-Software/Firmware/build/*
-Software/Firmware/build/preproc/ctags_target_for_gcc_minus_e.cpp

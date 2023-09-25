@@ -1,0 +1,2 @@
+# eCAD files
+This subfolder contains project files from EAGLE eCAD software. The main design is located in folder: [Main board](https://github.com/R4sp1/NB-IoT-Rain-Gauge/tree/main/Hardware/eCAD%20-%20EAGLE%20project/Bachelor%20thesis/Main%20board).
